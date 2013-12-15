@@ -9,10 +9,6 @@
 {
     margin-bottom: 10px;
 }
-.form-signin .checkbox
-{
-    font-weight: normal;
-}
 .form-signin .form-control
 {
     position: relative;
@@ -76,6 +72,12 @@
 }
 </style>
 <div class="container">
+    <?
+        if(isset($error))
+        {
+            echo "<div class='alert alert-danger'>".MSG_USER_PASSWORD_INVALID."</div>";
+        }
+    ?>
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <h1 class="text-center login-title">Please sign in</h1>
@@ -84,16 +86,18 @@
                 <form class="form-signin" action="validate_user" method="POST">
                     <input type="text" class="form-control" placeholder="Email" name="username" required autofocus />
                     <input type="password" class="form-control" placeholder="Password" name="password" required />
+                    <select name="usertype" class="form-control">
+                        <option value="<?=END_USER_TYPE?>">Parent</option>
+                        <option value="<?=CHILDREN_TYPE?>">Child</option>
+                        <option value="<?=END_USER_TYPE?>">Tutor</option>
+                    </select>
+                    <br/>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
                         Sign in
                     </button>
-                    <label class="checkbox pull-left">
-                        <input type="checkbox" value="remember-me" >
-                        Remember me
-                    </label>
                 </form>
             </div>
-            <a href="#" class="text-center new-account">Create an account </a>
+            <a href="<? echo base_url().'user/signup'?>" class="text-center new-account">Create an account </a>
         </div>
     </div>
 </div>

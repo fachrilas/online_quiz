@@ -1,23 +1,3 @@
-<script>
-$(document).ready(function()
-{
-  $('form').on('submit',function(e){
-      e.preventDefault();
-      $.ajax({
-          url:$(this).attr('action'),
-          data:$(this).serialize(),
-          type:'POST',
-          success:function(data)
-          {
-              $('.alert').remove();
-              $('form')[0].reset();
-              var alertDiv = '<div class="alert alert-success">Question saved succesfully! Add another</div>';
-              $('.panel').before(alertDiv);
-          }
-      })
-  });
-});
-</script>
 <div class="container">
     <div class="row" style="margin-top: 20px;">
         <div class="col-md-11 col-md-offset-0" style="width: 97%;">
@@ -26,7 +6,7 @@ $(document).ready(function()
                 <h3 class="panel-title">Add question</h3>
                 </div>
                 <div class="panel-body">
-                   <form role="form" action="<?=base_url().'quiz/add_question'?>" method="POST">
+                   <form role="form" action="<?=base_url().'quiz/add_question'?>" method="POST" enctype="multipart/form-data" name="questionForm">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Select Level</label>
                         <select name="level" class="form-control">
@@ -37,9 +17,13 @@ $(document).ready(function()
                         </select>
                       </div> 
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Questions</label>
-                        <input type="text" name="question" class="form-control" id="exampleInputEmail1" placeholder="Question" required>
+                        <label for="exampleInputEmail1">Question</label>
+                        <textarea name="question" class="form-control" id="exampleInputEmail1" placeholder="Question" required></textarea>
                       </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Image</label>
+                        <input type="file" name="sample_file" class="form-control" id="exampleInputPassword1"/>
+                      </div> 
                       <div class="form-group">
                         <label for="option1">Option 1</label>
                         <input type="text" name="option1" class="form-control" id="exampleInputPassword1" placeholder="Option 1" required>

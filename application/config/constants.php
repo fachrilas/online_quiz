@@ -43,12 +43,16 @@ define('FOPEN_READ_WRITE_CREATE_STRICT','x+b');
 
 define('TBL_QUESTIONS','quiz_questions');
 define('TBL_OPTIONS','quiz_options');
+define('TBL_USERS','user');
+define('TBL_CHILDREN','children');
 
 /**
  * Admin User Type
  */
 define('ADMIN_USER_TYPE','1');
 define('END_USER_TYPE','2');
+define('CHILDREN_TYPE','3');
+define('TUTOR_TYPE','2');
 
 
 /**
@@ -61,13 +65,29 @@ define('OPTION4','option4');
 /**
  * ERROR CODES 
  */
+define ('SUCCESS_CODE','0');
 define('ACCOUNT_NOT_ACTIVATED','-1');
 define('INVALID_USERNAME_PASSWORD','-2');
+define('ERROR_PASSWORD_NOT_MATCH','-3');
+define('ERROR_USERNAME_ALREADY_EXIST','-4');
 /**
  * General Constants
  */
 define('SITE_TITLE','Online Assesment');
 define('MAIN_TEMPLATE','template/template');
 define('VIEW_NAME','main_content');
+
+
+
+/**
+ * Error Messages
+ */
+define('MSG_PASSWORD_NOT_MATCH','Password and confirm password do not match');
+define('MSG_USER_ALREADY_EXISTS','This username already exists in our system');
+define('MSG_USER_PASSWORD_INVALID','Username and/or password Invalid');
+
+
+
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

@@ -6,7 +6,7 @@
                 <h3 class="panel-title">Edit question</h3>
                 </div>
                 <div class="panel-body">
-                   <form role="form" action="<?=base_url().'quiz/do_edit_question?qid='?><?=$question_details['question']->id?> method="POST">
+                   <form role="form" action="<?=base_url().'quiz/do_edit_question?qid='?><?=$question_details['question']->id?>" enctype="multipart/form-data" method="POST">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Select Level</label>
                         <select name="level" class="form-control">
@@ -31,6 +31,11 @@
                         <label for="exampleInputEmail1">Questions</label>
                         <input type="text" name="question" class="form-control" placeholder="Question" value="<?=$question_details['question']->question?>" required>
                       </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Image</label>
+                        <input type="file" name="sample_file" class="form-control" id="exampleInputPassword1"/>
+                      </div> 
+                       
                       <div class="form-group">
                         <label for="option1">Option 1</label>
                         <input type="text" name="option1" class="form-control" placeholder="Option 1" value="<?=$question_details['options'][0]->option?>" required>
@@ -70,13 +75,13 @@
                             <? if($question_details['options'][1]->is_correct)
                                {
                             ?>
-                                <input type="radio"  value="option1" name="answer" checked="checked"> Option 2
+                                <input type="radio"  value="option2" name="answer" checked="checked"> Option 2
                             <?
                                }
                             else
                             {
                             ?>
-                                <input type="radio"  value="option1" name="answer"> Option 2
+                                <input type="radio"  value="option2" name="answer"> Option 2
                             <?
                             }
                             ?>
@@ -85,13 +90,13 @@
                             <? if($question_details['options'][2]->is_correct)
                                {
                             ?>
-                                <input type="radio"  value="option1" name="answer" checked="checked"> Option 3
+                                <input type="radio"  value="option3" name="answer" checked="checked"> Option 3
                             <?
                                }
                             else
                             {
                             ?>
-                                <input type="radio"  value="option1" name="answer"> Option 3
+                                <input type="radio"  value="option3" name="answer"> Option 3
                             <?
                             }
                             ?>
@@ -100,13 +105,13 @@
                             <? if($question_details['options'][3]->is_correct)
                                {
                             ?>
-                                <input type="radio"  value="option1" name="answer" checked="checked"> Option 4
+                                <input type="radio"  value="option4" name="answer" checked="checked"> Option 4
                             <?
                                }
                             else
                             {
                             ?>
-                                <input type="radio"  value="option1" name="answer"> Option 4
+                                <input type="radio"  value="option4" name="answer"> Option 4
                             <?
                             }
                             ?>
