@@ -7,6 +7,7 @@
                 </div>
                 <div class="panel-body">
                     <table class="table table-hover">
+                        <th>Number</th>
                         <th>Question</th>
                         <th>Option 1</th>
                         <th>Option 2</th>
@@ -18,6 +19,7 @@
                         {
                     ?>
                         <tr>
+                            <td><?=$question['question']->question_number?></td>
                             <td><?=$question['question']->question?></td>
                             <?
                             foreach($question['options'] as $option)
@@ -38,7 +40,8 @@
                             ?>
                                     <td>
                                         <a href="<?=base_url()?>quiz/edit_question?qid=<?=$question['question']->id?>">Edit</a> | 
-                                        <a href="#">Delete </a>
+                                        <a href="#">Delete </a>| 
+                                        <a href="<?=base_url()?>quiz/preview?qid=<?=$question['question']->id?>" target="_blank">Preview</a>
                                     </td>
                         </tr>
                     <?

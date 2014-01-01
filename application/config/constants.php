@@ -87,7 +87,15 @@ define('MSG_USER_ALREADY_EXISTS','This username already exists in our system');
 define('MSG_USER_PASSWORD_INVALID','Username and/or password Invalid');
 
 
-
+/**
+ * Pages
+ */
+define('PAGE_ABOUT_US','about_us');
+define('PAGE_PACKAGES','packages');
+define('PAGE_KNOW_ALL','know_it_all');
+define('PAGE_FAQ','faq');
+define('PAGE_MY_ACCOUNT','my_account');
+define('PAGE_SIGN_IN','sign_in');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

@@ -15,7 +15,11 @@
                                 <option value="<?=$level->id?>"><?=$level->level_name?></option>
                             <?}?>
                         </select>
-                      </div> 
+                      </div>
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Question Number</label>
+                        <input type="text" name="question_number" class="form-control" id="question_number" placeholder="question number" required/>
+                      </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Question</label>
                         <textarea name="question" class="form-control" id="exampleInputEmail1" placeholder="Question" required></textarea>

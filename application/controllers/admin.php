@@ -18,9 +18,9 @@ class Admin  extends CI_Controller{
     
     public function add_question()
     {
-        $this->load->model('Quiz_Model');
+        $this->load->model('quiz_model');
         $data[VIEW_NAME] = 'add_question';
-        $data['levels'] = $this->Quiz_Model->getAllLevels();
+        $data['levels'] = $this->quiz_model->getAllLevels();
         $this->load->view(MAIN_TEMPLATE,$data);
     }
 }

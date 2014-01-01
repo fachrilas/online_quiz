@@ -28,13 +28,13 @@ class User extends CI_Controller{
     
     function validate_user()
     {
-        $this->load->model('User_Model');
+        $this->load->model('user_model');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $type = $this->input->post('usertype');
         if($type == END_USER_TYPE || $type == TUTOR_TYPE)
         {
-            $user = $this->User_Model->validate_user($username,$password);
+            $user = $this->user_model->validate_user($username,$password);
             if($user != INVALID_USERNAME_PASSWORD)
             {
                 if($user->user_type == END_USER_TYPE)
@@ -68,7 +68,7 @@ class User extends CI_Controller{
         else if($type == CHILDREN_TYPE)
         {
             
-            $user = $this->User_Model->verifyChildren($username,$password);
+            $user = $this->user_model->verifyChildren($username,$password);
             if($user)
             {
                 $data = array(
@@ -128,13 +128,13 @@ class User extends CI_Controller{
         $purpose = $this->input->post('purpose');
         $strength = $this->input->post('strength');
         $weakness = $this->input->post('weakness');
-        $this->load->model('User_Model');
+        $this->load->model('user_model');
         if($password != $cpassword)
         {
             echo ERROR_PASSWORD_NOT_MATCH;
             return;
         }
-        else if ($this->User_Model->usernameExists($email))
+        else if ($this->user_model->usernameExists($email))
         {
             echo ERROR_USERNAME_ALREADY_EXIST;
             return;
@@ -152,7 +152,7 @@ class User extends CI_Controller{
             $data['is_activated'] = 1;
             $data['user_type'] = END_USER_TYPE;
             $data['password'] = md5($password);
-            $this->User_Model->registerUser($data);
+            $this->user_model->registerUser($data);
             echo SUCCESS_CODE;
         }
     }
@@ -174,7 +174,7 @@ class User extends CI_Controller{
         $likes = $this->input->post('likes');
         $dislikes = $this->input->post('dislikes');
         $this->load->model('Quiz_Model');
-        $this->load->model('User_Model');
+        $this->load->model('user_model');
         if(isset($_FILES['sample_file']) && $_FILES['sample_file']['size'] > 0)
         {
             $image1 = 'sample_file';
@@ -187,14 +187,14 @@ class User extends CI_Controller{
             $filepathRelative = "";
             $filepathAbsolute = "";
         }
-        $this->User_Model->addChild($username,$password,$fullName,$dd,$mm,$yyyy,$likes,$dislikes,$filepathRelative,$filepathAbsolute);
+        $this->user_model->addChild($username,$password,$fullName,$dd,$mm,$yyyy,$likes,$dislikes,$filepathRelative,$filepathAbsolute);
     }
     
     public function view_children()
     {
         $userId = $this->session->userdata('user_id');
-        $this->load->model('User_Model');
-        $data['children'] = $this->User_Model->getChildren($userId);
+        $this->load->model('user_model');
+        $data['children'] = $this->user_model->getChildren($userId);
         $data[VIEW_NAME] = 'view_children';
         $this->load->view(MAIN_TEMPLATE,$data);
     }
@@ -203,8 +203,8 @@ class User extends CI_Controller{
     {
         $userId = $this->session->userdata('user_id');
         $childId = $this->input->get('cid');
-        $this->load->model('User_Model');
-        $data['child'] = $this->User_Model->getChild($childId);
+        $this->load->model('user_model');
+        $data['child'] = $this->user_model->getChild($childId);
         $data[VIEW_NAME] = 'edit_child';
         $this->load->view(MAIN_TEMPLATE,$data);
     }
@@ -213,7 +213,7 @@ class User extends CI_Controller{
     {
         $userId = $this->session->userdata('user_id');
         $childId = $this->input->get('cid');
-        $this->load->model('User_Model');
+        $this->load->model('user_model');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $fullName = $this->input->post('full_name');
@@ -235,15 +235,15 @@ class User extends CI_Controller{
             $filepathRelative = "";
             $filepathAbsolute = "";
         }
-        $this->User_Model->updateChild($childId,$username,$password,$fullName,$dd,$mm,$yyyy,$likes,$dislikes,$filepathRelative,$filepathAbsolute);
+        $this->user_model->updateChild($childId,$username,$password,$fullName,$dd,$mm,$yyyy,$likes,$dislikes,$filepathRelative,$filepathAbsolute);
         redirect("user/view_children", 'refresh');
     }
     
     public function delete_child()
     {
         $userId = $this->session->userdata('user_id');
-        $this->load->model('User_Model');
-        $data['children'] = $this->User_Model->getChildren($userId);
+        $this->load->model('user_model');
+        $data['children'] = $this->user_model->getChildren($userId);
         $data[VIEW_NAME] = 'view_children';
         $this->load->view(MAIN_TEMPLATE,$data);
     }

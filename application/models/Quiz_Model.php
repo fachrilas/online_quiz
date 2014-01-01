@@ -20,9 +20,10 @@ class Quiz_Model extends CI_Model {
         return $result;
     }
     
-    public function addQuestion($level,$question,$o1,$o2,$o3,$o4,$answer,$relative,$absolute)
+    public function addQuestion($level,$question,$question_number,$o1,$o2,$o3,$o4,$answer,$relative,$absolute)
     {
         $questionArray = array();
+        $questionArray['question_number'] = $question_number;
         $questionArray['question'] = $question;
         $questionArray['level'] = $level;
         $questionArray['image_relative'] = $relative;
@@ -108,13 +109,14 @@ class Quiz_Model extends CI_Model {
         }
     }
     
-    public function editQuestion($questionId,$level,$question,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute)
+    public function editQuestion($questionId,$level,$question_number,$question,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute)
     {
         $this->db->where('id',$questionId);
         $oldQuestion = $this->db->get(TBL_QUESTIONS)->result();
         $oldQuestion = $oldQuestion[0];
         $questionData = array();
         $questionData['question'] = $question;
+        $questionData['question_number'] = $question_number;
         $questionData['level'] = $level;
         if($filepathRelative != -1 && $filepathAbsolute != -1)
         {

@@ -25,61 +25,107 @@
   <body>
       <div class="container">
           <div class="masthead">
-              <div class="row" style="margin-bottom: 8px;">
+              <div class="row" style="margin-bottom: 21px;margin-top:6px;">
                   <div class="col-md-3">
-                    <img src="<?php echo base_url().'../assets/img/MOExLogo.png' ?>" style="width: 100px;height: 100px;"/>
+                    <a href="<?=base_url().'main/index'?>"><img src="<?php echo base_url().'../assets/img/MOExLogo.png' ?>" style="width: 100px;height: 100px;"/></a>
                   </div>
                   <div class="col-md-3 col-md-offset-6" style="text-align: left;margin-top: 50px;">
                       <i>The beacon of light amidst your journey through the sea of learning</i>
                   </div>
               </div>
             <ul class="nav nav-justified">
-            <?
-            if($this->session->userdata('is_logged_in'))
-            {
-                if($this->session->userdata('user_type') == ADMIN_USER_TYPE)
+              <?
+                if(isset($_GET['page']))
                 {
-            ?>
-              <li><a href="<?=base_url().'user/admin_home'?>">Home</a></li>
-              <li><a href="<?=base_url().'admin/add_question'?>">Add Questions</a></li>
-              <li><a href="#">View Users</a></li>
-              <li><a href="<?=base_url().'quiz/select_level_quiz_detail'?>">View Quiz</a></li>
-              <li><a href="<?=base_url()?>user/logout">Logout</a></li>
-            <?
+                  $page = $_GET['page'];
                 }
-                else if($this->session->userdata('user_type') == END_USER_TYPE)
+                else
                 {
-            ?>
-                  <li><a href="<?=base_url().'user/user_home'?>">Home</a></li>
-                  <li><a href="<?=base_url().'user/view_children'?>">View Children</a></li>
-                  <li><a href="<?=base_url().'user/add_child'?>">Add Child</a></li>
-                  <li><a href="<?=base_url().'user/user_home'?>">See children Quiz</a></li>
-                  <li><a href="<?=base_url().'user/user_home'?>">Assign Quiz</a></li>
-                  
-                  <li><a href="<?=base_url()?>user/logout">Logout</a></li>
-            <?
+                    $page = PAGE_MY_ACCOUNT;
                 }
-                else if ($this->session->userdata('user_type') == CHILDREN_TYPE)
-                {
-            ?>
-                  <li><a href="<?=base_url().'user/child_home'?>">Home</a></li>
-                  <li><a href="<?=base_url().'user/child_home'?>">See assigned Quiz</a></li>
-                  <li><a href="<?=base_url().'user/child_home'?>">Take Quiz</a></li>
-                  <li><a href="<?=base_url()?>user/logout">Logout</a></li>
-            <?
-                }
-            }
-            else
-            {
-            ?>
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Projects</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="<?=base_url()?>user/login">Login</a></li>
-              <li><a href="<?=base_url()?>user/signup">Sign up</a></li>
+                
+              if($page == PAGE_ABOUT_US)
+              {
+              ?>
+              <li><a href="<?=base_url().'main/about_us?page='.PAGE_ABOUT_US?>" style="background: rgba(223,27,125,1);color:white;">About Us</a></li>
+              <?
+              }
+              else
+              {
+              ?>
+                <li class="pink-tab"><a href="<?=base_url().'main/about_us?page='.PAGE_ABOUT_US?>" style="color:white;">About Us</a></li>
+              <?
+              }
+              if($page == PAGE_PACKAGES)
+              {
+              ?>
+              <li><a href="<?=base_url().'main/packages?page='.PAGE_PACKAGES?>" style="background: rgba(122,181,66,1);color:white;">Packages</a></li>
+              <?
+              }
+              else
+              {
+              ?>
+                <li class="green-tab"><a href="<?=base_url().'main/packages?page='.PAGE_PACKAGES?>" style="color:white;">Packages</a></li>
+              <?
+              }
+              if($page == PAGE_KNOW_ALL)
+              {
+              ?>
+                <li><a href="<?=base_url().'main/know_all?page='.PAGE_KNOW_ALL?>" style="background: rgba(227,154,37,1);color:white;">Know-It-All</a></li>
+              <?
+              }
+              else
+              {
+              ?>
+                <li class="orange-tab"><a href="<?=base_url().'main/know_all?page='.PAGE_KNOW_ALL?>" style="color:white;">Know-It-All</a></li>
+              <?
+              }
+              if($page == PAGE_FAQ)
+              {
+              ?>
+                <li ><a href="<?=base_url().'main/FAQ?page='.PAGE_FAQ?>" style="background: rgba(42,125,193,1);color:white;">FAQ</a></li>
+              <?
+              }
+              else
+              {
+              ?>
+                <li class="blue-tab"><a href="<?=base_url().'main/FAQ?page='.PAGE_FAQ?>" style="color:white;">FAQ</a></li>
+              <?
+              }
+              if($this->session->userdata('is_logged_in'))
+              {
+              ?>
+               <?
+               if($page == PAGE_MY_ACCOUNT)
+               {
+               ?>
+                <li><a href="<?=base_url().'main/my_account?page='.PAGE_MY_ACCOUNT?>" style="background: rgba(94,95,95,1);color:white;">My Account</a></li>    
+               <?
+               }
+               else
+               {
+               ?>
+                <li class="grey-tab"><a href="<?=base_url().'main/my_account?page='.PAGE_MY_ACCOUNT?>" style="color:white;">My Account</a></li>    
+               <? 
+               }
+               ?>
+              <?
+              }
+              else
+              {
+                  if($page == PAGE_SIGN_IN)
+                  {
+              ?>
+                <li><a href="<?=base_url().'user/login?page='.PAGE_SIGN_IN?>" style="background: rgba(94,95,95,1);color:white;">Sign in</a></li>  
+              <?  
+                  }
+                  else
+                  {
+             ?>
+                <li class="grey-tab"><a href="<?=base_url().'user/login?page='.PAGE_SIGN_IN?>" style="color:white;">Sign in</a></li>  
+             <?
+                  }
+              }
+             ?>   
             </ul>
-            <?
-            }
-            ?>
           </div>

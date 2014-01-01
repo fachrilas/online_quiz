@@ -28,8 +28,12 @@
                         </select>
                       </div> 
                       <div class="form-group">
+                        <label for="option1">Question Number</label>
+                        <input type="text" name="question_number" class="form-control" placeholder="Question Number" value="<?=$question_details['question']->question_number?>" required>
+                      </div>
+                      <div class="form-group">
                         <label for="exampleInputEmail1">Questions</label>
-                        <input type="text" name="question" class="form-control" placeholder="Question" value="<?=$question_details['question']->question?>" required>
+                        <textarea name="question" class="form-control" placeholder="Question" required><?php echo str_replace("<br />","\r\n",$question_details['question']->question );?></textarea>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Image</label>
