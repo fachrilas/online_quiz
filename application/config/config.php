@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost:82/onlinequiz/index.php';
+$config['base_url']	= 'http://localhost/xampp/php1/online_quiz/index.php';
 
 /*
 |--------------------------------------------------------------------------

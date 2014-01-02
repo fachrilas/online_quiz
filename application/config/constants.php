@@ -45,6 +45,7 @@ define('TBL_QUESTIONS','quiz_questions');
 define('TBL_OPTIONS','quiz_options');
 define('TBL_USERS','user');
 define('TBL_CHILDREN','children');
+define('TBL_OPENENDEDQUESTION','open_ended_question');
 
 /**
  * Admin User Type
@@ -62,6 +63,15 @@ define('OPTION1','option1');
 define('OPTION2','option2');
 define('OPTION3','option3');
 define('OPTION4','option4');
+
+
+/**
+ * Choice Option for optionso or Open Ended Question 
+ */
+define('OPTIONS','0');
+define('OPENENDED','1');
+
+
 /**
  * ERROR CODES 
  */

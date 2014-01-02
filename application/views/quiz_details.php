@@ -9,10 +9,10 @@
                     <table class="table table-hover">
                         <th>Number</th>
                         <th>Question</th>
-                        <th>Option 1</th>
-                        <th>Option 2</th>
-                        <th>Option 3</th>
-                        <th>Option 4</th>
+                         <th>Question hint</th> 
+                        
+                        <th>View Answer</th>
+                        
                         <th>Operations</th>
                     <?
                         foreach($quiz_details as $question)
@@ -21,23 +21,9 @@
                         <tr>
                             <td><?=$question['question']->question_number?></td>
                             <td><?=$question['question']->question?></td>
-                            <?
-                            foreach($question['options'] as $option)
-                            {
-                                if($option->is_correct)
-                                {
-                            ?>
-                                    <td class="success"><?=$option->option?></td>
-                            <?
-                                }
-                                else
-                                {
-                                ?>
-                                    <td><?=$option->option?></td>
-                                <?
-                                }
-                            }
-                            ?>
+                              <td><?=$question['question']->q_hint?></td>
+                              <td><a href="<?=base_url()?>quiz/viewAnswer?qid=<?=$question['question']->id?>" target="_blank">answer</a></td>
+                          
                                     <td>
                                         <a href="<?=base_url()?>quiz/edit_question?qid=<?=$question['question']->id?>">Edit</a> | 
                                         <a href="#">Delete </a>| 
@@ -47,6 +33,7 @@
                     <?
                         }
                     ?>
+                        
                     </table>
                 </div>
             </div>

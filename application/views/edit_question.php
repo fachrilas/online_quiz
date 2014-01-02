@@ -33,13 +33,21 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Questions</label>
-                        <textarea name="question" class="form-control" placeholder="Question" required><?php echo str_replace("<br />","\r\n",$question_details['question']->question );?></textarea>
+                        <textarea name="question" class="form-control" placeholder="Question" required><?php echo str_replace("<br />","\n",$question_details['question']->question );?></textarea>
                       </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Hint *</label>
+                        <textarea name="hint" class="form-control" placeholder="Hint" required><?php echo str_replace("<br />","\n",$question_details['question']->q_hint );?></textarea>
+                      </div>
+                     
                       <div class="form-group">
                         <label for="exampleInputEmail1">Image</label>
                         <input type="file" name="sample_file" class="form-control" id="exampleInputPassword1"/>
                       </div> 
                        
+                      <?php 
+                      if($question_details['question']->type==OPTIONS)
+                      { ?>
                       <div class="form-group">
                         <label for="option1">Option 1</label>
                         <input type="text" name="option1" class="form-control" placeholder="Option 1" value="<?=$question_details['options'][0]->option?>" required>
@@ -121,6 +129,22 @@
                             ?>
                         </label>
                        </div>
+                              <?php
+                      }
+                      if($question_details['question']->type==OPENENDED)
+                      {
+                          
+                       ?>
+                             
+                        <div class="form-group">
+                        <label for="answer1">answer</label>
+                        <input type="text" name="answer1" class="form-control" placeholder="answer1" value="<?=$question_details['openended'][0]->OpenEndedAnswer1?>" required>
+                      </div>
+                        <?php
+                             }
+                        ?>
+                        <input type="hidden" name="type" class="form-control" value="<?=$question_details['question']->type?>" required>
+                        
                     <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
