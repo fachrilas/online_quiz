@@ -21,11 +21,10 @@ class quiz extends CI_Controller{
         $this->load->model('quiz_model');
         $question_number = $this->input->post('question_number');
         $question = nl2br($this->input->post('question'));
-        $o1 = $this->input->post('option1');
-        $o2 = $this->input->post('option2');
-        $o3 = $this->input->post('option3');
-        $o4 = $this->input->post('option4');
-        $answer = $this->input->post('answer');
+        $hint = nl2br($this->input->post('hint'));
+        $choice=$this->input->post('MultipleEndedQuestions');
+            
+        
         if(isset($_FILES['sample_file']) && $_FILES['sample_file']['size'] > 0)
         {
             $image1 = 'sample_file';
@@ -38,7 +37,29 @@ class quiz extends CI_Controller{
             $filepathRelative = "";
             $filepathAbsolute = "";
         }
-        $this->quiz_model->addQuestion($level,$question,$question_number,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute);
+        
+        if($choice==OPTIONS)
+        {
+            $o1 = $this->input->post('option1');
+            $o2 = $this->input->post('option2');
+            $o3 = $this->input->post('option3');
+            $o4 = $this->input->post('option4');
+            $answer = $this->input->post('answer');
+            $this->quiz_model->addQuestion($level,$question,$hint,$choice,$question_number,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute);
+        
+        
+        }
+        else if($choice==OPENENDED)
+            {
+              $OpenEndedAnswer1 = $this->input->post('answer1');
+              $this->quiz_model->OpenEndedadQuestion($level,$question,$hint,$choice,$question_number,$OpenEndedAnswer1,$filepathRelative,$filepathAbsolute);
+        
+            }
+            else
+            {
+                echo "answer can not be empty!";
+            }
+        
         redirect("quiz/get_quiz_details?level=$level", 'refresh');
     }
     
@@ -49,11 +70,9 @@ class quiz extends CI_Controller{
         $this->load->model('quiz_model');
         $question_number = $this->input->post('question_number');
         $question = nl2br($this->input->post('question'));
-        $o1 = $this->input->post('option1');
-        $o2 = $this->input->post('option2');
-        $o3 = $this->input->post('option3');
-        $o4 = $this->input->post('option4');
-        $answer = $this->input->post('answer');
+        $q_hint = nl2br($this->input->post('hint'));
+        $type=$this->input->post('type');
+        $OpenEndedAnswer1=$this->input->post('answer1');
         $image1 = 'sample_file';
         if(isset($_FILES['sample_file']) && $_FILES['sample_file']['size'] > 0)
         {
@@ -66,7 +85,23 @@ class quiz extends CI_Controller{
             $filepathRelative = -1;
             $filepathAbsolute = -1;
         }
-        $this->quiz_model->editQuestion($questionId,$level,$question_number,$question,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute);
+        
+        if($type==OPTIONS)
+        {
+        $o1 = $this->input->post('option1');
+        $o2 = $this->input->post('option2');
+        $o3 = $this->input->post('option3');
+        $o4 = $this->input->post('option4');
+        $answer = $this->input->post('answer');
+        
+        $this->quiz_model->editQuestion($questionId,$level,$question_number,$question,$q_hint,$type,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute);
+        }
+        if($type==OPENENDED)
+            {
+             $this->quiz_model->OpenEndededitQuestion($questionId,$level,$question_number,$question,$q_hint,$type,$OpenEndedAnswer1,$filepathRelative,$filepathAbsolute);
+              
+            }
+                
         redirect("quiz/get_quiz_details?level=$level", 'refresh');
     }
     
@@ -89,6 +124,10 @@ class quiz extends CI_Controller{
         $data = array();
         $data['levels'] = $this->quiz_model->getAllLevels();
         $data['question_details'] = $questionDetail;
+        //echo "<pre>";
+        //var_dump($questionDetail);
+        //echo "</pre>";
+        //die();
         $data[VIEW_NAME] = 'edit_question';
         $this->load->view(MAIN_TEMPLATE,$data);
     }
@@ -109,6 +148,15 @@ class quiz extends CI_Controller{
         $data[VIEW_NAME] = 'preview_question';
         $this->load->view(MAIN_TEMPLATE,$data);
     }
+     public function ViewAnswer()
+    {
+        $questionID = $this->input->get('qid');
+        $this->load->model('quiz_model');
+        $data['questionDetails'] = $this->quiz_model->getQuestionDetails($questionID);
+        $data[VIEW_NAME] = 'viewanswer';
+        $this->load->view(MAIN_TEMPLATE,$data);
+    }
+    //*************method for view users
 }
 
 ?>

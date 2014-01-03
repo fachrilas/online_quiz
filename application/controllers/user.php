@@ -248,6 +248,27 @@ class User extends CI_Controller{
         $this->load->view(MAIN_TEMPLATE,$data);
     }
     
+    //***********for all user|method
+     public function view_user()
+    {
+        $userId = $this->session->userdata('user_id');
+        $this->load->model('user_model');
+        $data['user'] = $this->user_model->getUsers();
+        $data[VIEW_NAME] = 'view_user';
+        $this->load->view(MAIN_TEMPLATE,$data);
+    }
+    //****************
+    //*********method for admin for user children view
+    
+    public function user_view_children()
+    {   $userId = $this->input->get('user_id');
+        $this->load->model('user_model');
+        $data['children'] = $this->user_model->getChildren($userId);
+        $data[VIEW_NAME] = 'view_children';
+        $this->load->view(MAIN_TEMPLATE,$data);
+    }
+    
+    //********
 }
 
 ?>

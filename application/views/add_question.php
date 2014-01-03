@@ -24,10 +24,32 @@
                         <label for="exampleInputEmail1">Question</label>
                         <textarea name="question" class="form-control" id="exampleInputEmail1" placeholder="Question" required></textarea>
                       </div>
+                         <div class="form-group">
+                        <label for="exampleInputEmail1">Hint *</label>
+                        <textarea name="hint" class="form-control" id="exampleInputEmail1" placeholder="Give a hint" required></textarea>
+                          </div>
+                    
                       <div class="form-group">
                         <label for="exampleInputEmail1">Image</label>
                         <input type="file" name="sample_file" class="form-control" id="exampleInputPassword1"/>
                       </div> 
+                       <hr/>
+                        <div class="form-group">
+                        <label class="radio-inline">
+                            <input type="radio"  id="MultipleChoiceQuestions" name="MultipleEndedQuestions" value="0" checked="checked"> 
+                         Multiple Choice Questions       
+                        </label>
+                         <label class="radio-inline">
+                            <input type="radio"  id="OpenEndedQuestions" name="MultipleEndedQuestions" value="1" > 
+                         Open Ended Questions       
+                        </label>
+                           
+                           
+                       </div>
+                       <hr/>
+                       <div id="OpenEndedMultipleQuestionsAppended">
+                       </div>
+                      <div id="Options">
                       <div class="form-group">
                         <label for="option1">Option 1</label>
                         <input type="text" name="option1" class="form-control" id="exampleInputPassword1" placeholder="Option 1" required>
@@ -60,10 +82,14 @@
                             <input type="radio" value="option4" name="answer"> Option 4
                         </label>
                        </div>
+                      </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                     <button type="button" id ="cancel" class="btn btn-primary">Cancel</button>
+                   
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="<?php echo base_url().'../assets/js/ShowHide.js' ?>"></script>

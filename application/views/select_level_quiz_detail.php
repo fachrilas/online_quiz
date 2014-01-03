@@ -1,7 +1,8 @@
 <div class="container">
     <div class="row" style="margin-top: 20px;">
         <div class="col-md-11 col-md-offset-0" style="width: 97%;">
-            <div class="panel panel-default">
+            
+                   <div class="panel panel-default">
                 <div class="panel-heading">
                 <h3 class="panel-title">Select Level</h3>
                 </div>
@@ -24,6 +25,7 @@
                     </table>
                 </div>
             </div>
+            </div>
         </div>
-    </div>
+  
 </div>

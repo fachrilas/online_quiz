@@ -3,9 +3,11 @@
         <div class="col-md-11 col-md-offset-0" style="width: 97%;">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                <h3 class="panel-title">Quiz Details</h3>
+                <h3 class="panel-title">Children's Details</h3>
                 </div>
+                
                 <div class="panel-body">
+                    
                     <table class="table table-hover">
                         <th>Username</th>
                         <th>Name</th>

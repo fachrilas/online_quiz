@@ -21,3 +21,7 @@ $( "#MultipleChoiceQuestions" ).click(function() {
   
 });
 
+$( "#cancel" ).click(function() {
+  history.back(1);  
+    
+});

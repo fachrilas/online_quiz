@@ -212,3 +212,19 @@ h1
     background: linear-gradient(to bottom, rgba(94,95,95,1) 0%, rgba(42,43,43,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e5f5f', endColorstr='#2a2b2b', GradientType=0 );
 }
+.signout{
+    float: right;
+border: 2px solid gray;
+border-bottom-right-radius: 15px;
+border-bottom-left-radius: 15px;
+padding: 8px;
+height: 36px;
+width: 127px;
+margin-bottom: 5px;
+
+}
+.signout font{
+    font-family: helvetica neue Regular;
+font-size: 10;color: black;
+    
+}

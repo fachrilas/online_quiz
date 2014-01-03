@@ -128,4 +128,14 @@
               }
              ?>   
             </ul>
+              
+                  <?  if($this->session->userdata('is_logged_in'))
+                    {
+                    ?>
+              
+              <div class="signout">
+                  <span class="glyphicon glyphicon-log-out"> <a href="../user/logout" >
+                          <font> Sign Out
+                          </font></a></span>
+              <? }?></div>
           </div>
