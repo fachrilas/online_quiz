@@ -53,7 +53,7 @@ define('TBL_OPENENDEDQUESTION','open_ended_question');
 define('ADMIN_USER_TYPE','1');
 define('END_USER_TYPE','2');
 define('CHILDREN_TYPE','3');
-define('TUTOR_TYPE','2');
+define('TUTOR_TYPE','4');
 
 
 /**
@@ -100,7 +100,7 @@ define('MSG_USER_PASSWORD_INVALID','Username and/or password Invalid');
 /**
  * Pages
  */
-define('PAGE_ABOUT_US','about_us');
+define('PAGE_HOME','home');
 define('PAGE_PACKAGES','packages');
 define('PAGE_KNOW_ALL','know_it_all');
 define('PAGE_FAQ','faq');
