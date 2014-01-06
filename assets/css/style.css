@@ -214,17 +214,30 @@ h1
 }
 .signout{
     float: right;
-border: 2px solid gray;
-border-bottom-right-radius: 15px;
-border-bottom-left-radius: 15px;
-padding: 8px;
-height: 36px;
-width: 127px;
-margin-bottom: 5px;
-
+    border: 2px solid gray;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding: 8px;
+    height: 36px;
+    width: 127px;
+    margin-bottom: 5px;
 }
-.signout font{
+.signout font
+{
     font-family: helvetica neue Regular;
-font-size: 10;color: black;
-    
+    font-size: 10;color: black;   
+}
+.panel-default > .panel-heading
+{
+    background: rgba(223,27,125,1);
+    color: white;
+    font-weight: bolder;
+}
+.footer_link
+{
+    color: white;
+}
+.footer_link:hover, .footer_link:focus 
+{
+    color: white;
 }
