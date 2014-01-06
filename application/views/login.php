@@ -38,7 +38,6 @@
 .account-wall
 {
     margin-top: 20px;
-    padding: 40px 0px 20px 0px;
     background-color: #f7f7f7;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
@@ -50,6 +49,7 @@
     font-size: 18px;
     font-weight: 400;
     display: block;
+
 }
 .profile-img
 {
@@ -57,9 +57,7 @@
     height: 96px;
     margin: 0 auto 10px;
     display: block;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+    margin-top: 10px;
 }
 .need-help
 {
@@ -70,34 +68,111 @@
     display: block;
     margin-top: 10px;
 }
+
 </style>
+<script>
+    $(function(){
+        $('.usertTypeForm').on('change',function(event)
+        {
+            window.location.href = 'login?page=sign_in&type='+$(this).val();
+        });
+    });
+</script>
 <div class="container">
     <?
         if(isset($error))
         {
             echo "<div class='alert alert-danger'>".MSG_USER_PASSWORD_INVALID."</div>";
         }
+        if(isset($_GET['type']))
+        {
+            $type = $_GET['type'];
+        }
+        else
+        {
+            $type = END_USER_TYPE;
+        }
     ?>
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center login-title">Please sign in</h1>
-            <div class="account-wall">
-                <img class="profile-img" src="<? echo base_url().'../assets/img/photo.png'?>" alt="">
-                <form class="form-signin" action="validate_user" method="POST">
-                    <input type="text" class="form-control" placeholder="Email" name="username" required autofocus />
-                    <input type="password" class="form-control" placeholder="Password" name="password" required />
-                    <select name="usertype" class="form-control">
-                        <option value="<?=END_USER_TYPE?>">Parent</option>
-                        <option value="<?=CHILDREN_TYPE?>">Child</option>
-                        <option value="<?=END_USER_TYPE?>">Tutor</option>
-                    </select>
-                    <br/>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">
-                        Sign in
-                    </button>
-                </form>
+            <div class="account-wall panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Sign into your MOEx Account</h3>
+                </div>
+                <?
+                if($type == END_USER_TYPE)
+                {
+                ?>
+                    
+                    <img class="profile-img" src="<? echo base_url().'../assets/img/Icon-Parent-Small.png'?>" alt="">
+                    <form class="form-signin" action="validate_user" method="POST">
+                        You are signing in as a:
+                        <select name="usertype" class="form-control usertTypeForm">
+                            <option value="<?=END_USER_TYPE?>" selected="selected">Parent</option>
+                            <option value="<?=CHILDREN_TYPE?>">Student</option>
+                            <option value="<?=TUTOR_TYPE?>">Tutor</option>
+                        </select>
+                        <br/>
+                        <input type="text" class="form-control" placeholder="Email" name="username" required autofocus />
+                        <input type="password" class="form-control" placeholder="Password" name="password" required />
+                        
+                        <br/>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">
+                            Sign in
+                        </button>
+                    </form>
+                <?
+                }
+                else if ($type == CHILDREN_TYPE)
+                {
+                ?>
+                    <img class="profile-img" src="<? echo base_url().'../assets/img/Icon-Student-Small.png'?>" alt="">
+                    <form class="form-signin" action="validate_user" method="POST">
+                        You are signing in as a:
+                        <select name="usertype" class="form-control usertTypeForm">
+                            <option value="<?=END_USER_TYPE?>">Parent</option>
+                            <option value="<?=CHILDREN_TYPE?>" selected="selected">Student</option>
+                            <option value="<?=TUTOR_TYPE?>">Tutor</option>
+                        </select>
+                        <br/>
+                        <input type="text" class="form-control" placeholder="Email" name="username" required autofocus />
+                        <input type="password" class="form-control" placeholder="Password" name="password" required />
+                        <br/>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">
+                            Sign in
+                        </button>
+                    </form>
+                <?
+                }
+                else if ($type == TUTOR_TYPE)
+                {
+                ?>
+                    <img class="profile-img" src="<? echo base_url().'../assets/img/Icon-Tuitor-Small.png'?>" alt="">
+                    <form class="form-signin" action="validate_user" method="POST">
+                        You are signing in as a:
+                        <select name="usertype" class="form-control usertTypeForm">
+                            <option value="<?=END_USER_TYPE?>">Parent</option>
+                            <option value="<?=CHILDREN_TYPE?>">Student</option>
+                            <option value="<?=TUTOR_TYPE?>" selected="selected">Tutor</option>
+                        </select>
+                        <br/>
+                        <input type="text" class="form-control" placeholder="Email" name="username" required autofocus />
+                        <input type="password" class="form-control" placeholder="Password" name="password" required />
+                        <br/>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">
+                            Sign in
+                        </button>
+                        <br />
+                        OR
+                        <br/>
+                        
+                    </form>
+                <?
+                }
+                ?>
+                
             </div>
-            <a href="<? echo base_url().'user/signup'?>" class="text-center new-account">Create an account </a>
+            <a href="<? echo base_url().'user/signup'?>" class="text-center new-account">Sign up for a free account</a>
         </div>
     </div>
 </div>

@@ -44,52 +44,52 @@
                     $page = PAGE_MY_ACCOUNT;
                 }
                 
-              if($page == PAGE_ABOUT_US)
+              if($page == PAGE_HOME)
               {
               ?>
-              <li><a href="<?=base_url().'main/about_us?page='.PAGE_ABOUT_US?>" style="background: rgba(223,27,125,1);color:white;">About Us</a></li>
+              <li class="pink-tab"><a href="<?=base_url().'main/about_us?page='.PAGE_HOME?>" style="color:white;">Home</a></li>
               <?
               }
               else
               {
               ?>
-                <li class="pink-tab"><a href="<?=base_url().'main/about_us?page='.PAGE_ABOUT_US?>" style="color:white;">About Us</a></li>
+                <li><a href="<?=base_url().'main/about_us?page='.PAGE_HOME?>" style="color:white;background: rgba(223,27,125,1);">Home</a></li>
               <?
               }
               if($page == PAGE_PACKAGES)
               {
               ?>
-              <li><a href="<?=base_url().'main/packages?page='.PAGE_PACKAGES?>" style="background: rgba(122,181,66,1);color:white;">Packages</a></li>
+              <li class="green-tab"><a href="<?=base_url().'main/packages?page='.PAGE_PACKAGES?>" style="color:white;">Packages</a></li>
               <?
               }
               else
               {
               ?>
-                <li class="green-tab"><a href="<?=base_url().'main/packages?page='.PAGE_PACKAGES?>" style="color:white;">Packages</a></li>
+                <li><a href="<?=base_url().'main/packages?page='.PAGE_PACKAGES?>" style="color:white;background: rgba(122,181,66,1);">Packages</a></li>
               <?
               }
               if($page == PAGE_KNOW_ALL)
               {
               ?>
-                <li><a href="<?=base_url().'main/know_all?page='.PAGE_KNOW_ALL?>" style="background: rgba(227,154,37,1);color:white;">Know-It-All</a></li>
+                <li class="orange-tab"><a href="<?=base_url().'main/know_all?page='.PAGE_KNOW_ALL?>" style="color:white;">Information Board</a></li>
               <?
               }
               else
               {
               ?>
-                <li class="orange-tab"><a href="<?=base_url().'main/know_all?page='.PAGE_KNOW_ALL?>" style="color:white;">Know-It-All</a></li>
+                <li><a href="<?=base_url().'main/know_all?page='.PAGE_KNOW_ALL?>" style="color:white;background: rgba(227,154,37,1);">Information Board</a></li>
               <?
               }
               if($page == PAGE_FAQ)
               {
               ?>
-                <li ><a href="<?=base_url().'main/FAQ?page='.PAGE_FAQ?>" style="background: rgba(42,125,193,1);color:white;">FAQ</a></li>
+                <li class="blue-tab"><a href="<?=base_url().'main/FAQ?page='.PAGE_FAQ?>" style="color:white;">FAQ</a></li>
               <?
               }
               else
               {
               ?>
-                <li class="blue-tab"><a href="<?=base_url().'main/FAQ?page='.PAGE_FAQ?>" style="color:white;">FAQ</a></li>
+                <li><a href="<?=base_url().'main/FAQ?page='.PAGE_FAQ?>" style="color:white;background: rgba(42,125,193,1);">FAQ</a></li>
               <?
               }
               if($this->session->userdata('is_logged_in'))
@@ -99,13 +99,13 @@
                if($page == PAGE_MY_ACCOUNT)
                {
                ?>
-                <li><a href="<?=base_url().'main/my_account?page='.PAGE_MY_ACCOUNT?>" style="background: rgba(94,95,95,1);color:white;">My Account</a></li>    
+                <li class="grey-tab"><a href="<?=base_url().'main/my_account?page='.PAGE_MY_ACCOUNT?>" style="color:white;">My Account</a></li>    
                <?
                }
                else
                {
                ?>
-                <li class="grey-tab"><a href="<?=base_url().'main/my_account?page='.PAGE_MY_ACCOUNT?>" style="color:white;">My Account</a></li>    
+                <li><a href="<?=base_url().'main/my_account?page='.PAGE_MY_ACCOUNT?>" style="color:white;background: rgba(94,95,95,1);">My Account</a></li>    
                <? 
                }
                ?>
@@ -116,13 +116,13 @@
                   if($page == PAGE_SIGN_IN)
                   {
               ?>
-                <li><a href="<?=base_url().'user/login?page='.PAGE_SIGN_IN?>" style="background: rgba(94,95,95,1);color:white;">Sign in</a></li>  
+                <li class="grey-tab"><a href="<?=base_url().'user/login?page='.PAGE_SIGN_IN?>" style="color:white;">Sign in</a></li>  
               <?  
                   }
                   else
                   {
              ?>
-                <li class="grey-tab"><a href="<?=base_url().'user/login?page='.PAGE_SIGN_IN?>" style="color:white;">Sign in</a></li>  
+                <li><a href="<?=base_url().'user/login?page='.PAGE_SIGN_IN?>" style="color:white;background: rgba(94,95,95,1);">Sign in</a></li>  
              <?
                   }
               }

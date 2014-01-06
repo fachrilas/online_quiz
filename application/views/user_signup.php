@@ -65,11 +65,11 @@ $(function(){
                         <textarea  name="purpose" class="form-control" placeholder="Briefly describe your purpose of using this application" required></textarea>
                       </div>
                       <div class="form-group">
-                        <label for="First Name">Child's Strength</label>
+                        <label for="First Name">Child's Strengths</label>
                         <textarea  name="strength" class="form-control" placeholder="What are your child's strengths?"  required></textarea>
                       </div>
                       <div class="form-group">
-                        <label for="First Name">Child's Weakness</label>
+                        <label for="First Name">Child's Weaknesses</label>
                         <textarea  name="weakness" class="form-control" placeholder="What are your child's weakness?" required></textarea>
                       </div>
                        <button type="submit" class="btn btn-primary">Submit</button>
