@@ -97,7 +97,7 @@
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <div class="account-wall panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Sign into your MOEx Account</h3>
+                    <h3 class="panel-title"><center>Sign in to your MOEx Account</center></h3>
                 </div>
                 <?
                 if($type == END_USER_TYPE)
@@ -116,6 +116,8 @@
                         <input type="text" class="form-control" placeholder="Email" name="username" required autofocus />
                         <input type="password" class="form-control" placeholder="Password" name="password" required />
                         
+                        <a href="forgetPass">Forgot your password ?</a>
+                        <br/>
                         <br/>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">
                             Sign in
@@ -137,7 +139,10 @@
                         <br/>
                         <input type="text" class="form-control" placeholder="Email" name="username" required autofocus />
                         <input type="password" class="form-control" placeholder="Password" name="password" required />
+                          <a href="forgetPass">Forgot your password ?</a>
                         <br/>
+                        <br/>
+                      
                         <button class="btn btn-lg btn-primary btn-block" type="submit">
                             Sign in
                         </button>
@@ -158,7 +163,10 @@
                         <br/>
                         <input type="text" class="form-control" placeholder="Email" name="username" required autofocus />
                         <input type="password" class="form-control" placeholder="Password" name="password" required />
+                          <a href="forgetPass">Forgot your password ?</a>
                         <br/>
+                        <br/>
+                      
                         <button class="btn btn-lg btn-primary btn-block" type="submit">
                             Sign in
                         </button>

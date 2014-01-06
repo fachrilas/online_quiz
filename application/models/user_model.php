@@ -151,6 +151,51 @@ class User_Model extends CI_Model {
     
     //************end of user view mothod
     
+    //**************method for foget password 
+    public function getuserRecord($email)
+    {
+       $this->db->where('email',$email);
+       $result = $this->db->get(TBL_USERS)->result();
+       return $result;
+    }
+    
+    
+    //************end of user view mothod
+     //**************method for update token for user password
+    public function UserUpdateToken($email,$token)
+    {
+       $data['token']=$token; 
+       $this->db->where('email',$email);
+       $this->db->update(TBL_USERS,$data);
+       
+    }
+    
+    
+    //************end of user view mothod
+    
+     //************method for user_validate_token
+    
+    public function validate_token($token)
+    {   
+        $result = $this->db->where('token',$token)->get(TBL_USERS)->result();
+        return $result;
+    }
+    
+    //***************
+    
+     //************method for user_validate_token
+    
+    public function update_pass($email,$pass)
+    {   
+       $data['password']=$pass; 
+       $this->db->where('email',$email);
+       $this->db->update(TBL_USERS,$data);
+    }
+    
+    //***************
+    
+    
+    
 }
 
 ?>

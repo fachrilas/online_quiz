@@ -71,7 +71,11 @@ define('OPTION4','option4');
 define('OPTIONS','0');
 define('OPENENDED','1');
 
+/**
+ * SECRET KEY FOR EMAIL 
+ */
 
+define ('KEY','meox');
 /**
  * ERROR CODES 
  */
@@ -86,6 +90,10 @@ define('ERROR_USERNAME_ALREADY_EXIST','-4');
 define('SITE_TITLE','Online Assesment');
 define('MAIN_TEMPLATE','template/template');
 define('VIEW_NAME','main_content');
+define('EMAIL_NOT_EXISTS','Eamil does not exists');
+define('EMAIL_SENT','Check Your email for password reste guidelines');
+define('PASS_UPDATED','Your password is updated successfully');
+
 
 
 

@@ -269,6 +269,122 @@ class User extends CI_Controller{
     }
     
     //********
-}
+
+    //*********method for forgetpass
+    
+    public function forgetPass()
+    {  
+        $data[VIEW_NAME] = 'forget_pass';
+        $this->load->view(MAIN_TEMPLATE,$data);
+    }
+    
+    //********
+
+    
+    //*********method for pass get
+    
+    public function PassGet()
+    {   
+        $this->load->model('user_model');
+        $email=  $this->input->post('email');
+        if($email!='')
+        {
+        if ($this->user_model->usernameExists($email))
+        {
+            $to = $email;
+            $random=rand(5, 15);
+            $token=  md5($email.KEY.$random);    
+            $this->user_model->UserUpdateToken($email,$token);
+            $subject = 'Forget password';
+            $message = "To reset your password, please <a href='http://www.meox.com/index.php/user/user_change_pass/$token'>Click here</a><br /><br />MEOX,<br /> The Team";
+            $headers  = 'MIME-Version: 1.0' . "\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\n";
+
+            $headers .= "From: info@meox.com" . "\r\n" .
+            "Reply-To:info@meox.com " . "\r\n" ;
+            mail($to,$subject,$message,$headers);
+            
+            $data['message']=EMAIL_SENT;
+            $data[VIEW_NAME] = 'email_info';
+            $this->load->view(MAIN_TEMPLATE,$data);
+        
+         }
+        else
+        {
+             $data['message']=EMAIL_NOT_EXISTS;
+             $data[VIEW_NAME] = 'email_info';
+             $this->load->view(MAIN_TEMPLATE,$data);
+       
+        }
+        }
+        
+       
+    }
+    
+    //********end of PassGet 
+    //************method for user_change _pass
+    
+    public function user_change_pass($token)
+    {   
+        $this->load->model('user_model');
+        $result=$this->user_model->validate_token($token);
+        if(count($result)>0)
+        {
+         $data['token']=$token;   
+         $data[VIEW_NAME] = 'password_reset';
+         $this->load->view(MAIN_TEMPLATE,$data);   
+        }
+        else
+        {    
+             
+             $data['message']=EMAIL_NOT_EXISTS;
+             $data[VIEW_NAME] = 'email_info';
+             $this->load->view(MAIN_TEMPLATE,$data);
+        }
+        
+        
+    }
+    
+    //***************
+    
+    //************method for pass update
+    
+    public function password_update()
+    {   
+        $this->load->model('user_model');
+        $token=$this->input->post('token');
+        $new_pass=$this->input->post('new_password');
+        $confirm_pass=$this->input->post('confirm_password');
+        
+        if($new_pass==$confirm_pass)
+        {
+            $result=$this->user_model->validate_token($token);
+            $email=$result[0]->email;
+            $new_pass=  md5($new_pass);
+            $this->user_model->update_pass($email,$new_pass);
+            $data['message']=PASS_UPDATED;
+            $data[VIEW_NAME] = 'email_info';
+            $this->load->view(MAIN_TEMPLATE,$data);
+            
+            
+        }
+ else {
+     
+     echo "password not match!";
+ }
+       // $pass->
+        
+    }
+    
+    //***************
+     
+    
+   
+    
+    
+    }
+    
+    
+    
 
 ?>

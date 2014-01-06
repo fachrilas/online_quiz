@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row" style="margin-top: 20px;">
+    <div class="row" style="margin-top: 20px; ">
         <div class="col-md-11 col-md-offset-0" style="width: 97%;">
             
                    <div class="panel panel-default">
