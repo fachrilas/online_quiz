@@ -135,6 +135,22 @@ class User_Model extends CI_Model {
         $this->db->update(TBL_CHILDREN,$data);
         
     }
+    //**************method for all uers 
+    public function getUsers()
+    {
+        $returnArray = array();
+        $users = $this->db->get(TBL_USERS)->result();
+        foreach($users as $user)
+        {
+            $children = $this->getChildren($user->id);
+            $user->children_count = count($children);
+        }
+        return $users;
+    }
+    
+    
+    //************end of user view mothod
+    
 }
 
 ?>
