@@ -105,7 +105,24 @@ class User extends CI_Controller{
         $data[VIEW_NAME] = 'children_home';
         $this->load->view(MAIN_TEMPLATE,$data);
     }
+    //*********profile of children
+    public function children_profile()
+    {
+        $data[VIEW_NAME] = 'profile_children';
+        $this->load->view(MAIN_TEMPLATE,$data);
+    }
     
+    
+    //*************
+    //*********edit profile of children
+    public function edit_children_profile()
+    {
+        $data[VIEW_NAME] = 'edit_children_profile';
+        $this->load->view(MAIN_TEMPLATE,$data);
+    }
+    
+    
+    //*************
     public function logout()
     {
         $this->session->sess_destroy();
