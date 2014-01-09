@@ -177,6 +177,14 @@ class User_Model extends CI_Model {
     
     
     //************end of user view mothod
+    ////**************method for insert assign quiz 
+    public function assign_quiz($data)
+    {
+        $this->db->insert(TBL_ASSIGNQUIZ,$data);
+    }
+    
+    
+    //************end of user view mothod
      //**************method for update token for user password
     public function UserUpdateToken($email,$token)
     {

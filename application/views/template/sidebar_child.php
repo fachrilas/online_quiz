@@ -3,7 +3,7 @@
         <nav class="nav-sidebar">
             <ul class="nav">
                 <li><a href="<?=base_url().'user/child_home'?>">Home</a></li>
-                <li><a href="<?=base_url().'user/child_home'?>">See assigned Quiz</a></li>
+                <li><a href="<?=base_url().'user/view_assign_quiz'?>">See assigned Quiz</a></li>
                 <li><a href="<?=base_url().'user/children_profile'?>">View Profile</a></li>
                 
             </ul>

@@ -425,33 +425,31 @@ class User extends CI_Controller{
     {
         $userId = $this->session->userdata('user_id');
         $this->load->model('user_model');
+        $this->load->model('quiz_model');
         $data['children'] = $this->user_model->getChildren($userId);
+        $data['levels'] = $this->quiz_model->getAllLevels();
         $data[VIEW_NAME] = 'assign_quiz_view_children';
         $this->load->view(MAIN_TEMPLATE,$data);
     }
-    public function assign_quiz_levels()
+    
+    
+    public function do_assign_quiz()
     {
-        $data['userid'] = $this->session->userdata('user_id');
-        $this->load->model('quiz_model');
-        $data['cid']=  $this->input->get('cid');
-        $data['levels'] = $this->quiz_model->getAllLevels();
-        $data[VIEW_NAME] = 'assign_quiz_view_children_levels';
-        $this->load->view(MAIN_TEMPLATE,$data);
+        $userId = $this->session->userdata('user_id');
+        $this->load->model('user_model');
+        $data['child_username']=  $this->input->post('child');
+        $data['level']=  $this->input->post('level');
+        $this->user_model->assign_quiz($data);
+        redirect('user/user_home', 'refresh');
+        
     }
     
-     public function assign_quiz_levels_assignQuiz()
+    public function view_assign_quiz()
     {
-        $data['userid'] = $this->session->userdata('user_id');
-        $data['cid']=  $this->input->get('cid');
-        $level=  $this->input->get('level');
-        $data['level']=$level;
-        $this->load->model('quiz_model');
-        $data['quiz_details'] = $this->quiz_model->getQuizDetails($level);
-        $data[VIEW_NAME] = 'assign_quiz_view_children_levels_assignQuiz';
-        $this->load->view(MAIN_TEMPLATE,$data);
+        
+        
     }
-
-   
+    
     
     
     }
