@@ -6,9 +6,7 @@
                 <li><a href="<?=base_url().'user/view_children'?>">View Children</a></li>
                 <li><a href="<?=base_url().'user/add_child'?>">Add Child</a></li>
                 <li><a href="<?=base_url().'user/add_child'?>">Results</a></li>
-                <li><a href="<?=base_url().'user/add_child'?>">Assign Quiz</a></li>
-                <li class="nav-divider"></li>
-                <li><a href="<?=base_url()?>user/logout"><i class="glyphicon glyphicon-off"></i> Sign out</a></li>
+                <li><a href="<?=base_url().'user/assign_quiz'?>">Assign Quiz</a></li>
             </ul>
         </nav>
     </div>

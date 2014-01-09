@@ -50,11 +50,12 @@
             <div style="border:#000 solid thin;background-color:#ffffff;border-radius: 10px;margin: 20px; ">
                 <br>
                  <table>
-                                    <form class="form-horizontal" action="validate_user" method="POST">
+                     <form class="form-horizontal" action="<? echo base_url()."user/profile_update"; ?>" method="POST">
                                         
                                         <tr>
                                             <td width="200px;"><p class="sec"><b>Full Name</b>:</p></td>
-                                            <td width="70%"><input type="text" class="form-control input-sm" required autofocus/></td>
+                                            <td width="70%"><input type="text" name="name" class="form-control input-sm" value="<?=$child->name; ?>" required autofocus/></td>
+                                     
                                         </tr>
                                         
                  </table>
@@ -64,7 +65,7 @@
                                         
                                         <tr>
                                             <td width="200px;"><p class="sec"><b>Member Since</b>:</p></td>
-                                            <td width="70%"><input type="text" class="form-control input-sm" required/></td>
+                                            <td width="70%"><input type="text" class="form-control input-sm" name="member_Since" value="<?=$child->member_Since; ?>" required readonly/></td>
                                         </tr>
                                         
                  </table>
@@ -74,7 +75,7 @@
                                         
                                         <tr>
                                             <td width="200px;"><p class="sec"><b>Last Login</b>:</p></td>
-                                            <td width="70%"><input type="text" class="form-control input-sm" required/></td>
+                                            <td width="70%"><input type="text" name="last_login" class="form-control input-sm" value="<?=$child->last_login; ?>" required readonly/></td>
                                         </tr>
                                         
                  </table>
@@ -84,7 +85,7 @@
                                         
                                         <tr>
                                             <td width="200px;"><p class="sec"><b>Today's mood</b>:</p></td>
-                                            <td width="70%"><input type="text" class="form-control input-sm" required/></td>
+                                            <td width="70%"><input type="text" name="mood" value="<?=$child->mood; ?>" class="form-control input-sm" required/></td>
                                         </tr>
                                         
                  </table>
@@ -100,9 +101,11 @@
                                         
                                         <tr>
                                             
-                                            <td class="sec" width="670px">
+                                            <td class="sec" width="670px" >
                                                 
-                                                <textarea class="form-control" rows="8" required></textarea>
+                                                <textarea class="form-control" rows="8"></textarea>
+                                                <br>
+                                                <input type="submit" class="btn btn-primary pull-right" >
                                                 </form>
                                             </td>
                                         </tr>

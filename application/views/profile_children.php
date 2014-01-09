@@ -1,4 +1,10 @@
- <link href="<?php echo base_url().'../assets/css/profile.css' ?>" rel="stylesheet">
+<?php
+   if($this->session->userdata('is_logged_in'))
+                    {
+                    ?>
+    
+
+<link href="<?php echo base_url().'../assets/css/profile.css' ?>" rel="stylesheet">
  
 <div style="margin-top: 50px;"></div>
 <div class="row">
@@ -13,7 +19,7 @@
               </td>
               <td >
                   <p class="editProfile">
-                      Edit profile
+                      <a href="<?=base_url()?>user/edit_children_profile"><font color="white">Edit profile</font></a>
                   </p>
               </td>
           </tr>  
@@ -49,11 +55,11 @@
            
             <div style="border:#000 solid thin;background-color:#ffffff;border-radius: 10px;margin: 20px; ">
                 <br>
-                <p class="sec"><b>Full Name</b>: jack h jack lieo</p> 
+                <p class="sec"><b>Full Name</b>:<?=$child->name; ?></p> 
                 <hr>
-                <p class="sec"><b>Member Since</b>: jack h jack lieo</p> 
-                <hr><p class="sec"><b>Last Login</b>: jack h jack lieo</p> 
-                <hr><p class="sec"><b>Today's mood</b>: jack h jack lieo</p> 
+                <p class="sec"><b>Member Since</b>: <?=$child->member_Since; ?></p> 
+                <hr><p class="sec"><b>Last Login</b>:  <?=$child->last_login; ?></p> 
+                <hr><p class="sec"><b>Today's mood</b>:  <?=$child->mood; ?></p> 
                 <hr>
                 <div class="plast">
                     <br>
@@ -83,3 +89,8 @@
         </div>
     </div>
 </div>
+
+<?php
+
+                    }
+                    ?>

@@ -14,7 +14,7 @@
                    ?>
                         <tr>
                             <td style="text-align: center;">
-                                <a href="<?echo base_url();?>quiz/get_quiz_details?level=<?=$level->id?>">
+                                <a href="<?echo base_url();?>user/assign_quiz_levels_assignQuiz?level=<?=$level->id?>&cid=<?=$cid ?>">
                                     <?=$level->level_name?>
                                 </a>
                             </td>

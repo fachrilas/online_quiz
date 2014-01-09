@@ -25,8 +25,7 @@
                             <td><?=$child->likes;?></td>
                             <td><?=$child->dislikes;?></td>
                             <td> 
-                                <a href="<?=base_url()?>user/edit_child?cid=<?=$child->id?>">Edit</a> | 
-                                <a href="<?=base_url()?>user/delete_child?cid=<?=$child->id?>">Delete</a>
+                                <a href="<?=base_url()?>user/assign_quiz_levels?cid=<?=$child->id?>">Assign Quiz</a>  
                             </td>
                         </tr>
                     <?

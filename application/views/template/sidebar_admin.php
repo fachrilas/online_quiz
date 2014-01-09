@@ -6,8 +6,6 @@
                 <li><a href="<?=base_url().'admin/add_question'?>">Add Question</a></li>
                 <li><a href="<?=base_url().'quiz/select_level_quiz_detail'?>">View Quiz</a></li>
                 <li><a href="<?=base_url().'user/view_user'?>">View Users</a></li>
-                <li class="nav-divider"></li>
-                <li><a href="<?=base_url()?>user/logout"><i class="glyphicon glyphicon-off"></i> Sign out</a></li>
             </ul>
         </nav>
     </div>

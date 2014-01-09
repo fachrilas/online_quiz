@@ -46,6 +46,7 @@ class User extends CI_Controller{
                         'user_id' => $user->id
                     );
                     $this->session->set_userdata($data);
+                    $this->user_model->last_login($username,$data['user_type']);
                     redirect('user/user_home', 'refresh');
                 }
                 else if($user->user_type == ADMIN_USER_TYPE)
@@ -57,7 +58,8 @@ class User extends CI_Controller{
                         'user_id' => $user->id
                     );
                     $this->session->set_userdata($data);
-                    redirect('user/admin_home', 'refresh');
+                    $this->user_model->last_login($username,$data['user_type']);
+                   redirect('user/admin_home', 'refresh');
                 }
             }
             else
@@ -78,6 +80,7 @@ class User extends CI_Controller{
                     'user_id' => $user->id
                 );
                 $this->session->set_userdata($data);
+                $this->user_model->last_login($username,$data['user_type']);
                 redirect('user/children_home', 'refresh');
             }
             else
@@ -108,8 +111,13 @@ class User extends CI_Controller{
     //*********profile of children
     public function children_profile()
     {
+         $userId = $this->session->userdata('user_id');
+        $this->load->model('user_model');
+        $data['child'] = $this->user_model->getChild($userId);
+        
         $data[VIEW_NAME] = 'profile_children';
         $this->load->view(MAIN_TEMPLATE,$data);
+        
     }
     
     
@@ -117,12 +125,33 @@ class User extends CI_Controller{
     //*********edit profile of children
     public function edit_children_profile()
     {
+        
+        $userId = $this->session->userdata('user_id');
+        $this->load->model('user_model');
+        $data['child'] = $this->user_model->getChild($userId);
         $data[VIEW_NAME] = 'edit_children_profile';
         $this->load->view(MAIN_TEMPLATE,$data);
     }
     
     
     //*************
+    //************update profile update
+    
+    public function profile_update()
+    {
+
+        $this->load->model('user_model');
+        $userId = $this->session->userdata('user_id');
+        $fullName = $this->input->post('name');
+        $mood = $this->input->post('mood');
+        
+        $this->user_model->UpdateProfile($fullName,$userId,$mood);
+        redirect("user/edit_children_profile", 'refresh');
+    }
+    
+    //**********
+    
+    
     public function logout()
     {
         $this->session->sess_destroy();
@@ -205,7 +234,9 @@ class User extends CI_Controller{
             $filepathAbsolute = "";
         }
         $this->user_model->addChild($username,$password,$fullName,$dd,$mm,$yyyy,$likes,$dislikes,$filepathRelative,$filepathAbsolute);
-    }
+         redirect("user/user_home",'refresh');
+        
+        }
     
     public function view_children()
     {
@@ -382,20 +413,44 @@ class User extends CI_Controller{
             $data['message']=PASS_UPDATED;
             $data[VIEW_NAME] = 'email_info';
             $this->load->view(MAIN_TEMPLATE,$data);
-            
-            
         }
- else {
-     
-     echo "password not match!";
- }
-       // $pass->
-        
-    }
+        else {
+                echo "password not match!";
+                }
+        }
     
     //***************
      
+    public function assign_quiz()
+    {
+        $userId = $this->session->userdata('user_id');
+        $this->load->model('user_model');
+        $data['children'] = $this->user_model->getChildren($userId);
+        $data[VIEW_NAME] = 'assign_quiz_view_children';
+        $this->load->view(MAIN_TEMPLATE,$data);
+    }
+    public function assign_quiz_levels()
+    {
+        $data['userid'] = $this->session->userdata('user_id');
+        $this->load->model('quiz_model');
+        $data['cid']=  $this->input->get('cid');
+        $data['levels'] = $this->quiz_model->getAllLevels();
+        $data[VIEW_NAME] = 'assign_quiz_view_children_levels';
+        $this->load->view(MAIN_TEMPLATE,$data);
+    }
     
+     public function assign_quiz_levels_assignQuiz()
+    {
+        $data['userid'] = $this->session->userdata('user_id');
+        $data['cid']=  $this->input->get('cid');
+        $level=  $this->input->get('level');
+        $data['level']=$level;
+        $this->load->model('quiz_model');
+        $data['quiz_details'] = $this->quiz_model->getQuizDetails($level);
+        $data[VIEW_NAME] = 'assign_quiz_view_children_levels_assignQuiz';
+        $this->load->view(MAIN_TEMPLATE,$data);
+    }
+
    
     
     

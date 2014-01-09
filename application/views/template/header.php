@@ -23,7 +23,18 @@
     </style>
   </head>
   <body>
+        
       <div class="container">
+          
+                  <?  if($this->session->userdata('is_logged_in'))
+                    {
+                    ?>
+              
+              <div class="signout">
+                  <span class="glyphicon glyphicon-log-out"> <a href="../user/logout" >
+                          <font> Sign Out
+                          </font></a></span>
+              <? }?></div>
           <div class="masthead">
               <div class="row" style="margin-bottom: 21px;margin-top:6px;">
                   <div class="col-md-3">
@@ -128,14 +139,5 @@
               }
              ?>   
             </ul>
-              
-                  <?  if($this->session->userdata('is_logged_in'))
-                    {
-                    ?>
-              
-              <div class="signout">
-                  <span class="glyphicon glyphicon-log-out"> <a href="../user/logout" >
-                          <font> Sign Out
-                          </font></a></span>
-              <? }?></div>
+            
           </div>

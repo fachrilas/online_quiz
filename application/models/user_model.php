@@ -98,7 +98,23 @@ class User_Model extends CI_Model {
             return false;
         }
     }
+    //*********add method for last_login
+    public function last_login($children,$type)
+    {
+        $this->load->helper('date');
+        $data['last_login']= date('Y-m-d H:i:s');;
+        $this->db->where('username',$children);
+        
+        if($type==CHILDREN_TYPE)
+             $this->db->update(TBL_CHILDREN,$data);
+             else
+                 $this->db->update(TBL_USERS,$data);
+            
+        
+    }
     
+    
+    //**********
     public function updateChild($childId,$username,$password,$fullName,$dd,$mm,$yyyy,$likes,$dislikes,$filepathRelative,$filepathAbsolute)
     {
         $child = $this->getChild($childId);
@@ -193,6 +209,19 @@ class User_Model extends CI_Model {
     }
     
     //***************
+    
+    //************method for UpdateProfile
+    public function UpdateProfile($fullName,$userId,$mood)
+    {
+        $data['mood']=$mood;
+        $data['name']=$fullName;
+        $this->db->where('id',$userId);
+        $this->db->update(TBL_CHILDREN,$data);
+        
+        
+    }
+    //***********
+    
     
     
     
