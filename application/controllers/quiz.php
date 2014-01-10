@@ -140,12 +140,12 @@ class quiz extends CI_Controller{
         $this->load->view(MAIN_TEMPLATE,$data);
     }
     
-    public function preview()
+     public function preview()
     {
         $questionID = $this->input->get('qid');
         $this->load->model('quiz_model');
         $data['questionDetails'] = $this->quiz_model->getQuestionDetails($questionID);
-        $data[VIEW_NAME] = 'preview_question';
+        $data[VIEW_NAME] = 'preview_q';
         $this->load->view(MAIN_TEMPLATE,$data);
     }
      public function ViewAnswer()

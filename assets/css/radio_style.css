@@ -1,0 +1,19 @@
+input[type=radio].css-checkbox {display:none;}
+input[type=radio].css-checkbox + label.css-label {     
+    padding-left: 70px;
+height: 25px;
+display: inline-block;
+line-height: 19px;
+background-repeat: no-repeat;
+background-position: 0 0;
+font-size: 17px;
+vertical-align: middle;
+cursor: pointer;
+margin-left: 81px;
+
+						}
+
+						input[type=radio].css-checkbox:checked + label.css-label {
+							background-position: 0 -25px;
+						}
+				

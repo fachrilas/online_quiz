@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 10, 2014, 5:49:19 AM
+    Author     : adnan
+*/
+
+.preview
+{
+background-repeat: no-repeat;
+width: 100%;
+height: 979px;
+background-size: 100% 1034px;
+margin-top: 20px;
+}
+.PTable
+{
+    position: absolute;
+    margin-top:150px;
+    margin-left:29%;
+}
+.PTable td
+{
+    padding: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    width: 100px;
+    line-height: 32px;
+}
+.PTimage
+{
+padding: 15px;
+border: 1px solid #021a40;
+border-style: dashed;
+width: 420px;
+height: 202px;
+}
+
