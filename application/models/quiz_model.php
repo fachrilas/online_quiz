@@ -292,6 +292,7 @@ class Quiz_Model extends CI_Model {
             $jsonCandidate[$count]['question'] = $question;
             $options = $this->get_options($question->id);
             $jsonCandidate[$count]['options'] = $options;
+            $jsonCandidate[$count]['id']=$question->id;
             $count++;
         }
         return $jsonCandidate;
@@ -348,6 +349,32 @@ class Quiz_Model extends CI_Model {
         {
             return $this->upload->data();
         }
+    }
+    public function VerifyQuestion($qid,$type,$answer)
+    {
+        if($type==OPTIONS)
+        {
+            $this->db->where('question_id',$qid);
+            $this->db->where('is_correct',1);
+            $data=$this->db->get(TBL_OPTIONS)->result();
+            if($data[0]->option===$answer)
+                {return TRUE;}
+                else
+                {return 0;}
+
+        }
+        elseif ($type==OPENENDED) 
+            {
+            $this->db->where('question_id',$qid);
+            $data=$this->db->get(TBL_OPENENDEDQUESTION)->result();
+            if($data[0]->OpenEndedAnswer1===$answer)
+                {return TRUE;}
+                else
+                {return 0;}
+             }
+        else{
+            return ;
+            }
     }
 }
 

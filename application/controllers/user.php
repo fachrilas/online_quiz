@@ -446,9 +446,85 @@ class User extends CI_Controller{
     
     public function view_assign_quiz()
     {
+        $userId = $this->session->userdata('username');
+        $this->load->model('user_model');
+        $data['assign_quiz']=$this->user_model->GetAssignQuiz($userId);
+        $data[VIEW_NAME]='assign_level';
+        $this->load->view(MAIN_TEMPLATE,$data);
+        
         
         
     }
+    
+    public function start_quiz($count)
+    {   
+        
+        $userId = $this->session->userdata('username');
+        $this->load->model('user_model');
+        $data['assign_quiz']=$this->user_model->GetAssignQuiz($userId);
+        $level=$data['assign_quiz'][0]->level;
+        $this->load->model('quiz_model');
+        $data['quiz_details'] = $this->quiz_model->getQuizDetails($level);
+        if((count($data['quiz_details'])-$count>0) and $count>=0)
+        {
+        $questionID =$data['quiz_details'][$count]['id'];
+        $data['count']=count($data['quiz_details'])-$count;
+        $data['next']=$count+1;
+        
+            if($count>0)
+            {
+        $qid =$data['quiz_details'][$count-1]['id'];
+        $answer=$this->input->post('answer');
+        $type=  $this->input->post('type');
+        $remarks=$this->quiz_model->VerifyQuestion($qid,$type,$answer);
+        
+        $this->save_quiz($qid, $userId,$count,$answer,$remarks);
+            }
+        $data['questionDetails'] = $this->quiz_model->getQuestionDetails($questionID);
+        $data[VIEW_NAME] = 'start_quiz';
+        $this->load->view(MAIN_TEMPLATE,$data);
+        }
+        else{
+            if($count<0)
+            {echo "Requested Question not found-404 Error";}
+            else
+            {
+                $this->submit_quiz($count,$level);
+            }
+        }
+    }
+    
+    
+    public function save_quiz($qid,$userid,$count,$answer,$remarks)
+    {
+        $qids=  $this->session->all_userdata();
+        $qids['name'][$count] = array(
+                        'q_id' => $qid,
+                        'user_id' => $userid,
+                        'stage' =>$count,
+                        'answer'=>$answer,
+                        'remarks'=>$remarks
+                    );
+        
+        $this->session->set_userdata('name',$qids['name']);
+        $qids=  $this->session->all_userdata();
+        
+        }
+        
+        public function submit_quiz($count,$level)
+        {
+        $qids=  $this->session->all_userdata();
+        $userId = $this->session->userdata('username');
+        echo $data=json_encode($qids['name']);
+        $this->load->model('user_model');
+        $this->user_model->InsertQuizRecord($userId, $data,$level);
+        echo "data saved";
+        
+        
+            
+        }
+        
+        
     
     
     

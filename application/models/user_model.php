@@ -230,6 +230,25 @@ class User_Model extends CI_Model {
     }
     //***********
     
+     //************method for UpdateProfile
+    public function GetAssignQuiz($userId)
+    {
+        $result=$this->db->where('child_username',$userId)->get(TBL_ASSIGNQUIZ)->result();
+        return $result;
+        
+    }
+    //***********
+    
+     //************method for insert quiz record
+    public function InsertQuizRecord($userId,$data,$level)
+    {
+        $record['child_id']=$userId;
+        $record['data']=$data;
+        $record['level']=$level;
+         $this->db->insert(TBL_QUESTIONRECORD,$record);
+    }
+    //***********
+    
     
     
     

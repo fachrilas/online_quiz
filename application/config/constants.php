@@ -47,6 +47,7 @@ define('TBL_USERS','user');
 define('TBL_CHILDREN','children');
 define('TBL_OPENENDEDQUESTION','open_ended_question');
 define('TBL_ASSIGNQUIZ','assign_quiz');
+define('TBL_QUESTIONRECORD','question_record');
 
 /**
  * Admin User Type
