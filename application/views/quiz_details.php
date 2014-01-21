@@ -22,10 +22,8 @@
                     <table class="table table-hover">
                         <th>Number</th>
                         <th>Question</th>
-                         <th>Question hint</th> 
-                        
+                        <th>Question hint</th> 
                         <th>View Answer</th>
-                        
                         <th>Operations</th>
                     <?
                         foreach($quiz_details as $question)

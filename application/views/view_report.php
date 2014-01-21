@@ -44,20 +44,17 @@ else
               <td style="width: 20%;"></td>
               <td colspan="2">
                   <ul class="profile">
-                      <li >
+                     <li >
                           <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchBag.png'?>" alt="" height="30px">My Report Card</a>
                       </li>
                        <li >
-                           <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchHolidays.png'?>" alt="" height="30px">My School Bag</a>
+                           <a href="<?=base_url().'user/view_assign_quiz'?>"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchHolidays.png'?>" alt="" height="30px">My School Bag</a>
                       </li>
                       <li >
                           <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MyStickers.png'?>" alt="" height="30px">My Stickers </a>
                       </li>
                       <li >
                           <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-ReportCard.png'?>" alt="" height="30px">My School Holidays</a>
-                      </li>
-                      <li >
-                          <a href="<?=base_url().'user/view_assign_quiz'?>"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-ReportCard.png'?>" alt="" height="30px">Assigned Quizzes</a>
                       </li>
                   </ul>
               </td>   
