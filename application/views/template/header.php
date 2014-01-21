@@ -15,6 +15,8 @@
     <script src="<?php echo base_url().'../assets/js/jquery.validate.min.js' ?>"></script>
     <script src="<?php echo base_url().'../assets/js/bootstrap.min.js' ?>"></script>
     <script src="<?php echo base_url().'../assets/js/lightbox_me.js' ?>"></script>
+    <link rel="shortcut icon" href="<?php echo base_url().'../assets/img/moex-favion.png' ?>" type="image/png">
+    <link rel="shortcut icon" type="image/png" href="<?php echo base_url().'../assets/img/moex-favion.png' ?>" />
     <style>
         .alert{
             margin-top: 14px;

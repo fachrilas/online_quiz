@@ -17,23 +17,23 @@
               </td>
           </tr>  
           
-          <tr>
+        <tr>
               <td style="width: 20%;"></td>
               <td colspan="2">
                   <ul class="profile">
-                                     <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchBag.png'?>" alt="" height="30px">My Report Card
+                      <li >
+                          <a href=""><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchBag.png'?>" alt="" height="30px">My Report Card</a>
                       </li>
                        <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchHolidays.png'?>" alt="" height="30px">My Report Card
+                           <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchHolidays.png'?>" alt="" height="30px">My School Bag</a>
                       </li>
                       <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MyStickers.png'?>" alt="" height="30px">My Report Card
+                          <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MyStickers.png'?>" alt="" height="30px">My Stickers </a>
                       </li>
                       <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-ReportCard.png'?>" alt="" height="30px">My Report Card
+                          <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-ReportCard.png'?>" alt="" height="30px">My School Holidays</a>
                       </li>
-    </ul>
+                  </ul>
               </td>   
               
           </tr>

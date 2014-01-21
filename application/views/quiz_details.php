@@ -1,6 +1,19 @@
+<style>
+.before-panel-link
+{
+    float: right;
+    margin-right: 1.7%;
+    font-size: 19px;
+    text-decoration: underline;
+}
+</style>
 <div class="container">
     <div class="row" style="margin-top: 20px;">
         <div class="col-md-11 col-md-offset-0" style="width: 97%;">
+            <div class="row" style="padding-bottom: 12px;">
+                <a href="select_level_quiz_detail" class="before-panel-link">Topics</a>
+                <a href="../admin/add_question" class="before-panel-link">Add Question</a>
+            </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                 <h3 class="panel-title">Quiz Details</h3>

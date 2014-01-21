@@ -50,7 +50,7 @@ class Main extends CI_Controller
         }
         else if ($this->session->userdata('user_type') == CHILDREN_TYPE)
         {
-            redirect('user/children_home', 'refresh');
+            redirect('user/children_profile', 'refresh');
         }
         var_dump($this->session->userdata);
     }

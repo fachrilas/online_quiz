@@ -20,10 +20,12 @@ class Quiz_Model extends CI_Model {
         return $result;
     }
     
-    public function addQuestion($level,$question,$hint,$choice,$question_number,$o1,$o2,$o3,$o4,$answer,$relative,$absolute)
+    public function addQuestion($level,$question,$hint,$choice,$question_number,$subjects,$score,$o1,$o2,$o3,$o4,$answer,$relative,$absolute)
     {
         $questionArray = array();
         $questionArray['question_number'] = $question_number;
+        $questionArray['subject']=$subjects;
+        $questionArray['score']=$score;
         $questionArray['q_hint']=$hint;
         $questionArray['type'] = $choice;      
         $questionArray['question'] = $question;
@@ -141,7 +143,7 @@ class Quiz_Model extends CI_Model {
     //****************end of Open Ended Questoin
     
     
-    public function editQuestion($questionId,$level,$question_number,$question,$q_hint,$type,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute)
+    public function editQuestion($questionId,$level,$question_number,$subjects,$score,$question,$q_hint,$type,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute)
     {
         $this->db->where('id',$questionId);
         $oldQuestion = $this->db->get(TBL_QUESTIONS)->result();
@@ -149,6 +151,8 @@ class Quiz_Model extends CI_Model {
         $questionData = array();
         $questionData['question'] = $question;
         $questionData['q_hint'] = $q_hint;
+        $questionData['subject']=$subjects;
+        $questionData['score']=$score;
         $questionData['type'] = $type;
         $questionData['question_number'] = $question_number;
         $questionData['level'] = $level;
@@ -292,6 +296,8 @@ class Quiz_Model extends CI_Model {
             $jsonCandidate[$count]['question'] = $question;
             $options = $this->get_options($question->id);
             $jsonCandidate[$count]['options'] = $options;
+            $jsonCandidate[$count]['id']=$question->id;
+            $jsonCandidate[$count]['score']=$question->score;
             $count++;
         }
         return $jsonCandidate;
@@ -349,6 +355,48 @@ class Quiz_Model extends CI_Model {
             return $this->upload->data();
         }
     }
+    public function VerifyQuestion($qid,$type,$answer)
+    {
+        if($type==OPTIONS)
+        {
+            $this->db->where('question_id',$qid);
+            $this->db->where('is_correct',1);
+            $data=$this->db->get(TBL_OPTIONS)->result();
+            if($data[0]->option===$answer)
+                {return TRUE;}
+                else
+                {return 0;}
+
+        }
+        elseif ($type==OPENENDED) 
+            {
+            $this->db->where('question_id',$qid);
+            $data=$this->db->get(TBL_OPENENDEDQUESTION)->result();
+            if($data[0]->OpenEndedAnswer1===$answer)
+                {return TRUE;}
+                else
+                {return 0;}
+             }
+        else{
+            return ;
+            }
+    }
+    
+    
+    public function add_topic($topic)
+    {
+        $data['level_name']=$topic;
+        $this->db->insert(TBL_LEVELS,$data);
+    }
+    public function edit_topic($topic_id,$topic)
+    {
+        
+        $data['level_name']=$topic;
+        $this->db->where('id',$topic_id);
+        $this->db->update(TBL_LEVELS,$data);
+        
+    }
+    
 }
 
 ?>

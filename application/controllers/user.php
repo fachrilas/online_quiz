@@ -81,7 +81,7 @@ class User extends CI_Controller{
                 );
                 $this->session->set_userdata($data);
                 $this->user_model->last_login($username,$data['user_type']);
-                redirect('user/children_home', 'refresh');
+                redirect('user/children_profile', 'refresh');
             }
             else
             {
@@ -515,80 +515,76 @@ class User extends CI_Controller{
     }
     
     
-    public function save_quiz($qid,$userid,$count,$answer,$remarks,$obtained,$score)
-    {
-        $qids=  $this->session->all_userdata();
-        $qids['name'][$count] = array(
-                        'q_id' => $qid,
-                        'user_id' => $userid,
-                        'stage' =>$count,
-                        'answer'=>$answer,
-                        'remarks'=>$remarks,
-                        'score'=>$score,
-                        'obtained'=>$obtained
-                    );
-        
-        $this->session->set_userdata('name',$qids['name']);
-        $qids=  $this->session->all_userdata();
-        
+        public function save_quiz($qid,$userid,$count,$answer,$remarks,$obtained,$score)
+        {
+            $qids=  $this->session->all_userdata();
+            $qids['name'][$count] = array(
+                            'q_id' => $qid,
+                            'user_id' => $userid,
+                            'stage' =>$count,
+                            'answer'=>$answer,
+                            'remarks'=>$remarks,
+                            'score'=>$score,
+                            'obtained'=>$obtained
+                        );
+
+            $this->session->set_userdata('name',$qids['name']);
+            $qids=  $this->session->all_userdata();
+
         }
         
         public function submit_quiz($count,$level)
         {
-        $qids=  $this->session->all_userdata();
-        $score=0;
-        $obtained=0;
-        
-        for ($i=1;$i<=count($qids['name']);$i++)
-        {
-            $score=$score+$qids['name'][$i]['score'];
-            $obtained=$obtained+$qids['name'][$i]['obtained'];
-             
+            $qids=  $this->session->all_userdata();
+            $score=0;
+            $obtained=0;
+
+            for ($i=1;$i<=count($qids['name']);$i++)
+            {
+                $score=$score+$qids['name'][$i]['score'];
+                $obtained=$obtained+$qids['name'][$i]['obtained'];
+
+            }
+            $userId = $this->session->userdata('user_id');
+            $quiz_id=  $this->session->userdata('quiz_id');
+            $timeElapsed = $_COOKIE['mytimeout'];
+            $count=$timeElapsed;
+            $hours = ($count/3600);
+            $minutes = ($count%3600/60);
+            $seconds = $count%60;
+            $t=  floor($hours)."h-".  floor($minutes)."m-".  floor($seconds)."s";
+            $data=json_encode($qids['name']);
+            $this->load->model('user_model');
+            unset($_COOKIE['mytimeout']);
+            unset($_COOKIE['timepassed']);
+            setcookie('mytimeout', null, -1, '/');
+            setcookie('timepassed', null, -1, '/');
+            $this->user_model->InsertQuizRecord($userId, $data,$level,$t);
+            $this->user_model->UpdateQuizStatus($quiz_id,$score,$obtained);
+            $datas['total']=$score;
+            $datas['obtained']=$obtained;
+            $datas[VIEW_NAME] = 'end_quiz';
+            $this->load->view(MAIN_TEMPLATE,$datas);
         }
-        $userId = $this->session->userdata('user_id');
-        $quiz_id=  $this->session->userdata('quiz_id');
-        $timeElapsed = $_COOKIE['mytimeout'];
-        $count=$timeElapsed;
-        $hours = ($count/3600);
-        $minutes = ($count%3600/60);
-        $seconds = $count%60;
-        $t=  floor($hours)."h-".  floor($minutes)."m-".  floor($seconds)."s";
-        $data=json_encode($qids['name']);
-        $this->load->model('user_model');
-        unset($_COOKIE['mytimeout']);
-        unset($_COOKIE['timepassed']);
-        setcookie('mytimeout', null, -1, '/');
-        setcookie('timepassed', null, -1, '/');
-        $this->user_model->InsertQuizRecord($userId, $data,$level,$t);
-        $this->user_model->UpdateQuizStatus($quiz_id,$score,$obtained);
-        $datas['total']=$score;
-        $datas['obtained']=$obtained;
-        $datas[VIEW_NAME] = 'end_quiz';
-        $this->load->view(MAIN_TEMPLATE,$datas);
-        
-            
-        }
-        
         
         public function review_results()
-        {
-            
-        $userId = $this->session->userdata('user_id');
-        $data['username'] = $this->session->userdata('username');
-        $this->load->model('user_model');
-        $data['children'] = $this->user_model->getChildren($userId);
-        $data[VIEW_NAME] = 'review_results';
-        $this->load->view(MAIN_TEMPLATE,$data);
+        {   
+            $userId = $this->session->userdata('user_id');
+            $data['username'] = $this->session->userdata('username');
+            $this->load->model('user_model');
+            $data['children'] = $this->user_model->getChildren($userId);
+            $data[VIEW_NAME] = 'review_results';
+            $this->load->view(MAIN_TEMPLATE,$data);
         }
         public function review_results_proceed($userid,$c)
         {
         
-        $this->load->model('user_model');
-        $r=$this->user_model->getresults($userid);
-        $rr=($r[0]->data);
-        $rrr=json_decode($rr,true);
-        $count=count($rrr);
-        if($c<=$count)
+            $this->load->model('user_model');
+            $r=$this->user_model->getresults($userid);
+            $rr=($r[0]->data);
+            $rrr=json_decode($rr,true);
+            $count=count($rrr);
+            if($c<=$count)
             {
                 $data['username']= $rrr[$c]['user_id'];
                 $data['q_id']=$rrr[$c]['q_id'];
@@ -599,18 +595,18 @@ class User extends CI_Controller{
                 $data['next']=$c+1;
                 $this->load->model('quiz_model');
                 $data['questionDetails'] = $this->quiz_model->getQuestionDetails($data['q_id']);
-                $data['user_id']=$userid;
-//                echo "<pre>";
-//                print_r($rrr);
-//                die();
+                $data['user_id'] = $userid;
+            //                echo "<pre>";
+            //                print_r($rrr);
+            //                die();
 
                 $data[VIEW_NAME] = 'review_results_proceed';
                 $this->load->view(MAIN_TEMPLATE,$data);
             }
-          else {
+            else
+            {
                 redirect('user/user_home', 'refresh');
-               }
-
+            }
         }
         
         public function view_report($userId)
@@ -622,10 +618,6 @@ class User extends CI_Controller{
              $data[VIEW_NAME] = 'view_report';
              $this->load->view(MAIN_TEMPLATE,$data);
         }
-        
-    
-    
-    
     }
     
     

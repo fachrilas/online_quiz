@@ -6,24 +6,21 @@
                 <h3 class="panel-title">Assign a Quiz</h3>
                 </div>
                 
-                <div class="panel-body">
-                    
+                <div class="panel-body"> 
                     <table class="table table-hover">
                         <form name="asign_quiz" action="<?=base_url()?>user/do_assign_quiz" method="post" >
-                   
                         <tr>
                             <td>
                                 Name:
                                 <select name="child">
                                      <?
-                    foreach($children as $child)
-                    {
-                    ?>
-                                    <option value="<?=$child->username;?>"> <?=$child->name;?></option>
-                                <?
-                    }
-                    ?>
-                                
+                                    foreach($children as $child)
+                                    {
+                                    ?>
+                                        <option value="<?=$child->username;?>"> <?=$child->name;?></option>
+                                    <?
+                                    }
+                                    ?>
                                 </select>
                              </td>
                              </tr>
@@ -32,14 +29,14 @@
                                 Level:
                                 <select name="level">
                                      <?
-                    foreach($levels as $level)
-                    {
-                    ?>
-                                    <option value="<?=$level->id;?>"> <?=$level->level_name;?></option>
-                                    <input type="hidden" name="level_name" value="<?=$level->level_name;?>">
-                                <?
-                    }
-                    ?>
+                                    foreach($levels as $level)
+                                    {
+                                    ?>
+                                        <option value="<?=$level->id;?>"> <?=$level->level_name;?></option>
+                                        <input type="hidden" name="level_name" value="<?=$level->level_name;?>">
+                                    <?
+                                    }
+                                    ?>
                                 </select>
                              </td>
                         </tr>

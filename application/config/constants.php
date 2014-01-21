@@ -102,7 +102,7 @@ define('ERROR_USERNAME_ALREADY_EXIST','-4');
 /**
  * General Constants
  */
-define('SITE_TITLE','Online Assesment');
+define('SITE_TITLE','Ministry of Excellence');
 define('MAIN_TEMPLATE','template/template');
 define('VIEW_NAME','main_content');
 define('EMAIL_NOT_EXISTS','Eamil does not exists');

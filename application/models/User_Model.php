@@ -98,7 +98,23 @@ class User_Model extends CI_Model {
             return false;
         }
     }
+    //*********add method for last_login
+    public function last_login($children,$type)
+    {
+        $this->load->helper('date');
+        $data['last_login']= date('Y-m-d H:i:s');;
+        $this->db->where('username',$children);
+        
+        if($type==CHILDREN_TYPE)
+             $this->db->update(TBL_CHILDREN,$data);
+             else
+                 $this->db->update(TBL_USERS,$data);
+            
+        
+    }
     
+    
+    //**********
     public function updateChild($childId,$username,$password,$fullName,$dd,$mm,$yyyy,$likes,$dislikes,$filepathRelative,$filepathAbsolute)
     {
         $child = $this->getChild($childId);
@@ -150,6 +166,119 @@ class User_Model extends CI_Model {
     
     
     //************end of user view mothod
+    
+    //**************method for foget password 
+    public function getuserRecord($email)
+    {
+       $this->db->where('email',$email);
+       $result = $this->db->get(TBL_USERS)->result();
+       return $result;
+    }
+    
+    
+    //************end of user view mothod
+    ////**************method for insert assign quiz 
+    public function assign_quiz($data)
+    {
+        $this->db->insert(TBL_ASSIGNQUIZ,$data);
+    }
+    
+    
+    //************end of user view mothod
+     //**************method for update token for user password
+    public function UserUpdateToken($email,$token)
+    {
+       $data['token']=$token; 
+       $this->db->where('email',$email);
+       $this->db->update(TBL_USERS,$data);
+       
+    }
+    
+    
+    //************end of user view mothod
+    
+     //************method for user_validate_token
+    
+    public function validate_token($token)
+    {   
+        $result = $this->db->where('token',$token)->get(TBL_USERS)->result();
+        return $result;
+    }
+    
+    //***************
+    
+     //************method for user_validate_token
+    
+    public function update_pass($email,$pass)
+    {   
+       $data['password']=$pass; 
+       $this->db->where('email',$email);
+       $this->db->update(TBL_USERS,$data);
+    }
+    
+    //***************
+    
+    //************method for UpdateProfile
+    public function UpdateProfile($fullName,$userId,$mood)
+    {
+        $data['mood']=$mood;
+        $data['name']=$fullName;
+        $this->db->where('id',$userId);
+        $this->db->update(TBL_CHILDREN,$data);
+        
+        
+    }
+    //***********
+    
+     //************method for UpdateProfile
+    public function GetAssignQuiz($userId,$opt)
+    {
+        if($opt==TAKEN_NOT)
+        {
+        $this->db->where('operation','not-taken');
+        }
+        
+        $result=$this->db->where('child_username',$userId)->get(TBL_ASSIGNQUIZ)->result();
+        return $result;
+        
+        
+    }
+    //***********
+    
+     //************method for insert quiz record
+    public function InsertQuizRecord($userId,$data,$level,$t)
+    {
+        $record['child_id']=$userId;
+        $record['data']=$data;
+        $record['level']=$level;
+        $record['time_of_completion']=$t;
+         $this->db->insert(TBL_QUESTIONRECORD,$record);
+    }
+    //***********
+    public function getresults($userId)
+    {
+        $this->db->where('child_id',$userId);
+        $this->db->order_by('id','desc');
+        $this->db->limit(1);
+        $r=$this->db->get(TBL_QUESTIONRECORD)->result();
+        return $r;
+    }
+    public function UpdateQuizStatus($quiz_id,$score,$obtained)
+    {
+        $data['operation']=TAKEN_YES;
+        $data['total']=$score;
+        $data['obtained']=$obtained;
+        $p=$obtained/$score;
+        $p=($p)*100;
+        $data['percentage']=$p;
+        $this->db->where('id',$quiz_id);
+        $this->db->update(TBL_ASSIGNQUIZ,$data);
+        
+        
+    }
+    
+   
+    
     
 }
 

@@ -15,7 +15,7 @@
               <td style="width: 20%;"></td>
               <td style="width:80%;border: #000 solid thin;border-radius: 58px;">
                   <img class="profile-img" style="width: 100%;padding-top: 10px;padding-right: 5px;padding-bottom: 5px;padding-left: 10px;"   src="<? echo base_url().'../assets/img/Icon-Student-Small.png'?>">
-                  <p><center><a style="text-decoration:underline;color: #000" > My Profile </a></center></p>    
+                  <p><center><a style="text-decoration:underline;color: #000">My Profile </a></center></p>    
               </td>
               <td >
                   <p class="editProfile">
@@ -29,16 +29,19 @@
               <td colspan="2">
                   <ul class="profile">
                       <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchBag.png'?>" alt="" height="30px">My Report Card
+                          <a href="view_report/<?=$this->session->userdata('user_id')?>"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchBag.png'?>" alt="" height="30px">My Report Card</a>
                       </li>
                        <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchHolidays.png'?>" alt="" height="30px">My Report Card
+                           <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchHolidays.png'?>" alt="" height="30px">My School Bag</a>
                       </li>
                       <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MyStickers.png'?>" alt="" height="30px">My Report Card
+                          <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MyStickers.png'?>" alt="" height="30px">My Stickers </a>
                       </li>
                       <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-ReportCard.png'?>" alt="" height="30px">My Report Card
+                          <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-ReportCard.png'?>" alt="" height="30px">My School Holidays</a>
+                      </li>
+                      <li >
+                          <a href="<?=base_url().'user/view_assign_quiz'?>"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-ReportCard.png'?>" alt="" height="30px">Assigned Quizzes</a>
                       </li>
                   </ul>
               </td>   
