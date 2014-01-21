@@ -231,25 +231,53 @@ class User_Model extends CI_Model {
     //***********
     
      //************method for UpdateProfile
-    public function GetAssignQuiz($userId)
+    public function GetAssignQuiz($userId,$opt)
     {
+        if($opt==TAKEN_NOT)
+        {
+        $this->db->where('operation','not-taken');
+        }
+        
         $result=$this->db->where('child_username',$userId)->get(TBL_ASSIGNQUIZ)->result();
         return $result;
+        
         
     }
     //***********
     
      //************method for insert quiz record
-    public function InsertQuizRecord($userId,$data,$level)
+    public function InsertQuizRecord($userId,$data,$level,$t)
     {
         $record['child_id']=$userId;
         $record['data']=$data;
         $record['level']=$level;
+        $record['time_of_completion']=$t;
          $this->db->insert(TBL_QUESTIONRECORD,$record);
     }
     //***********
+    public function getresults($userId)
+    {
+        $this->db->where('child_id',$userId);
+        $this->db->order_by('id','desc');
+        $this->db->limit(1);
+        $r=$this->db->get(TBL_QUESTIONRECORD)->result();
+        return $r;
+    }
+    public function UpdateQuizStatus($quiz_id,$score,$obtained)
+    {
+        $data['operation']=TAKEN_YES;
+        $data['total']=$score;
+        $data['obtained']=$obtained;
+        $p=$obtained/$score;
+        $p=($p)*100;
+        $data['percentage']=$p;
+        $this->db->where('id',$quiz_id);
+        $this->db->update(TBL_ASSIGNQUIZ,$data);
+        
+        
+    }
     
-    
+   
     
     
 }

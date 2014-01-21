@@ -1,5 +1,6 @@
 <link href="<?php echo base_url().'../assets/css/preview.css' ?>" rel="stylesheet">
 <link href="<?php echo base_url().'../assets/css/radio_style.css' ?>" rel="stylesheet">
+    
 <style>
 label.css-label {
         background-image:url('<?php echo base_url().'../assets/img/radio-bg.png' ?>');
@@ -9,9 +10,13 @@ label.css-label {
         -moz-user-select: none;
         -ms-user-select: none;
                         }
-    </style>
-<div class="col-md-1"></div>
-<div class="col-md-10" >
+
+
+
+</style>
+
+<div class="col-md-12" >
+    
     <div class="preview" style="background-image: url('<? echo base_url().'../assets/img/quizboard-bg.png'?>');background-position:fixed;">
         <form method="post" action="" class="form-group" >
         <table class="PTable">
@@ -30,8 +35,10 @@ label.css-label {
     }
     else
     { ?>
-      <img class="PTimage" src="<? echo base_url().'../assets/img/no-images.jpg'?>" />
-   <? }
+   <script>
+        $('.preview').removeClass('preview').addClass('previewN');
+        </script>
+        <? }
     ?>
         
                 </td>
@@ -56,17 +63,11 @@ label.css-label {
                     <input type="radio" name="radiog_lite" id="radio4" class="css-checkbox" /><label for="radio4" class="css-label">D</label>
                 </td>
             </tr>
-            <tr>
-                <td> <input type="submit" class="btn btn-primary pull-right" ></td>
-            </tr>
+           
         </table>
     </form>
         
         
     </div>    
-    
-</div>
-<div class="col-md-1">
-    
     
 </div>

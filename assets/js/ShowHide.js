@@ -14,7 +14,7 @@ $( "#OpenEndedQuestions" ).click(function() {
   
 });
 $( "#MultipleChoiceQuestions" ).click(function() {
-    $("#Options").fadeOut(700, function() {
+    $("#OpendEnded").fadeOut(700, function() {
   $( "#OpendEnded" ).remove();
   $("#OpenEndedMultipleQuestionsAppended").append(appended_option);
   });

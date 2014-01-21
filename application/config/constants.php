@@ -48,6 +48,7 @@ define('TBL_CHILDREN','children');
 define('TBL_OPENENDEDQUESTION','open_ended_question');
 define('TBL_ASSIGNQUIZ','assign_quiz');
 define('TBL_QUESTIONRECORD','question_record');
+define('TBL_LEVELS','levels');
 
 /**
  * Admin User Type
@@ -66,6 +67,11 @@ define('OPTION2','option2');
 define('OPTION3','option3');
 define('OPTION4','option4');
 
+define('OPTIONS1','a');
+define('OPTIONS2','b');
+define('OPTIONS3','c');
+define('OPTIONS4','d');
+
 
 /**
  * Choice Option for optionso or Open Ended Question 
@@ -73,6 +79,13 @@ define('OPTION4','option4');
 define('OPTIONS','0');
 define('OPENENDED','1');
 
+/**
+ * Subject list
+ */
+define('SUBJECTS_MATH','1');
+define('SUBJECTS_ENG','2');
+define('SUBJECTS_SCIENCE','3');
+define('SUBJECTS_GENERAL','4');
 /**
  * SECRET KEY FOR EMAIL 
  */
@@ -95,6 +108,8 @@ define('VIEW_NAME','main_content');
 define('EMAIL_NOT_EXISTS','Eamil does not exists');
 define('EMAIL_SENT','Check Your email for password reste guidelines');
 define('PASS_UPDATED','Your password is updated successfully');
+define('TAKEN_NOT','not-taken');
+define('TAKEN_YES','taken');
 
 
 

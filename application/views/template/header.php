@@ -31,7 +31,7 @@
                     ?>
               
               <div class="signout">
-                  <span class="glyphicon glyphicon-log-out"> <a href="../user/logout" >
+                  <span class="glyphicon glyphicon-log-out"> <a href="<?=base_url().'user/logout'?>" >
                           <font> Sign Out
                           </font></a></span></div>
               <? }?>

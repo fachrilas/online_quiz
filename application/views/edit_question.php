@@ -39,6 +39,46 @@
                         <label for="exampleInputEmail1">Hint *</label>
                         <textarea name="hint" class="form-control" placeholder="Hint" required><?php echo str_replace("<br />","\n",$question_details['question']->q_hint );?></textarea>
                       </div>
+                       
+                            <div class="form-group">
+                        <label for="exampleInputEmail1">Score</label>
+                        <input name="score" type="text" class="form-control" id="exampleInputEmail1" placeholder="Score" value="<?php echo $question_details['question']->score ;?>" required>
+                          </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Subjects *</label>
+                        <select name="subjects">
+                            <?php if($question_details['question']->subject==SUBJECTS_ENG)
+                            {?>
+                            <option value="<?php echo $question_details['question']->subject;?>">ENG</option>
+                              <option value="<?=SUBJECTS_MATH ;?>">MATH</option>
+                            <option value="<?=SUBJECTS_SCIENCE ;?>">SCIENCE</option>
+                            
+                            <option value="<?=SUBJECTS_GENERAL ;?>">GENERAL</option>
+                                <?php }elseif($question_details['question']->subject==SUBJECTS_MATH)
+                            {?>
+                            <option value='<?=$question_details['question']->subject;?>'>MATH</option>
+                              <option value="<?=SUBJECTS_MATH ;?>">MATH</option>
+                            <option value="<?=SUBJECTS_SCIENCE ;?>">SCIENCE</option>
+                            <option value="<?=SUBJECTS_ENG ;?>">ENG</option>
+                                <?php }elseif($question_details['question']->subject==SUBJECTS_GENERAL)
+                            {?>
+                            <option value='<?=$question_details['question']->subject;?>'>GENERAL</option>
+                              <option value="<?=SUBJECTS_MATH ;?>">MATH</option>
+                            <option value="<?=SUBJECTS_SCIENCE ;?>">SCIENCE</option>
+                            <option value="<?=SUBJECTS_ENG ;?>">ENG</option>
+                          
+                                <?php }elseif($question_details['question']->subject==SUBJECTS_SCIENCE)
+                            {?>
+                            <option value='<?=$question_details['question']->subject;?>'>SCIENCE</option>
+                              <option value="<?=SUBJECTS_MATH ;?>">MATH</option>
+                            <option value="<?=SUBJECTS_ENG ;?>">ENG</option>
+                            <option value="<?=SUBJECTS_GENERAL ;?>">GENERAL</option>
+                                <?php }else{}?>
+                          
+                           
+                        </select>
+                        </div>
+                    
                      
                       <div class="form-group">
                         <label for="exampleInputEmail1">Image</label>

@@ -20,6 +20,8 @@ class quiz extends CI_Controller{
         $level = $this->input->post('level');
         $this->load->model('quiz_model');
         $question_number = $this->input->post('question_number');
+        $subjects = $this->input->post('subjects');
+        $score=  $this->input->post('score');
         $question = nl2br($this->input->post('question'));
         $hint = nl2br($this->input->post('hint'));
         $choice=$this->input->post('MultipleEndedQuestions');
@@ -45,7 +47,7 @@ class quiz extends CI_Controller{
             $o3 = $this->input->post('option3');
             $o4 = $this->input->post('option4');
             $answer = $this->input->post('answer');
-            $this->quiz_model->addQuestion($level,$question,$hint,$choice,$question_number,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute);
+            $this->quiz_model->addQuestion($level,$question,$hint,$choice,$question_number,$subjects,$score,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute);
         
         
         }
@@ -68,6 +70,8 @@ class quiz extends CI_Controller{
         $questionId = $this->input->get('qid');
         $level = $this->input->post('level');
         $this->load->model('quiz_model');
+        $subjects = $this->input->post('subjects');
+        $score=  $this->input->post('score');
         $question_number = $this->input->post('question_number');
         $question = nl2br($this->input->post('question'));
         $q_hint = nl2br($this->input->post('hint'));
@@ -94,7 +98,7 @@ class quiz extends CI_Controller{
         $o4 = $this->input->post('option4');
         $answer = $this->input->post('answer');
         
-        $this->quiz_model->editQuestion($questionId,$level,$question_number,$question,$q_hint,$type,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute);
+        $this->quiz_model->editQuestion($questionId,$level,$question_number,$subjects,$score,$question,$q_hint,$type,$o1,$o2,$o3,$o4,$answer,$filepathRelative,$filepathAbsolute);
         }
         if($type==OPENENDED)
             {
@@ -156,7 +160,53 @@ class quiz extends CI_Controller{
         $data[VIEW_NAME] = 'viewanswer';
         $this->load->view(MAIN_TEMPLATE,$data);
     }
-    //*************method for view users
+    //*************method for add levels
+    public function add_topic()
+    {
+         $data[VIEW_NAME] = 'add_topic';
+        $this->load->view(MAIN_TEMPLATE,$data);
+    }
+    
+    
+     public function do_add_topic()
+    {
+         $topic=$this->input->post('topic');
+         $this->load->model('quiz_model');
+         $this->quiz_model->add_topic($topic);
+         echo "Topic added.";
+         redirect("user/admin_home", 'refresh');
+         
+    }
+     public function edit_topic()
+    {
+        $this->load->model('quiz_model');
+        $data['topic'] = $this->quiz_model->getAllLevels();
+        $data[VIEW_NAME] = 'edit_topic';
+        $this->load->view(MAIN_TEMPLATE,$data);
+        
+    }
+    public function do_edit_topic()
+    {
+        $topic_id=  $this->input->post('topic_id');
+        $topic=  $this->input->post('topic');
+        $this->load->model('quiz_model');
+        $this->quiz_model->edit_topic($topic_id,$topic);
+        redirect("user/admin_home", 'refresh');
+        
+    }
+    
+     public function edit_topic_edit()
+    {
+        $data['topic_id']=  $this->input->get('topic_id');
+        $data['topic']=  $this->input->get('topic');
+        $data[VIEW_NAME] = 'edit_topic_edit';
+        $this->load->view(MAIN_TEMPLATE,$data);
+        
+    }
+    
+    
+    
+    
 }
 
 ?>

@@ -23,6 +23,9 @@ class Admin  extends CI_Controller{
         $data['levels'] = $this->quiz_model->getAllLevels();
         $this->load->view(MAIN_TEMPLATE,$data);
     }
+    
+    
+    
 }
 
 ?>

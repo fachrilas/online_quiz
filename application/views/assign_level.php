@@ -12,23 +12,27 @@
 
                         <tr>
                             <th>Children name</th>
-                            <th>assign quiz</th>
+                            <th>assigned quiz</th>
                             <th>operation</th>
                         </tr>
-                        <tr>
-                            <?
+                        
+                            <?php
                         
                     foreach($assign_quiz as $user)
                     {
                     ?>
-                            <td><?=$user->child_username;?></td>
-                            <td><?=$user->level;?>-level</td>
-                            <td><a href="<?=base_url()?>user/start_quiz/0">Start</a></td>
-                            
-                            <?
+                            <tr><td><?=$user->child_username;?></td>
+                            <td><?=$user->level;?>-topic</td>
+                            <?php if($user->operation==TAKEN_YES)
+                            {?>
+                            <td>already taken</td>
+                            <?php } else{ ?>
+                            <td><a href="<?php echo base_url(); ?>user/start_quiz/0">Start</a></td>
+                                </tr><?php 
                             }
+                    }
                             ?>
-                        </tr>
+                        
                      </table>
                 </div>
             </div>

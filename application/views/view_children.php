@@ -1,40 +1,68 @@
-<div class="container">
-    <div class="row" style="margin-top: 20px;">
-        <div class="col-md-11 col-md-offset-0" style="width: 97%;">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                <h3 class="panel-title">Children's Details</h3>
-                </div>
+<?php
+   if($this->session->userdata('is_logged_in'))
+                    {
+                    ?>
+    
+
+<link href="<?php echo base_url().'../assets/css/profile.css' ?>" rel="stylesheet">
+<link href="<?php echo base_url().'../assets/css/viewChildren.css' ?>" rel="stylesheet">
+ 
+<div style="margin-top: 50px;"></div>
+<div class="row">
+  <div class="col-md-4">
+      <?php
+    
+include_once 'template/sidebar_enduser.php';
+
+                    ?>
+  
+  </div>
+        
+    
+    <div class="col-md-7">
+        <div style="border:#000 solid thin;background-color:#ffffff;border-radius: 10px; ">
+            <br> <p class="sec"><b></b></p>  
+           
+            <div style="border:#000 solid thin;background-color:#ffffff;border-radius: 10px;margin: 20px; ">
+                <br>
                 
-                <div class="panel-body">
-                    
-                    <table class="table table-hover">
-                        <th>Username</th>
-                        <th>Name</th>
-                        <th>Likes</th>
-                        <th>Dislikes</th>
-                        <th>Operations</th>
-                   
-                    <?
+                <div class="viewTable">My Child<span> Level</span> <span>                  
+                        <img style="width:5%" src="<? echo base_url().'../assets/img/addchild.png'?>" />
+                        <a href="<?=base_url().'user/add_child'?>" style="color: #ffffff;">Add Child</a></span>
+                </div> 
+                 
+                <hr>
+                <?php
                     foreach($children as $child)
                     {
                     ?>
-                        <tr>
-                            <td><?=$child->username;?></td>
-                            <td><?=$child->name;?></td>
-                            <td><?=$child->likes;?></td>
-                            <td><?=$child->dislikes;?></td>
-                            <td> 
-                                <a href="<?=base_url()?>user/edit_child?cid=<?=$child->id?>">Edit</a> | 
-                                <a href="<?=base_url()?>user/delete_child?cid=<?=$child->id?>">Delete</a>
+                <div class="report">
+                    <table><tr><td>
+                                <b> <?=$child->name;?></b>
+                            </td>
+                            <td>
+                                <b> pri. 3 </b></td><td>
+                                <a href="<?php echo base_url();?>user/view_report/<?=$child->id;?>"> <img style="width:84%" src="<? echo base_url().'../assets/img/viewReport.png'?>" /></a> <p>last Assignment Taken :9 December, 2013</p>
                             </td>
                         </tr>
-                    <?
+                    </table>
+                </div> 
+                <br>
+                
+                <hr class="hrc">
+                <?php
                     }
                     ?>
-                     </table>
-                </div>
+               
+                <br><br><br>
             </div>
+            
+            
         </div>
     </div>
 </div>
+
+<?php
+
+                    }
+                    ?>

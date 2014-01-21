@@ -1,0 +1,56 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 15, 2014, 3:34:36 AM
+    Author     : adnan
+*/
+
+.viewTable
+{
+   background-color: #357ebd;
+padding-left: 24px;
+padding-top: 8px;
+font-size: 17px;
+margin-bottom: -20px;
+margin-top: -20px;
+height: 46px;
+border-top-left-radius: 8px;
+border-top-right-radius: 8px;
+color: #FFFAFA;
+}
+.viewTable span{
+    
+    padding-left: 21%;
+    padding-right: 25px;
+}
+.report
+{
+ 
+padding-left: 24px;
+padding-top: 8px;
+font-size: 17px;
+margin-bottom: -20px;
+margin-top: -20px;
+height: 46px;
+
+}
+.report table td{
+    
+  width:191px;
+}
+.report table td p{
+    
+font-size: 9px;
+margin-top: -7px;
+
+    
+}
+.hrc{
+    
+    color: #269abc;
+    background-color: #269abc;
+    height: 1px;
+}

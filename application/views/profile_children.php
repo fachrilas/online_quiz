@@ -29,16 +29,16 @@
               <td colspan="2">
                   <ul class="profile">
                       <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/report.png'?>" alt="" height="30px">My Report Card
+                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchBag.png'?>" alt="" height="30px">My Report Card
                       </li>
                        <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/report.png'?>" alt="" height="30px">My Report Card
+                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchHolidays.png'?>" alt="" height="30px">My Report Card
                       </li>
                       <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/report.png'?>" alt="" height="30px">My Report Card
+                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MyStickers.png'?>" alt="" height="30px">My Report Card
                       </li>
                       <li >
-                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/report.png'?>" alt="" height="30px">My Report Card
+                          <img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-ReportCard.png'?>" alt="" height="30px">My Report Card
                       </li>
                   </ul>
               </td>   

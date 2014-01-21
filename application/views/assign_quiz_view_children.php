@@ -36,6 +36,7 @@
                     {
                     ?>
                                     <option value="<?=$level->id;?>"> <?=$level->level_name;?></option>
+                                    <input type="hidden" name="level_name" value="<?=$level->level_name;?>">
                                 <?
                     }
                     ?>

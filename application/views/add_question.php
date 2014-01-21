@@ -29,6 +29,23 @@
                         <textarea name="hint" class="form-control" id="exampleInputEmail1" placeholder="Give a hint" required></textarea>
                           </div>
                     
+                           <div class="form-group">
+                        <label for="exampleInputEmail1">Score</label>
+                        <textarea name="score" class="form-control" id="exampleInputEmail1" placeholder="Score" required></textarea>
+                          </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Subjects *</label>
+                        <select name="subjects">
+                            <option value="<?=SUBJECTS_MATH ;?>">MATH</option>
+                            <option value="<?=SUBJECTS_SCIENCE ;?>">SCIENCE</option>
+                            <option value="<?=SUBJECTS_ENG ;?>">ENG</option>
+                            <option value="<?=SUBJECTS_GENERAL ;?>">GENERAL</option>
+                           
+                        </select>
+                        </div>
+                    
+                       
+                       
                       <div class="form-group">
                         <label for="exampleInputEmail1">Image</label>
                         <input type="file" name="sample_file" class="form-control" id="exampleInputPassword1"/>
