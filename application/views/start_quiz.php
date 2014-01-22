@@ -69,20 +69,20 @@ color: brown;
                 <td>
                     <br>
          
-                    <input type="radio" name="answer" id="radio1" class="css-checkbox" value="a"/><label for="radio1" class="css-label">A</label>
+                    <input type="radio" name="answer" id="radio1" class="css-checkbox" value="a"/><label for="radio1" class="css-label"><?=$questionDetails['options'][0]->option; ?></label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="radio" name="answer" id="radio2" class="css-checkbox" value="b"/><label for="radio2" class="css-label">B</label>
+                    <input type="radio" name="answer" id="radio2" class="css-checkbox" value="b"/><label for="radio2" class="css-label"><?=$questionDetails['options'][1]->option; ?></label>
                 </td>
             </tr>
                 <tr><td>
-                    <input type="radio" name="answer" id="radio3" class="css-checkbox" value="c"/><label for="radio3" class="css-label">C</label>
+                    <input type="radio" name="answer" id="radio3" class="css-checkbox" value="c"/><label for="radio3" class="css-label"><?=$questionDetails['options'][2]->option; ?></label>
                 </td>
                 </tr><tr>
                 <td>
-                    <input type="radio" name="answer" id="radio4" class="css-checkbox" value="d"/><label for="radio4" class="css-label">D</label>
+                    <input type="radio" name="answer" id="radio4" class="css-checkbox" value="d"/><label for="radio4" class="css-label"><?=$questionDetails['options'][3]->option; ?></label>
                 </td>
             </tr>
             <?php }else
@@ -101,7 +101,7 @@ color: brown;
                 <td>
                     <?php if(($count-1)>0){ ?>
                     <a href="javascript:void(0);"><img src="<? echo base_url().'../assets/img/back.png'?>" id="back" onclick="mybackFunction()" class="" style="width: 14%;
-margin-top: -9px;
+margin-top: -8px;
 margin-left: 47%;" /> </a>
                     
                     <a href="javascript:void(0);"><img src="<? echo base_url().'../assets/img/next.png'?>" id="next" onclick="myFunction()" class="pull-right" style="width: 14%;

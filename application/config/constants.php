@@ -72,6 +72,13 @@ define('OPTIONS2','b');
 define('OPTIONS3','c');
 define('OPTIONS4','d');
 
+/**
+ * BANDS
+ */
+define('BAND1','1');
+define('BAND2','2');
+define('BAND3','3');
+define('BAND4','4');
 
 /**
  * Choice Option for optionso or Open Ended Question 

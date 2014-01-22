@@ -70,10 +70,10 @@ else
         
     
     <div class="col-md-7">
-        <div style="border:#000 solid thin;background-color:#ffffff;border-radius: 10px; ">
-            <br> <p class="sec"><b></b></p>  
+        <div style="border:#000 solid thin;border-width:0.99pt; background-color:#ffffff;border-radius: 10px; ">
+             
            
-            <div style="border:#000 solid thin;background-image:url('<?php echo base_url();?>../assets/img/rp-bg.png'); border-radius: 10px;margin: 20px; ">
+            <div style="border:#000 solid thin;border-width:0.99pt;background-image:url('<?php echo base_url();?>../assets/img/rp-bg.png'); border-radius: 10px;margin: 20px; ">
                 <br>
                
                 <table class="reportT" width="100%">

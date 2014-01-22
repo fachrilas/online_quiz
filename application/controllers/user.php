@@ -448,10 +448,13 @@ class User extends CI_Controller{
     
     public function view_assign_quiz()
     {
-        $userId = $this->session->userdata('username');
+        $userId = $this->session->userdata('user_id');
+        $username=  $this->session->userdata('username');
         $this->load->model('user_model');
         $opt=TAKEN_YES;
-        $data['assign_quiz']=$this->user_model->GetAssignQuiz($userId,$opt);
+        $data['assign_quiz']=$this->user_model->GetAssignQuiz($username,$opt);
+        $result=  $this->user_model->getChildren($userId);
+        $data['child']=$result[0];
         $data[VIEW_NAME]='assign_level';
         $this->load->view(MAIN_TEMPLATE,$data);
         
@@ -538,15 +541,31 @@ class User extends CI_Controller{
             $qids=  $this->session->all_userdata();
             $score=0;
             $obtained=0;
-
+            $band=BAND4;
             for ($i=1;$i<=count($qids['name']);$i++)
             {
                 $score=$score+$qids['name'][$i]['score'];
                 $obtained=$obtained+$qids['name'][$i]['obtained'];
-
+                
             }
             $userId = $this->session->userdata('user_id');
             $quiz_id=  $this->session->userdata('quiz_id');
+            if($obtained>84)
+            {
+                $band=BAND1;
+            }
+            elseif ($obtained<=84&&$obtained>=70) 
+            {
+                $band=BAND2;
+            }
+            elseif ($obtained<=69&&$obtained>=50)
+            {
+                $band=BAND3;
+            }
+            else
+            {
+                $band=BAND4;
+            }
             $timeElapsed = $_COOKIE['mytimeout'];
             $count=$timeElapsed;
             $hours = ($count/3600);
@@ -555,12 +574,12 @@ class User extends CI_Controller{
             $t=  floor($hours)."h-".  floor($minutes)."m-".  floor($seconds)."s";
             $data=json_encode($qids['name']);
             $this->load->model('user_model');
-            unset($_COOKIE['mytimeout']);
-            unset($_COOKIE['timepassed']);
             setcookie('mytimeout', null, -1, '/');
             setcookie('timepassed', null, -1, '/');
             $this->user_model->InsertQuizRecord($userId, $data,$level,$t);
             $this->user_model->UpdateQuizStatus($quiz_id,$score,$obtained);
+            $datas['userid']=$userId;
+            $datas['band']=$band;
             $datas['total']=$score;
             $datas['obtained']=$obtained;
             $datas[VIEW_NAME] = 'end_quiz';
@@ -605,7 +624,19 @@ class User extends CI_Controller{
             }
             else
             {
+                $user_type=  $this->session->userdata('user_type');
+                if($user_type==END_USER_TYPE)
+                {
                 redirect('user/user_home', 'refresh');
+                }
+                elseif($user_type==CHILDREN_TYPE)
+                {
+                    redirect('user/children_profile', 'refresh');
+                }
+                else
+                {
+
+                }
             }
         }
         

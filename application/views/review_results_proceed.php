@@ -63,9 +63,9 @@ label.css-label {
                 <td>
                     <br>
                     <?php if ($answer==OPTIONS1) { ?>
-                    <input type="radio" name="answer" id="radio1" class="css-checkbox" value="option1" checked/><label for="radio1" class="css-label">A</label>
+                    <input type="radio" name="answer" id="radio1" class="css-checkbox" value="option1" checked/><label for="radio1" class="css-label"><?=$questionDetails['options'][0]->option; ?></label>
                     <?php }else{?>
-                     <input type="radio" name="answer" id="radio1" class="css-checkbox" value="option1"/><label for="radio1" class="css-label">A</label>
+                     <input type="radio" name="answer" id="radio1" class="css-checkbox" value="option1"/><label for="radio1" class="css-label"><?=$questionDetails['options'][0]->option; ?></label>
                      <?php } ?>
                 </td>
             </tr>
@@ -80,42 +80,33 @@ label.css-label {
             <tr>
                 <td>
                  <?php if ($answer==OPTIONS2) { ?>
-                    <input type="radio" name="answer" id="radio2" class="css-checkbox" value="option2" checked/><label for="radio2" class="css-label">B</label>
+                    <input type="radio" name="answer" id="radio2" class="css-checkbox" value="option2" checked/><label for="radio2" class="css-label"><?=$questionDetails['options'][1]->option; ?></label>
                     <?php }else{?>
-                     <input type="radio" name="answer" id="radio2" class="css-checkbox" value="option2"/><label for="radio2" class="css-label">B</label>
+                     <input type="radio" name="answer" id="radio2" class="css-checkbox" value="option2"/><label for="radio2" class="css-label"><?=$questionDetails['options'][1]->option; ?></label>
                      <?php } ?>
                 </td>
                 
             </tr>
                 <tr><td>
                  <?php if ($answer==OPTIONS3) { ?>
-                    <input type="radio" name="answer" id="radio3" class="css-checkbox" value="option3" checked/><label for="radio3" class="css-label">C</label>
+                    <input type="radio" name="answer" id="radio3" class="css-checkbox" value="option3" checked/><label for="radio3" class="css-label"><?=$questionDetails['options'][2]->option; ?></label>
                     <?php }else{?>
-                     <input type="radio" name="answer" id="radio3" class="css-checkbox" value="option3"/><label for="radio3" class="css-label">C</label>
+                     <input type="radio" name="answer" id="radio3" class="css-checkbox" value="option3"/><label for="radio3" class="css-label"><?=$questionDetails['options'][2]->option; ?></label>
                      <?php } ?>
                     </td>
                 </tr><tr>
                 <td>
                 <?php if ($answer==OPTIONS4) { ?>
-                    <input type="radio" name="answer" id="radio4" class="css-checkbox" value="option4" checked/><label for="radio1" class="css-label">D</label>
+                    <input type="radio" name="answer" id="radio4" class="css-checkbox" value="option4" checked/><label for="radio1" class="css-label"><?=$questionDetails['options'][3]->option; ?></label>
                     <?php }else{?>
-                     <input type="radio" name="answer" id="radio4" class="css-checkbox" value="option4"/><label for="radio1" class="css-label">D</label>
+                     <input type="radio" name="answer" id="radio4" class="css-checkbox" value="option4"/><label for="radio1" class="css-label"><?=$questionDetails['options'][3]->option; ?></label>
                      <?php } ?>
                 </td>
             </tr>
             <?php }else
             {
                 ?>
-            <tr>
-            
-                <td>
-                    <br><br>
-                    Answer :
-                    <input type="text" class="form-control" name="answer" value="<?=$answer;?>" disabled />
-                </td>
-                
-            </tr>
-            <tr><td>
+                        <tr><td>
               <?php if ($remarks==TRUE)
                     { ?>
                     <img class="Y-N-SECOND" src="<? echo base_url().'../assets/img/yes.png'?>" /></td></tr>
@@ -123,12 +114,22 @@ label.css-label {
                     <img class="Y-N-SECOND" src="<? echo base_url().'../assets/img/no.png'?>" /></td></tr>
                     
                     <?php }?>
+            <tr>
+            
+                <td>
+                    <br><br><br><br>
+                    Answer :
+                    <input type="text" class="form-control" name="answer" value="<?=$answer;?>" disabled />
+                </td>
+                
+            </tr>
+
             <?php }?>
             <tr>
                 <td>
                     <?php if($next<=$count){ ?>
                     <a href="javascript:void(0);"><img src="<? echo base_url().'../assets/img/back.png'?>" id="back" onclick="mybackFunction()" class="" style="width: 14%;
-margin-top: -9px;
+margin-top: -8px;
 margin-left: 47%;" /> </a>
                     
                     <a href="javascript:void(0);"><img src="<? echo base_url().'../assets/img/next.png'?>" id="next" onclick="myFunction()" class="pull-right" style="width: 14%;

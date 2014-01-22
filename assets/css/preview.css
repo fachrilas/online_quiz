@@ -41,10 +41,8 @@ margin-top: 20px;
 }
 .PTimage
 {
-padding: 15px;
-border: 1px solid #021a40;
-border-style: dashed;
-width: 100%;
+
+width: auto;
 height: 186px;
 }
 .endQuiz

@@ -42,7 +42,7 @@ include_once 'template/sidebar_enduser.php';
                             </td>
                             <td>
                                 <b> pri. 3 </b></td><td>
-                    <a href="<?php echo base_url().'user/review_results_proceed/'.$child->id."/1";?>"><img style="width:84%" src="<? echo base_url().'../assets/img/viewReport.png'?>" /></a>
+                    <a href="<?php echo base_url().'user/review_results_proceed/'.$child->id."/1";?>"><img style="width:84%" src="<? echo base_url().'../assets/img/Review_R.png'?>" /></a>
                     <p>last Assignment Taken :9 December, 2013</p>
                             </td>
                         </tr>

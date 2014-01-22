@@ -12,7 +12,7 @@
 
                         <tr>
                             <th>Children name</th>
-                            <th>assigned quiz</th>
+                            <th>assigned topic</th>
                             <th>operation</th>
                         </tr>
                         
@@ -21,8 +21,8 @@
                     foreach($assign_quiz as $user)
                     {
                     ?>
-                            <tr><td><?=$user->child_username;?></td>
-                            <td><?=$user->level;?>-topic</td>
+                            <tr><td><?=$child->name;?></td>
+                            <td><?=$user->level_name;?></td>
                             <?php if($user->operation==TAKEN_YES)
                             {?>
                             <td>already taken</td>
