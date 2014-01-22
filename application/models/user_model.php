@@ -276,7 +276,21 @@ class User_Model extends CI_Model {
         
         
     }
+    public function InsertComment($userId,$comment,$report_id)
+    {
+        $data['comment']=$comment;
+        $data['comment_by']=$userId;
+        $data['report_id']=$report_id;
+        $this->db->insert(TBL_COMMENT,$data);
+    }
     
+    public function GetComment($username)
+    {
+        $this->db->where('report_id',$username);
+        $this->db->order_by('id','desc');
+        $result=$this->db->get(TBL_COMMENT)->result();
+        return $result[0];
+    }
    
     
     

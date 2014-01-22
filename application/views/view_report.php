@@ -131,7 +131,23 @@ else
                <br/><br/><br/>
                 
             </div>
-            
+            <? if($this->session->userdata('user_type') == END_USER_TYPE)
+                    {
+                    ?>
+            <div style="margin:20px;">
+                <form name="report_Comment" action="<?=base_url()?>user/comment" method="post">
+                <h3>Comment</h3>
+                <p ><textarea name="comment" placeholder="Write your comments" class="form-control" rows="3" required><?php if ($comment)
+                    {
+                        echo $comment->comment;
+                    }
+                        ?></textarea></p>
+                <input type="hidden" name="r_id" value="<?=$id?>">
+                <input type="submit" class="btn btn-primary pull-right" >
+                </form>
+            <br>
+            </div>
+                   <? } ?>
             
         </div>
     </div>

@@ -13,7 +13,7 @@
                         </div>
                         <div class="form-group">
                             <label for="option4">Password</label>
-                            <input type="password" name="option4" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
                         </div>
                         <div class="form-group">
                             <label for="option4">Full Name</label>

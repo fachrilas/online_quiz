@@ -32,6 +32,7 @@ class User extends CI_Controller{
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $type = $this->input->post('usertype');
+        echo $type;
         if($type == END_USER_TYPE || $type == TUTOR_TYPE)
         {
             $user = $this->user_model->validate_user($username,$password);
@@ -344,15 +345,14 @@ class User extends CI_Controller{
             $token=  md5($email.KEY.$random);    
             $this->user_model->UserUpdateToken($email,$token);
             $subject = 'Forget password';
-            $message = "To reset your password, please <a href='http://www.meox.com/index.php/user/user_change_pass/$token'>Click here</a><br /><br />MEOX,<br /> The Team";
+            $message = "To reset your password, please <a href='http://www.ministryofexcellence.com.sg/index.php/user/user_change_pass/$token'>Click here</a><br /><br />MEOX,<br /> The Team";
             $headers  = 'MIME-Version: 1.0' . "\n";
             $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\n";
 
-            $headers .= "From: info@meox.com" . "\r\n" .
-            "Reply-To:info@meox.com " . "\r\n" ;
+            $headers .= "From: donotreply@ministryofexcellence.com.sg" . "\r\n" . "\r\n" ;
             mail($to,$subject,$message,$headers);
             
-            $data['message']=EMAIL_SENT;
+            $data['message']= EMAIL_SENT;
             $data[VIEW_NAME] = 'email_info';
             $this->load->view(MAIN_TEMPLATE,$data);
         
@@ -550,15 +550,16 @@ class User extends CI_Controller{
             }
             $userId = $this->session->userdata('user_id');
             $quiz_id=  $this->session->userdata('quiz_id');
-            if($obtained>84)
+            $obtained_p=($obtained/$score)*100;
+            if($obtained_p>84)
             {
                 $band=BAND1;
             }
-            elseif ($obtained<=84&&$obtained>=70) 
+            elseif ($obtained_p<=84&&$obtained_p>=70) 
             {
                 $band=BAND2;
             }
-            elseif ($obtained<=69&&$obtained>=50)
+            elseif ($obtained_p<=69&&$obtained_p>=50)
             {
                 $band=BAND3;
             }
@@ -645,9 +646,21 @@ class User extends CI_Controller{
              $this->load->model('user_model');
              $data['child']=  $this->user_model->getChild($userId);
              $opt=TAKEN_YES;
-             $data['assign_quiz']=$this->user_model->GetAssignQuiz($data['child']->username,$opt);
+             $data['assign_quiz'] = $this->user_model->GetAssignQuiz($data['child']->username,$opt);
+             $data['id'] = $data['assign_quiz'][0]->child_username;
+             $data['comment'] =  $this->user_model->GetComment($data['id']);
              $data[VIEW_NAME] = 'view_report';
              $this->load->view(MAIN_TEMPLATE,$data);
+        }
+        public function comment()
+        {
+            $userId = $this->session->userdata('user_id');
+            $comment = $this->input->post('comment');
+            $report_id=  $this->input->post('r_id');
+            $this->load->model('user_model');
+            $this->user_model->InsertComment($userId,$comment,$report_id);
+            redirect('user/view_report/'.$userId, 'refresh');
+
         }
     }
     

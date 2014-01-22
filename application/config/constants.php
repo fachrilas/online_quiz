@@ -49,6 +49,7 @@ define('TBL_OPENENDEDQUESTION','open_ended_question');
 define('TBL_ASSIGNQUIZ','assign_quiz');
 define('TBL_QUESTIONRECORD','question_record');
 define('TBL_LEVELS','levels');
+define('TBL_COMMENT','comment');
 
 /**
  * Admin User Type
