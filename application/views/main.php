@@ -1,3 +1,13 @@
+<style>
+img
+{
+    width: 50px;
+}
+a:hover
+{
+    text-decoration: none;
+}
+</style>
 <div style="margin-top: 50px;"></div>
 <div class="container outer-container" >
     <div class="row blackboard_container" >
@@ -23,7 +33,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 left-side"></div>
+            <div class="col-md-3 left-side">
+                <br>
+                <br>
+                
+                <p class="like">Like us ?</p>
+                <p class="share_us">Share about us on:</p>
+                
+                
+                <a href="<?=share_url('facebook',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_FB));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_fb.png" />    
+                </a>
+	  <a href="<?=share_url('twitter',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_TW));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_tw.png" />    
+                </a>
+	
+                
+            </div>
         </div>
     </div>
 </div>

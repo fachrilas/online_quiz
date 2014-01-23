@@ -11,6 +11,7 @@ class Main extends CI_Controller
     public function index()
     {
         $data['main_content'] = 'main';
+        $this->load->helper('share');
         $this->load->view('template/template',$data);
     }
     
@@ -29,6 +30,7 @@ class Main extends CI_Controller
     public function FAQ()
     {
         $data['main_content'] = 'FAQ';
+        $this->load->helper('share');
         $this->load->view('template/template',$data);
     }
     

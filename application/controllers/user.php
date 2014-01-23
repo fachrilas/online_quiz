@@ -428,6 +428,12 @@ class User extends CI_Controller{
         $this->load->model('quiz_model');
         $data['children'] = $this->user_model->getChildren($userId);
         $data['levels'] = $this->quiz_model->getAllLevels();
+        $quiz_details=array();
+        for ($i=0;$i<count($data['levels']);$i++)
+        {
+            $quiz_details[$i] =  $this->quiz_model->getQuizDetails($data['levels'][$i]->id);
+        }
+        
         $data[VIEW_NAME] = 'assign_quiz_view_children';
         $this->load->view(MAIN_TEMPLATE,$data);
     }

@@ -18,6 +18,7 @@ define('FILE_WRITE_MODE', 0666);
 define('DIR_READ_MODE', 0755);
 define('DIR_WRITE_MODE', 0777);
 
+
 /*
 |--------------------------------------------------------------------------
 | File Stream Modes
@@ -36,6 +37,23 @@ define('FOPEN_READ_WRITE_CREATE','a+b');
 define('FOPEN_WRITE_CREATE_STRICT','xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT','x+b');
 
+/**
+ * Papal 
+ */
+ define('BUSINESS_URL',"info@k9registrations.co.uk");
+ define("CURRENCY_CODE","USD");
+ define("CANCEL_RETURN","http://localhost/xampp/php2/online_quiz/index.php/main/packages?page=packages"); // post URI
+ define("PAYPAL_NOTIFY_URL","http://localhost/xampp/php2/online_quiz/index.php/paypal/notify_paypal");
+ define("RETURN_URL","http://localhost/xampp/php2/online_quiz/index.php/paypal/thankyou");
+ define("GOLD_PRICE","14.95");
+ define("GOLD_IEM","gold");
+
+ /**
+ * SOCIAL SHARING DATA
+ */
+
+define('SOCIAL_FB','check our latest packages on this site');
+define('SOCIAL_TW','check our latest packages on this site');
 
 /**
  * Tables

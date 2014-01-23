@@ -241,3 +241,14 @@ h1
 {
     color: white;
 }
+.like
+{
+    font-size: 33px;
+    color: #FFF;   
+}
+.share_us
+{
+    font-size: 17px;
+    color: #FFF;
+    font-family:serif;
+}
