@@ -42,11 +42,15 @@ define('FOPEN_READ_WRITE_CREATE_STRICT','x+b');
  */
  define('BUSINESS_URL',"info@k9registrations.co.uk");
  define("CURRENCY_CODE","USD");
- define("CANCEL_RETURN","http://localhost/xampp/php2/online_quiz/index.php/main/packages?page=packages"); // post URI
- define("PAYPAL_NOTIFY_URL","http://localhost/xampp/php2/online_quiz/index.php/paypal/notify_paypal");
- define("RETURN_URL","http://localhost/xampp/php2/online_quiz/index.php/paypal/thankyou");
+ define("CANCEL_RETURN","http://ministryofexcellence.com.sg/index.php/main/packages?page=packages"); // post URI
+ define("PAYPAL_NOTIFY_URL","http://ministryofexcellence.com.sg/index.php/paypal/notify_paypal");
+ define("RETURN_URL","http://ministryofexcellence.com.sg/index.php/paypal/thankyou");
  define("GOLD_PRICE","14.95");
- define("GOLD_IEM","gold");
+ define("GOLD_ITEM","Monthly");
+ define("BRONZE_PRICE","131.4");
+ define("BRONZE_ITEM","Half yearly");
+ define("SILVER_PRICE","83.4");
+ define("SILVER_ITEM","Yearly");
 
  /**
  * SOCIAL SHARING DATA
@@ -68,6 +72,7 @@ define('TBL_ASSIGNQUIZ','assign_quiz');
 define('TBL_QUESTIONRECORD','question_record');
 define('TBL_LEVELS','levels');
 define('TBL_COMMENT','comment');
+define('TBL_PAYPAL','paypal');
 
 /**
  * Admin User Type
@@ -136,6 +141,7 @@ define('EMAIL_SENT','Check Your email for password reste guidelines');
 define('PASS_UPDATED','Your password is updated successfully');
 define('TAKEN_NOT','not-taken');
 define('TAKEN_YES','taken');
+define('MESSAGE_SENT', 'Your message has been sent to our management team.Soonly we will respond you.');
 
 
 

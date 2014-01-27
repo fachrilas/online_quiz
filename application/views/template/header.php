@@ -22,6 +22,7 @@
             margin-top: 14px;
             width: 97%;
         }
+   
     </style>
   </head>
   <body>
@@ -35,8 +36,15 @@
               <div class="signout">
                   <span class="glyphicon glyphicon-log-out"> <a href="<?=base_url().'user/logout'?>" >
                           <font> Sign Out
-                          </font></a></span></div>
+                          </font></a></span>
+              </div>
+                    
               <? }?>
+              <a class="signoutimg1" href="<?=share_url('facebook',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_FB));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_fb.png" />    
+                </a>
+              <a class="signoutimg2" href="<?=share_url('twitter',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_TW));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_tw.png" />    
+                </a>
+
           <div class="masthead">
               <div class="row" style="margin-bottom: 21px;margin-top:6px;">
                   <div class="col-md-3">

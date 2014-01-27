@@ -14,6 +14,7 @@ class User extends CI_Controller{
     
     public function __construct() {
         parent::__construct();
+         $this->load->helper('share');
     }
     
     public function login()
@@ -161,7 +162,7 @@ class User extends CI_Controller{
     
     public function signup()
     {
-        $data[VIEW_NAME] = 'user_signup';
+        $data[VIEW_NAME] = 'signup';
         $this->load->view(MAIN_TEMPLATE,$data);
     }
     
@@ -622,10 +623,6 @@ class User extends CI_Controller{
                 $this->load->model('quiz_model');
                 $data['questionDetails'] = $this->quiz_model->getQuestionDetails($data['q_id']);
                 $data['user_id'] = $userid;
-            //                echo "<pre>";
-            //                print_r($rrr);
-            //                die();
-
                 $data[VIEW_NAME] = 'review_results_proceed';
                 $this->load->view(MAIN_TEMPLATE,$data);
             }
@@ -653,8 +650,13 @@ class User extends CI_Controller{
              $data['child']=  $this->user_model->getChild($userId);
              $opt=TAKEN_YES;
              $data['assign_quiz'] = $this->user_model->GetAssignQuiz($data['child']->username,$opt);
+             if($data['assign_quiz'])
+             {
              $data['id'] = $data['assign_quiz'][0]->child_username;
              $data['comment'] =  $this->user_model->GetComment($data['id']);
+             }
+                else {
+                    $data['comment']=''; }
              $data[VIEW_NAME] = 'view_report';
              $this->load->view(MAIN_TEMPLATE,$data);
         }
@@ -668,6 +670,39 @@ class User extends CI_Controller{
             redirect('user/view_report/'.$userId, 'refresh');
 
         }
+        
+         public function contact()
+         {   
+            $this->load->model('user_model');
+            $email=  $this->input->post('email');
+            $message = $this->input->post('message');
+            $phone =  $this->input->post('phone');
+            if($email!='')
+            {
+                $to = 'info@ministryofexcellence.com.sg';  
+                $subject = 'Contact via form';
+                $message = $message;
+                $message.='phone number : '.$phone;
+                $headers  = 'MIME-Version: 1.0' . "\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\n";
+                $headers .= "From: " .$email. "\r\n" . "\r\n" ;
+                mail($to,$subject,$message,$headers);
+                $data['message']= MESSAGE_SENT;
+                $data[VIEW_NAME] = 'email_info';
+                $this->load->view(MAIN_TEMPLATE,$data);
+
+            }
+            else
+            {
+                 echo "form not filled properly";
+
+            }
+
+
+
+    }
+    
+        
     }
     
     

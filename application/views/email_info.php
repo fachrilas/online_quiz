@@ -38,6 +38,14 @@
                             
                                         
                            }
+                            else if ($message==MESSAGE_SENT)  {
+                            echo '
+                        <div class="panel-heading">
+                <h3 class="panel-title">Message Sent</h3>
+                        </div><label class="label label-success">'.MESSAGE_SENT.'</label>';
+                            
+                                        
+                           }
                            
                         else
                            {

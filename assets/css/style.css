@@ -212,21 +212,8 @@ h1
     background: linear-gradient(to bottom, rgba(94,95,95,1) 0%, rgba(42,43,43,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e5f5f', endColorstr='#2a2b2b', GradientType=0 );
 }
-.signout{
-    float: right;
-    border: 2px solid gray;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    padding: 8px;
-    height: 36px;
-    width: 127px;
-    margin-bottom: 5px;
-}
-.signout font
-{
-    font-family: helvetica neue Regular;
-    font-size: 10;color: black;   
-}
+
+
 .panel-default > .panel-heading
 {
     background: rgba(223,27,125,1);
@@ -251,4 +238,98 @@ h1
     font-size: 17px;
     color: #FFF;
     font-family:serif;
+}
+.signout{
+    transform:rotate(90deg);
+    -ms-transform:rotate(90deg); /* IE 9 */
+    -webkit-transform:rotate(90deg); /* Safari and Chrome */
+   
+    border: 2px solid gray;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding: 8px;
+    height: 36px;
+    width: 127px;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    width: 8em;
+    margin-top: -2.5em;
+    margin-right: -38px;
+    z-index: 100;
+    
+}
+.signout font
+{
+    font-family: helvetica neue Regular;
+    font-size: 10;color: black;   
+}
+.signoutimg1
+{   
+    position: fixed;
+    right: 0;
+    top: 50%;
+    width: 7em;
+    margin-top: 3.5em;
+    margin-right: -63px;
+    z-index: 100;
+}
+.signoutimg2
+{   
+    position: fixed;
+    right: 0;
+    top: 50%;
+    width: 7em;
+    margin-top: 6.5em;
+    margin-right: -63px;
+    z-index: 100;
+}
+img {
+width: 50px;
+}
+.signupDes
+{
+    margin-top: 50px;
+    width: 36%;
+    height: 472px;
+    margin-bottom: 50px;
+    border-radius: 7px;
+    
+}
+.signupDes img
+{
+    padding-top: 8px;
+    width: 106%;
+    height: 109%;
+    margin-left: 13px;
+    z-index: 1;
+}
+.signupDes p
+{
+    font-size: 84%;
+    position: absolute;
+    margin-top: -446px;
+    width: 20%;
+    margin-left: 27px;
+    color: white;
+}
+.signupDes label
+{
+    font-size: 15px;
+}
+.signupform
+{
+    width: 57%;
+    height: 477px;
+    border: 2px solid;
+    padding-left: 32px;
+    padding-right: 32px;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: -525px;
+    margin-left: 34%;
+    z-index: 1000;
+    position: absolute;
+
+
 }

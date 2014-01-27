@@ -291,6 +291,12 @@ class User_Model extends CI_Model {
         $result=$this->db->get(TBL_COMMENT)->result();
         return $result[0];
     }
+    public function paypal($data)
+    {
+        $datas['data']=$data;
+        $this->db->insert(TBL_PAYPAL,$datas);
+        
+    }
    
     
     

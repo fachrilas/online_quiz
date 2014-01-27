@@ -133,7 +133,10 @@ else
             </div>
             <? if($this->session->userdata('user_type') == END_USER_TYPE)
                     {
+                    if($comment)
+                    {
                     ?>
+                    
             <div style="margin:20px;">
                 <form name="report_Comment" action="<?=base_url()?>user/comment" method="post">
                 <h3>Comment</h3>
@@ -147,7 +150,9 @@ else
                 </form>
             <br>
             </div>
-                   <? } ?>
+                   <? }
+                   }
+                   ?>
             
         </div>
     </div>

@@ -6,18 +6,19 @@ class Main extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('share');
     }
 	
     public function index()
     {
         $data['main_content'] = 'main';
-        $this->load->helper('share');
+        
         $this->load->view('template/template',$data);
     }
     
     public function about_us()
     {
-        $data['main_content'] = 'about_us';
+        $data['main_content'] = 'main';
         $this->load->view('template/template',$data);
     }
     
@@ -30,7 +31,14 @@ class Main extends CI_Controller
     public function FAQ()
     {
         $data['main_content'] = 'FAQ';
-        $this->load->helper('share');
+       
+        $this->load->view('template/template',$data);
+    }
+    
+    public function contact()
+    {
+        $data['main_content'] = 'contact';
+       
         $this->load->view('template/template',$data);
     }
     
@@ -54,7 +62,7 @@ class Main extends CI_Controller
         {
             redirect('user/children_profile', 'refresh');
         }
-        var_dump($this->session->userdata);
+        //var_dump($this->session->userdata);
     }
 }
 

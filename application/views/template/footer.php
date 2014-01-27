@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row footer-div">
         <div class="col-md-3" style="padding-top: 9px;padding-bottom: 9px;color: white;">
-            <a href="<?=base_url().'static/contact_us'?>" class="footer_link">Contact Us</a>
+            <a href="<?=base_url().'main/contact'?>" class="footer_link">Contact Us</a>
         </div>
         <div class="col-md-3" style="padding-top: 9px;padding-bottom: 9px;color: white;">
             <a href="<?=base_url().'static/terms_of_use'?>" class="footer_link">Terms of Use</a>
