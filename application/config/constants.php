@@ -40,7 +40,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT','x+b');
 /**
  * Papal 
  */
- define('BUSINESS_URL',"info@k9registrations.co.uk");
+ define('BUSINESS_URL',"info@ecan.in");
  define("CURRENCY_CODE","USD");
  define("CANCEL_RETURN","http://ministryofexcellence.com.sg/index.php/main/packages?page=packages"); // post URI
  define("PAYPAL_NOTIFY_URL","http://ministryofexcellence.com.sg/index.php/paypal/notify_paypal");
@@ -73,6 +73,8 @@ define('TBL_QUESTIONRECORD','question_record');
 define('TBL_LEVELS','levels');
 define('TBL_COMMENT','comment');
 define('TBL_PAYPAL','paypal');
+define('TBL_TRANSACTION','transaction');
+define('TBL_MEMBER','membership');
 
 /**
  * Admin User Type
@@ -142,10 +144,7 @@ define('PASS_UPDATED','Your password is updated successfully');
 define('TAKEN_NOT','not-taken');
 define('TAKEN_YES','taken');
 define('MESSAGE_SENT', 'Your message has been sent to our management team.Soonly we will respond you.');
-
-
-
-
+define('MEMBER_EXP', 'your membership has been expired');
 /**
  * Error Messages
  */

@@ -15,10 +15,10 @@ a:hover
             <div class="col-md-9 right-side">
                 <div class="row promotion-container" >
                     <div class="heading">
-                        <h1>STAR PROMOTION THIS MONTH</h1>
+                        <h1><?=$blocks['blocks'][0]['block1']?></h1>
                     </div>
                     <div class="promotion-text">
-                        purchase topical practice papers and examination papers for one level at a low price of $9.99
+                        <?=$blocks['blocks'][0]['block2']?>
                     </div>
                 </div>
                 <div class="about-us">
@@ -26,27 +26,14 @@ a:hover
                 </div>
                 <div class="row about-us-container">
                     <div class="col-md-4 about-us-left">
-                        lorem ipuaadfasd df asdf asdf asdf asf asdfasf asdf asdf as df asd fas dfasdf as df asdfas df asdf asdf as f
+                     <?=$blocks['blocks'][0]['block3']?>
                     </div>
                     <div class="col-md-8 about-us-right">
-                        lorem ipuaadfasd df asdf asdf asdf asf asdfasf asdf asdf as df asd fas dfasdf as df asdfas df asdf asdf as f
+                       <?=$blocks['blocks'][0]['block4']?>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 left-side">
-                <br>
-                <br>
-                
-                <p class="like">Like us ?</p>
-                <p class="share_us">Share about us on:</p>
-                
-                
-                <a href="<?=share_url('facebook',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_FB));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_fb.png" />    
-                </a>
-	  <a href="<?=share_url('twitter',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_TW));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_tw.png" />    
-                </a>
-	
-                
             </div>
         </div>
     </div>

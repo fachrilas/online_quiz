@@ -84,6 +84,13 @@
         {
             echo "<div class='alert alert-danger'>".MSG_USER_PASSWORD_INVALID."</div>";
         }
+        elseif(isset($_GET['error_exp']))
+        {
+            echo "<div class='alert alert-danger'>".MEMBER_EXP."</div>";
+        }
+        else
+        {
+        }
         if(isset($_GET['type']))
         {
             $type = $_GET['type'];

@@ -7,9 +7,7 @@
         <div class="col-md-3" style="padding-top: 9px;padding-bottom: 9px;color: white;">
             <a href="<?=base_url().'static/terms_of_use'?>" class="footer_link">Terms of Use</a>
         </div>
-        <div class="col-md-3" style="padding-top: 9px;padding-bottom: 9px;color: white;">
-            <a href="<?=base_url().'static/faq'?>" class="footer_link">FAQ</a>
-        </div>
+
         <div class="col-md-3" style="padding-top: 9px;padding-bottom: 9px;color: white;">
             <a href="<?=base_url().'static/about_us'?>" class="footer_link">About Us</a>
         </div>

@@ -1,0 +1,8 @@
+{
+"faq": [
+{ "q":"How do I reset my password?","ans":"You can request a new password by clicking on the Forgot your password? link on the login page. We will send then send you an email with a link to reset your password."},
+{ "q":"Can our Tution Centre subscribe to MOEx?","ans":"Yes. The intention of MOEx is to provide an automated self-assessment platform, allowing parents and tutors to better use their time on educating the children than on marking the assessment books.Please contact MOEx if you would like to find out more about being a member."},
+{ "q":"Do I have to pay for more than 1 membership if I have more than 1 child?","ans":"No. Membership is tagged to each parent, therefore you can tag more than 1 child to your account."},
+{ "q":"Are the assessment questions in line with the local education system?","ans":"Yes. We engage qualified school educators to set the assessment questions to be in line with the local education system as well as band weightings."}
+]
+}

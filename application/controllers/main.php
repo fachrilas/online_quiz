@@ -12,13 +12,16 @@ class Main extends CI_Controller
     public function index()
     {
         $data['main_content'] = 'main';
-        
+        $string=file_get_contents("main.json");
+        $data['blocks'] =  json_decode($string,true);
         $this->load->view('template/template',$data);
     }
     
     public function about_us()
     {
         $data['main_content'] = 'main';
+        $string=file_get_contents("main.json");
+        $data['blocks']=  json_decode($string,true);
         $this->load->view('template/template',$data);
     }
     
@@ -31,7 +34,8 @@ class Main extends CI_Controller
     public function FAQ()
     {
         $data['main_content'] = 'FAQ';
-       
+        $string=file_get_contents("faq.json");
+        $data['faq'] =  json_decode($string,true);
         $this->load->view('template/template',$data);
     }
     

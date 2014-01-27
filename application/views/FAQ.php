@@ -27,36 +27,24 @@ a:hover
                 </div>
                 <div class="row about-us-container">
                     <div class="col-md-12 about-us-left">
-                        <p class="share_us"><b>Q:How do I reset my password?</b></p>
-                        <p class="share_us">Ans:You can request a new password by clicking on the Forgot your password? link on the login page. We will send then send you an email with a link to reset your password.</p>
+                        <p class="share_us"><b>Q:<?=$faq['faq'][0]['q']?></b></p>
+                        <p class="share_us">Ans:<?=$faq['faq'][0]['ans']?></p>
                         <br>
-                        <p class="share_us"><b>Q:Can our Tution Centre subscribe to MOEx?</b></p>
-                        <p class="share_us">Ans:Yes. The intention of MOEx is to provide an automated self-assessment platform, allowing parents and tutors to better use their time on educating the children than on marking the assessment books.Please contact MOEx if you would like to find out more about being a member.</p>
+                        <p class="share_us"><b>Q:<?=$faq['faq'][1]['q']?></b></p>
+                        <p class="share_us">Ans:<?=$faq['faq'][1]['ans']?></p>
                         <br>
-                        <p class="share_us"><b>Q:Do I have to pay for more than 1 membership if I have more than 1 child?</b></p>
-                        <p class="share_us">Ans:No. Membership is tagged to each parent, therefore you can tag more than 1 child to your account.</p>
+                        <p class="share_us"><b>Q:<?=$faq['faq'][2]['q']?></b></p>
+                        <p class="share_us">Ans:<?=$faq['faq'][2]['ans']?></p>
                         <br>
-                        <p class="share_us"><b>Q:Are the assessment questions in line with the local education system?</b></p>
-                        <p class="share_us">Ans:Yes. We engage qualified school educators  to set the assessment questions to be in line with the local education system as well as band weightings.</p>
+                        <p class="share_us"><b>Q:<?=$faq['faq'][3]['q']?></b></p>
+                        <p class="share_us">Ans:<?=$faq['faq'][3]['ans']?></p>
                         <br>
                     </div>
                     
                 </div>
             </div>
             <div class="col-md-3 left-side">
-                <br>
-                <br>
-                
-                <p class="like">Like us ?</p>
-                <p class="share_us">Share about us on:</p>
-                
-                
-                <a href="<?=share_url('facebook',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_FB));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_fb.png" />    
-                </a>
-	  <a href="<?=share_url('twitter',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_TW));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_tw.png" />    
-                </a>
-	
-                
+               
             </div>
         </div>
     </div>

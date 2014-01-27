@@ -237,14 +237,13 @@ h1
 {
     font-size: 17px;
     color: #FFF;
-    font-family:serif;
+    
 }
 .signout{
-    transform:rotate(90deg);
-    -ms-transform:rotate(90deg); /* IE 9 */
-    -webkit-transform:rotate(90deg); /* Safari and Chrome */
-   
-    border: 2px solid gray;
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    border: 1px solid black;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
     padding: 8px;
@@ -257,7 +256,7 @@ h1
     margin-top: -2.5em;
     margin-right: -38px;
     z-index: 100;
-    
+    background-color: grey;
 }
 .signout font
 {

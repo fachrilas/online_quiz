@@ -297,7 +297,45 @@ class User_Model extends CI_Model {
         $this->db->insert(TBL_PAYPAL,$datas);
         
     }
-   
+    public function transaction($data)
+    {
+        
+        $this->db->insert(TBL_TRANSACTION,$data);
+        
+    }
+    public function add_membership($data)
+    {
+        $this->db->insert(TBL_MEMBER,$data);
+    }
+    public function checkMemebrshipStatus()
+    {
+        $d= date('Y-m-d');
+        $this->db->where('expiration_date <=',$d);
+        $result=$this->db->get(TBL_MEMBER)->result();
+        foreach ($result as $expire)
+        {
+            $this->db->where('id',$expire->id);
+            $data['is_active']='0';
+            $this->db->update(TBL_MEMBER,$data);
+        }
+
+    }
+    public function check_member_active($id)
+    {
+        $this->db->order_by("id", "desc"); 
+        $this->db->where('user_id',$id);
+        $this->db->where('is_active','1');
+        $this->db->limit(1);
+        $r=$this->db->get(TBL_MEMBER)->result();
+        if(count($r)>0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
     
     
 }

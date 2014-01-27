@@ -47,6 +47,12 @@ class User extends CI_Controller{
                         'user_type' => END_USER_TYPE,
                         'user_id' => $user->id
                     );
+                    $status=$this->user_model->check_member_active($user->id);
+                    if($status==FALSE)
+                    {
+                         redirect('user/login?error_exp=MEMBER_EXP', 'refresh');
+                        
+                    }
                     $this->session->set_userdata($data);
                     $this->user_model->last_login($username,$data['user_type']);
                     redirect('user/user_home', 'refresh');
@@ -59,6 +65,7 @@ class User extends CI_Controller{
                         'user_type' => ADMIN_USER_TYPE,
                         'user_id' => $user->id
                     );
+                    
                     $this->session->set_userdata($data);
                     $this->user_model->last_login($username,$data['user_type']);
                    redirect('user/admin_home', 'refresh');
@@ -66,6 +73,7 @@ class User extends CI_Controller{
             }
             else
             {
+                
                 redirect('user/login?error=invalidpassword', 'refresh');
             }
         }
@@ -700,6 +708,20 @@ class User extends CI_Controller{
 
 
 
+    }
+    public function check_membership_status()
+    {
+        $this->load->model('user_model');
+        $result=$this->user_model->checkMemebrshipStatus();
+        if($result)
+        {
+            echo "Succesfully chnaged";
+        }
+        else
+        {
+            echo "some thing is wrong ";
+        }
+        
     }
     
         

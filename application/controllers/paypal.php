@@ -72,17 +72,18 @@ class paypal extends CI_Controller {
     }
     
     public function notify_paypal() {
+        
         $this->load->model('user_model');
-        $this->user_model->paypal('hello');
+//        $this->user_model->paypal('hello');
         
         try {
+            
             $this->requirePostMethod();
             $verified = $this->processIpn();
-            $this->user_model->paypal('entring');
-            $this->user_model->paypal($_POST);
-            
-            
-        } catch (Exception $e) {
+//            $this->user_model->paypal('entring');
+//            $this->user_model->paypal($_POST);
+        } 
+        catch (Exception $e) {
             error_log($e->getMessage());
             $this->user_model->paypal($e->getMessage());
             exit(0);
@@ -91,68 +92,71 @@ class paypal extends CI_Controller {
         if ($verified) 
         {
             $errmsg = '';
-            if ($_POST['payment_status'] != 'Completed') 
-            { 
-                // simply ignore any IPN that is not completed
-                error_log("payment status not completed ".$_POST['payment_status']);
-                $this->user_model->paypal($errmsg);
-                exit(0); 
-            }
-            if ($_POST['receiver_email'] != PAYPAL_PAYMENT_EMAIL) 
-            {
-                $errmsg .= "'receiver_email' does not match: ";
-                $errmsg .= $_POST['receiver_email']."\n";
-                $this->user_model->paypal($errmsg);
-            }
+           
+//            if ($_POST['receiver_email'] != PAYPAL_PAYMENT_EMAIL) 
+//            {
+//                $errmsg .= "'receiver_email' does not match: ";
+//                $errmsg .= $_POST['receiver_email']."\n";
+//                $this->user_model->paypal($errmsg);
+//            }
             if ($_POST['mc_currency'] != 'USD') 
             {
                 $errmsg .= "'mc_currency' does not match: ";
                 $errmsg .= $_POST['mc_currency']."\n";
-                   $this->user_model->paypal($errmsg);
+//                $this->user_model->paypal($errmsg);
+                error_log($errmsg);
+                error_log(json_encode($_POST));
           
             }
-            $this->load->model('transaction');
-            $exists = $this->transaction->checkDuplicateTransaction($_POST['txn_id']);
-            $this->user_model->paypal($exists);
-            if (!$exists)
-            {
-                $errmsg .= "'txn_id' has already been processed: ".$_POST['txn_id']."\n";
-                error_log(var_dump($errmsg));
-                $this->user_model->paypal($errmsg);
-            }
+
             if (!empty($errmsg)) 
             {
                 $body = "IPN failed fraud checks: \n$errmsg\n\n";
                 $body .= $this->getTextReport();
                 error_log($body);
-                $this->user_model->paypal($body);
+                error_log(json_encode($_POST));
+//                $this->user_model->paypal($body);
             }
             else
             {
-                $this->load->model('member_model');
+//                $this->load->model('member_model');
                 $transactionData = array();
                 $userID = $_POST['custom']; 
                 $transactionData['user_id'] = $userID;
-                $transactionData['item_id'] = $_POST['item_number'];
+                $transactionData['item_name'] = $_POST['item_name'];
                 $transactionData['user_email'] = $_POST['payer_email'];
                 $transactionData['txn_id'] = $_POST['txn_id'];
-                error_log(var_dump($_POST));
+                error_log(json_encode($transactionData));
+                error_log(json_encode($_POST));
+                $this->user_model->transaction($transactionData);
+                $member=array();
+                $member['user_id']= $userID;
+                $member['package']= $_POST['item_name'];
+                if($member['package']==GOLD_ITEM)
+                {
+                    $member['expiration_date']=Date('y:m:d', strtotime("+30 days"));
+                }
+                elseif($member['package']==BRONZE_ITEM)
+                {
+                    $effectiveDate= date('Y-m-d');
+                    $member['expiration_date']=date('Y-m-d', strtotime("+6 months", strtotime($effectiveDate)));
+                }
+                else
+                {
+                   $effectiveDate= date('Y-m-d');
+                    $member['expiration_date']=date('Y-m-d', strtotime("+12 months", strtotime($effectiveDate)));
                 
-                $this->user_model->paypal($_POST);
-                $this->transaction->addTransaction($transactionData);
-                
-                $numCredits = $this->transaction->getNumberOfCredits($_POST['item_number']);
-                $updateQuery = $this->member_model->updateUserCredits($userID,$numCredits);
-                
-                $this->transaction->addAffiliateTransaction($userID,$transactionData['item_id']);
-                error_log("added affiliate transaction");
+                }
+                $member['trx_id']=$_POST['txn_id'];
+                $this->user_model->add_membership($member);
+//                $this->user_model->paypal($_POST);
             }
         } 
         else
         {
             error_log("Invalid IPN".$verified);
             error_log(var_dump($_POST));
-            $this->user_model->paypal($_POST);
+//            $this->user_model->paypal(var_dump($_POST));
         //    mail(PAYPAL_TRANSACTION_EMAIL, 'Invalid IPN', $this->getTextReport(),$headers);
         }
         

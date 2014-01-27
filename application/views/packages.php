@@ -29,9 +29,9 @@ if($this->session->userdata('is_logged_in'))
 </div>
 <div class="col-md-4">
      <div class="package" style="background-image: url('<? echo base_url().'../assets/img/PricePlans_half_yearly_meox.png'?>');">
-             <h2>Half Yearly<br>Subscription</h2>
-             <p><b>$10.95</b><br><i>Per Month</i></p><span>You Save 24$</span><br><br>
-            <form name="_xclick" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+    <h2>Half Yearly<br>Subscription</h2>
+    <p><b>$10.95</b><br><i>Per Month</i></p><span>You Save 24$</span><br><br>
+   <form name="_xclick" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_xclick">
     <input type="hidden" name="business" value="<?=BUSINESS_URL?>">
     <input type="hidden" name="currency_code" value="<?=CURRENCY_CODE?>">
