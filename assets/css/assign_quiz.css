@@ -12,15 +12,63 @@ and open the template in the editor.
 {
     background-repeat: no-repeat;
     width: 100%;
-    height: 973px;
-    background-size: 100% 943px;
+    height: 596px;
+    background-size: 100% 596px;
     margin-top: 20px;
     float: right;
 }
 .content
 {
     position: absolute;
-    margin-top:150px;
-    margin-left:36%;
-    width: 54%;
+    margin-top:102px;
+    
+}
+.content h3
+{
+    margin-left: 4%;
+    width: 45%;
+}
+.content p
+{
+    margin-left: 4%;
+    width: 41%;
+    text-align: justify;
+}
+.content img
+{
+    margin-left: 4%;
+    width:40%;
+}
+.block2
+{
+    position: absolute;
+    margin-top:102px;
+    margin-left: 52%;
+}
+.block2D
+{
+    margin-left: 19%;
+    width: 100%;
+}
+
+.block2 p
+{
+    width: 70%;
+}
+.block2 img
+{
+    width:77%;
+}
+.arrow
+{
+    position: absolute;
+    margin-top: 280px;
+    margin-left: 88%;
+    width: 4%;
+
+}
+.assignquiz
+{
+    width: 100%;
+    font-size: 31px;
 }

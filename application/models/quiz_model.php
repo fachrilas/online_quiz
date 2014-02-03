@@ -396,6 +396,12 @@ class Quiz_Model extends CI_Model {
         $this->db->update(TBL_LEVELS,$data);
         
     }
+    public function get_topic($levelID)
+    {
+        $this->db->where('id',$levelID);
+        $result=$this->db->get(TBL_LEVELS)->result();
+        return $result[0];
+    }        
     
 }
 

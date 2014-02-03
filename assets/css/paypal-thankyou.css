@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 28, 2014, 5:59:36 AM
+    Author     : adnan
+*/
+.paypal
+{
+    padding: 15px;
+}
+
+.image-container
+{
+    width:100%;
+    margin-left: -17px;
+    
+}
+.col-md-12 li
+{
+    display:inline;
+    padding-right: 20px;
+}

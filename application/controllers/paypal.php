@@ -390,7 +390,13 @@ class paypal extends CI_Controller {
     }
     
     public function thankyou(){
-        echo "Thanks for buying credits";
+        $this->load->helper('share');
+        $userid=$this->session->userdata('user_id');
+        $this->load->model('user_model');
+        $data['user']=$this->user_model->member_detail($userid);
+        $data['user_data']=  $this->user_model->getuserRecordbyid($userid);
+        $data[VIEW_NAME]='paypal-thankyou';
+        $this->load->view(MAIN_TEMPLATE,$data);
     }
     
     public function buy_credits() {

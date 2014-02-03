@@ -47,12 +47,7 @@ class User extends CI_Controller{
                         'user_type' => END_USER_TYPE,
                         'user_id' => $user->id
                     );
-                    $status=$this->user_model->check_member_active($user->id);
-                    if($status==FALSE)
-                    {
-                         redirect('user/login?error_exp=MEMBER_EXP', 'refresh');
-                        
-                    }
+                    
                     $this->session->set_userdata($data);
                     $this->user_model->last_login($username,$data['user_type']);
                     redirect('user/user_home', 'refresh');
@@ -354,7 +349,7 @@ class User extends CI_Controller{
             $token=  md5($email.KEY.$random);    
             $this->user_model->UserUpdateToken($email,$token);
             $subject = 'Forget password';
-            $message = "To reset your password, please <a href='http://www.ministryofexcellence.com.sg/index.php/user/user_change_pass/$token'>Click here</a><br /><br />MEOX,<br /> The Team";
+            $message = "To reset your password, please <a href='http://www.ministryofexcellence.com.sg/index.php/user/user_change_pass/$token'>Click here</a><br /><br />MOEx,<br /> The Team";
             $headers  = 'MIME-Version: 1.0' . "\n";
             $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\n";
 
@@ -435,28 +430,53 @@ class User extends CI_Controller{
         $userId = $this->session->userdata('user_id');
         $this->load->model('user_model');
         $this->load->model('quiz_model');
+        $status=$this->user_model->check_member_active($userId);
+        if($status==FALSE)
+        {
+             redirect('user/user_home?error_exp=MEMBER_EXP', 'refresh');
+        }
         $data['children'] = $this->user_model->getChildren($userId);
         $data['levels'] = $this->quiz_model->getAllLevels();
-        $quiz_details=array();
-        for ($i=0;$i<count($data['levels']);$i++)
-        {
-            $quiz_details[$i] =  $this->quiz_model->getQuizDetails($data['levels'][$i]->id);
-        }
-        
         $data[VIEW_NAME] = 'assign_quiz_view_children';
         $this->load->view(MAIN_TEMPLATE,$data);
     }
     
+    public function assign_quiz_proceed($level_id,$count)
+    {
+        $this->load->model('quiz_model');
+        $this->load->model('user_model');
+        $userId = $this->session->userdata('user_id');
+        $status=$this->user_model->check_member_active($userId);
+        if($status==FALSE)
+        {
+             redirect('user/user_home?error_exp=MEMBER_EXP', 'refresh');
+        }
+        $data['quiz_details']=$this->quiz_model->getQuizDetails($level_id);
+        $data['level_Detail']= $this->quiz_model->get_topic($level_id);
+        $userId = $this->session->userdata('user_id');
+        $data['children'] = $this->user_model->getChildren($userId);
+        $data['count']=$count;
+        $data[VIEW_NAME] = 'do_assign_quiz';
+        $this->load->view(MAIN_TEMPLATE,$data);
+        
+    }
+
     
+
     public function do_assign_quiz()
     {
         $userId = $this->session->userdata('user_id');
         $this->load->model('user_model');
-        $data['child_username']=  $this->input->post('child');
-        $data['level']=  $this->input->post('level');
-        $data['level_name']=  $this->input->post('level_name');
-        $data['operation']= TAKEN_NOT;
-        $this->user_model->assign_quiz($data);
+        $level=  $this->input->post('level');
+        $level_name=  $this->input->post('level_name');
+        foreach ($this->input->post('child') as $child)
+        {
+           $data['child_username']=$child;
+           $data['level']=$level;
+           $data['level_name']=$level_name;
+           $data['operation']= TAKEN_NOT;
+           $this->user_model->assign_quiz($data);
+        }
         redirect('user/user_home', 'refresh');
         
     }
@@ -465,11 +485,17 @@ class User extends CI_Controller{
     {
         $userId = $this->session->userdata('user_id');
         $username=  $this->session->userdata('username');
+        
         $this->load->model('user_model');
-        $opt=TAKEN_YES;
-        $data['assign_quiz']=$this->user_model->GetAssignQuiz($username,$opt);
         $result=  $this->user_model->getChildren($userId);
         $data['child']=$result[0];
+        $status=$this->user_model->check_member_active($data['child']->parent_id);
+        if($status==FALSE)
+        {
+             redirect('user/children_profile?error_exp=MEMBER_EXP', 'refresh');
+        }
+        $opt=TAKEN_YES;
+        $data['assign_quiz']=$this->user_model->GetAssignQuiz($username,$opt);
         $data[VIEW_NAME]='assign_level';
         $this->load->view(MAIN_TEMPLATE,$data);
         

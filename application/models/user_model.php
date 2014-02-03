@@ -174,6 +174,12 @@ class User_Model extends CI_Model {
        $result = $this->db->get(TBL_USERS)->result();
        return $result;
     }
+    public function getuserRecordbyid($id)
+    {
+       $this->db->where('id',$id);
+       $result = $this->db->get(TBL_USERS)->result();
+       return $result[0];
+    }
     
     
     //************end of user view mothod
@@ -335,6 +341,15 @@ class User_Model extends CI_Model {
         {
             return FALSE;
         }
+    }
+    
+    public function member_detail($id)
+    {
+        $this->db->order_by("id", "desc"); 
+        $this->db->where('user_id',$id);
+        $this->db->limit(1);
+        $r=$this->db->get(TBL_TRANSACTION)->result();
+        return $r[0];
     }
     
     

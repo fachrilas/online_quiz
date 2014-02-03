@@ -1,3 +1,8 @@
+<?
+if(isset($_GET['error_exp']))
+        {
+            echo "<div class='alert alert-danger'>".MEMBER_EXP."</div>";
+        }?>
 <?php
    if($this->session->userdata('is_logged_in'))
                     {
