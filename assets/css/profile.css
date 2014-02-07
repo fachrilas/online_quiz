@@ -31,15 +31,15 @@ and open the template in the editor.
 {
     background-color: #EEEEEE;
     opacity:1.0;
-    width: 110%;
-    height: 53px;
+    width: 150%;
+    min-height: 53px;
     text-decoration: underline;
     padding-top: 10px;
     padding-left: 2px;
     list-style: none;
     margin-top: 12px;
     margin-left: 1px;
-    font-size: large;
+    font-size: 16px;
 }
 .profile li a
 {

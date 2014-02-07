@@ -19,10 +19,7 @@ a:hover
             <div class="col-md-9 right-side">
                 <div class="row promotion-container" >
                     <div class="heading">
-                        <h1>FAQ'S - MEOX</h1>
-                    </div>
-                    <div class="promotion-text">
-                    Some questions that comes in your mind 
+                        <h1>FAQ</h1>
                     </div>
                 </div>
                 <div class="row about-us-container">

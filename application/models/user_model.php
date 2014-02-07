@@ -61,7 +61,7 @@ class User_Model extends CI_Model {
         return false;
     }
     
-    public function addChild($username,$password,$fullName,$dd,$mm,$yyyy,$likes,$dislikes,$filepathRelative,$filepathAbsolute)
+    public function addChild($username,$password,$fullName,$dd,$mm,$yyyy,$level)
     {
         $data = array();
         $data['username'] = $username;
@@ -70,12 +70,8 @@ class User_Model extends CI_Model {
         $data['dd'] = $dd;
         $data['mm'] = $mm;
         $data['yy'] = $yyyy;
-        $data['likes'] = $likes;
-        $data['dislikes'] = $dislikes;
-        $data['profile_pic_relative'] = $filepathRelative;
-        $data['profile_pic_absolute'] = $filepathAbsolute;
+        $data['level'] = $level;
         $data['parent_id'] = $this->session->userdata('user_id');
-        
         $this->db->insert(TBL_CHILDREN,$data);
     }
     

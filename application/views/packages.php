@@ -1,36 +1,48 @@
 <link href="<?php echo base_url().'../assets/css/packages.css' ?>" rel="stylesheet">
 <br>
-<div class="row">
+<?
+define("CANCEL_RETURN","http://".$_SERVER['SERVER_NAME']."/index.php/main/packages?page=packages"); // post URI
+define("PAYPAL_NOTIFY_URL","http://".$_SERVER['SERVER_NAME']."/index.php/paypal/notify_paypal");
+define("RETURN_URL","http://".$_SERVER['SERVER_NAME']."/index.php/paypal/thankyou");
+?>
+<div class="row" style="width: 77%;margin: 0 auto;padding-bottom: 28px;">
     <div class="col-md-4">
         <div class="package" style="background-image: url('<? echo base_url().'../assets/img/PricePlans_monthly_meox.png'?>');">
             <h2>Monthly<br>Subscription</h2>
             <p><b>$14.95</b><br><i>Per Month</i></p><br><br><br>
             <form name="_xclick" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-    <input type="hidden" name="cmd" value="_xclick">
-    <input type="hidden" name="business" value="<?=BUSINESS_URL?>">
-    <input type="hidden" name="currency_code" value="<?=CURRENCY_CODE?>">
-    <input type="hidden" name="custom" value="<?=$this->session->userdata('user_id')?>" />
-    <input type="hidden" name="notify_url" value="<?=PAYPAL_NOTIFY_URL?>" />
-    <input type="hidden" name="item_name" value="<?=GOLD_ITEM?>">
-    <input type="hidden" name="return" value="<?=RETURN_URL ?>" />
-    <input type="hidden" name="amount" value="<?=GOLD_PRICE?>">
-    <input type="hidden" name="cancel_return" value="<?=CANCEL_RETURN?>">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="cbt" value="return to MOEx" />
+            <input type="hidden" name="cn" value="return to MOEx" />
+            <input type="hidden" name="business" value="<?=BUSINESS_URL?>">
+            <input type="hidden" name="currency_code" value="<?=CURRENCY_CODE?>">
+            <input type="hidden" name="custom" value="<?=$this->session->userdata('user_id')?>" />
+            <input type="hidden" name="notify_url" value="<?=PAYPAL_NOTIFY_URL?>" />
+            <input type="hidden" name="item_name" value="<?=GOLD_ITEM?>">
+            <input type="hidden" name="return" value="<?=RETURN_URL ?>" />
+            <input type="hidden" name="amount" value="<?=GOLD_PRICE?>">
+            <input type="hidden" name="cancel_return" value="<?=CANCEL_RETURN?>">
 <?php
 if($this->session->userdata('is_logged_in'))
 {
 ?>
-    <input type="image" class="button" src="<?=base_url()?>../assets/img/buy_now_m.png" width="100px" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+    <input type="image" class="button" src="<?=base_url()?>../assets/img/buy_now_m.png" width="100px" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" />
     </form>
-            <? }else { ?>
-          
-            <img class="button" src="<?=base_url()?>../assets/img/buy_now_m.png" data-toggle="modal" data-target="#myModal"/>
-        <? } ?>
+<? 
+}
+else 
+{
+?>          
+    <img class="button" src="<?=base_url()?>../assets/img/buy_now_m.png" data-toggle="modal" data-target="#myModal"/>
+<?
+}
+?>
         </div>
 </div>
 <div class="col-md-4">
      <div class="package" style="background-image: url('<? echo base_url().'../assets/img/PricePlans_half_yearly_meox.png'?>');">
     <h2>Half Yearly<br>Subscription</h2>
-    <p><b>$10.95</b><br><i>Per Month</i></p><span>You Save 24$</span><br><br>
+    <p><b>$10.95</b><br><i>Per Month</i></p><span>You Save $24</span><br><br>
    <form name="_xclick" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_xclick">
     <input type="hidden" name="business" value="<?=BUSINESS_URL?>">
@@ -53,10 +65,11 @@ if($this->session->userdata('is_logged_in'))
         <? } ?>
         </div>
 </div>
+
 <div class="col-md-4">
      <div class="package" style="background-image: url('<? echo base_url().'../assets/img/PricePlans_yearly_meox.png'?>');">
             <h2>Yearly<br>Subscription</h2>
-            <p><b>$6.95</b><br><i>Per Month</i></p><span>You Save 96$</span><br><br>
+            <p><b>$6.95</b><br><i>Per Month</i></p><span>You Save $96</span><br><br>
             <form name="_xclick" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_xclick">
     <input type="hidden" name="business" value="<?=BUSINESS_URL?>">
@@ -90,7 +103,7 @@ if($this->session->userdata('is_logged_in'))
         <h4 class="modal-title" id="myModalLabel">Notification</h4>
       </div>
       <div class="modal-body">
-        you should have to login to buy Our packages .!
+        Please login.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

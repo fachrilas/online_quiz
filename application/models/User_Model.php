@@ -61,7 +61,7 @@ class User_Model extends CI_Model {
         return false;
     }
     
-    public function addChild($username,$password,$fullName,$dd,$mm,$yyyy,$likes,$dislikes,$filepathRelative,$filepathAbsolute)
+    public function addChild($username,$password,$fullName,$dd,$mm,$yyyy,$level)
     {
         $data = array();
         $data['username'] = $username;
@@ -70,12 +70,8 @@ class User_Model extends CI_Model {
         $data['dd'] = $dd;
         $data['mm'] = $mm;
         $data['yy'] = $yyyy;
-        $data['likes'] = $likes;
-        $data['dislikes'] = $dislikes;
-        $data['profile_pic_relative'] = $filepathRelative;
-        $data['profile_pic_absolute'] = $filepathAbsolute;
+        $data['level'] = $level;
         $data['parent_id'] = $this->session->userdata('user_id');
-        
         $this->db->insert(TBL_CHILDREN,$data);
     }
     
@@ -173,6 +169,12 @@ class User_Model extends CI_Model {
        $this->db->where('email',$email);
        $result = $this->db->get(TBL_USERS)->result();
        return $result;
+    }
+    public function getuserRecordbyid($id)
+    {
+       $this->db->where('id',$id);
+       $result = $this->db->get(TBL_USERS)->result();
+       return $result[0];
     }
     
     
@@ -276,8 +278,75 @@ class User_Model extends CI_Model {
         
         
     }
+    public function InsertComment($userId,$comment,$report_id)
+    {
+        $data['comment']=$comment;
+        $data['comment_by']=$userId;
+        $data['report_id']=$report_id;
+        $this->db->insert(TBL_COMMENT,$data);
+    }
     
-   
+    public function GetComment($username)
+    {
+        $this->db->where('report_id',$username);
+        $this->db->order_by('id','desc');
+        $result=$this->db->get(TBL_COMMENT)->result();
+        return $result[0];
+    }
+    public function paypal($data)
+    {
+        $datas['data']=$data;
+        $this->db->insert(TBL_PAYPAL,$datas);
+        
+    }
+    public function transaction($data)
+    {
+        
+        $this->db->insert(TBL_TRANSACTION,$data);
+        
+    }
+    public function add_membership($data)
+    {
+        $this->db->insert(TBL_MEMBER,$data);
+    }
+    public function checkMemebrshipStatus()
+    {
+        $d= date('Y-m-d');
+        $this->db->where('expiration_date <=',$d);
+        $result=$this->db->get(TBL_MEMBER)->result();
+        foreach ($result as $expire)
+        {
+            $this->db->where('id',$expire->id);
+            $data['is_active']='0';
+            $this->db->update(TBL_MEMBER,$data);
+        }
+
+    }
+    public function check_member_active($id)
+    {
+        $this->db->order_by("id", "desc"); 
+        $this->db->where('user_id',$id);
+        $this->db->where('is_active','1');
+        $this->db->limit(1);
+        $r=$this->db->get(TBL_MEMBER)->result();
+        if(count($r)>0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+    
+    public function member_detail($id)
+    {
+        $this->db->order_by("id", "desc"); 
+        $this->db->where('user_id',$id);
+        $this->db->limit(1);
+        $r=$this->db->get(TBL_TRANSACTION)->result();
+        return $r[0];
+    }
     
     
 }

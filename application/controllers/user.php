@@ -222,23 +222,9 @@ class User extends CI_Controller{
         $dd = $this->input->post('dd');
         $mm = $this->input->post('mm');
         $yyyy = $this->input->post('yyyy');
-        $likes = $this->input->post('likes');
-        $dislikes = $this->input->post('dislikes');
-        $this->load->model('Quiz_Model');
+        $level = $this->input->post('level');
         $this->load->model('user_model');
-        if(isset($_FILES['sample_file']) && $_FILES['sample_file']['size'] > 0)
-        {
-            $image1 = 'sample_file';
-            $uploadedData = $this->Quiz_Model->do_upload($image1);
-            $filepathRelative = 'uploads/'.$uploadedData['file_name'];
-            $filepathAbsolute = $uploadedData['full_path'];
-        }
-        else
-        {
-            $filepathRelative = "";
-            $filepathAbsolute = "";
-        }
-        $this->user_model->addChild($username,$password,$fullName,$dd,$mm,$yyyy,$likes,$dislikes,$filepathRelative,$filepathAbsolute);
+        $this->user_model->addChild($username,$password,$fullName,$dd,$mm,$yyyy,$level);
          redirect("user/user_home",'refresh');
         
         }

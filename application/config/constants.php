@@ -41,10 +41,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT','x+b');
  * Papal 
  */
  define('BUSINESS_URL',"info@ecan.in");
- define("CURRENCY_CODE","USD");
- define("CANCEL_RETURN","http://ministryofexcellence.com.sg/index.php/main/packages?page=packages"); // post URI
- define("PAYPAL_NOTIFY_URL","http://ministryofexcellence.com.sg/index.php/paypal/notify_paypal");
- define("RETURN_URL","http://ministryofexcellence.com.sg/index.php/paypal/thankyou");
+ define("CURRENCY_CODE","SGD");
  define("GOLD_PRICE","14.95");
  define("GOLD_ITEM","Monthly");
  define("BRONZE_PRICE","131.4");

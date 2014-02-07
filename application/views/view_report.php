@@ -92,7 +92,7 @@ else
                     ?>
                     <p class="pull-right">Academic Year : <?=date('Y')?></p>
                     <p>Name of Child: <?=$child->name;?>
-                    <br>Age on <?php echo date('l j'); ?>th : <?= getAge($child->yy,$child->mm,$child->dd) ?></p>
+                    <br>Age on <?php echo date('jS F, Y'); ?> : <?= getAge($child->yy,$child->mm,$child->dd) ?></p>
                    
                     </th>
                     
@@ -107,17 +107,16 @@ else
                     <td>Obtained</td>
                     <td>Band</td>
                 </tr>
-               
                 <?php                                        
                     foreach ($assign_quiz as $subject)
                     {
                 ?>
                         <tr> 
-                            <td width="20%"><?=$subject->level_name?></td>
+                            <td width="40%"><?=$subject->level_name?></td>
                             <td><?=$subject->percentage?>%</td> 
                             <td><?=$subject->total?></td>
                             <td><?=$subject->obtained?></td>
-                            <td><?=$subject->grade?></td>
+                            <td><?=getBand($subject->percentage)?></td>
                         </tr>
                 <?php
                     }
@@ -132,27 +131,29 @@ else
                 
             </div>
             <? if($this->session->userdata('user_type') == END_USER_TYPE)
-                    {
+               {
                     if($comment)
                     {
-                    ?>
+            ?>
                     
-            <div style="margin:20px;">
-                <form name="report_Comment" action="<?=base_url()?>user/comment" method="post">
-                <h3>Comment</h3>
-                <p ><textarea name="comment" placeholder="Write your comments" class="form-control" rows="3" required><?php if ($comment)
-                    {
-                        echo $comment->comment;
+                            <div style="margin:20px;">
+                                <form name="report_Comment" action="<?=base_url()?>user/comment" method="post">
+                                <h3>Comment</h3>
+                                <p ><textarea name="comment" placeholder="Write your comments" class="form-control" rows="3" required>
+                                    <?php if ($comment)
+                                        {
+                                            echo $comment->comment;
+                                        }
+                                    ?></textarea></p>
+                                <input type="hidden" name="r_id" value="<?=$id?>">
+                                <input type="submit" class="btn btn-primary pull-right" >
+                                </form>
+                            <br>
+                            </div>
+           <?
                     }
-                        ?></textarea></p>
-                <input type="hidden" name="r_id" value="<?=$id?>">
-                <input type="submit" class="btn btn-primary pull-right" >
-                </form>
-            <br>
-            </div>
-                   <? }
-                   }
-                   ?>
+               }
+           ?>
             
         </div>
     </div>
@@ -164,5 +165,25 @@ else
 function getAge($y,$m,$d)
 {
     return floor( (strtotime(date('Y-m-d')) - strtotime("$y-$m-$d")) / 31556926);
+}
+
+function getBand($percentage)
+{
+    if($percentage >= 85)
+    {
+        return 1;
+    }
+    else if ($percentage <85 && $percentage >=70)
+    {
+        return 2;
+    }
+    else if ($percentage < 70 && $percentage >= 50 )
+    {
+        return 3;
+    }
+    else
+    {
+        return 4;
+    }     
 }
 ?>

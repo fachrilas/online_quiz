@@ -30,6 +30,7 @@
     min-height: 500px;
     padding-left: 4%;
     padding-top:2%;
+    padding-bottom: 2%;
 }
 .outer-container
 {
@@ -69,7 +70,7 @@
 }
 .promotion-container
 {
-    min-height: 150px;
+    min-height: 110px;
     border-bottom: 4px solid #FFFAFA;
 }
 .about-us

@@ -34,16 +34,16 @@ if(isset($_GET['error_exp']))
               <td colspan="2">
                   <ul class="profile">
                       <li >
-                          <a href="view_report/<?=$this->session->userdata('user_id')?>"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchBag.png'?>" alt="" height="30px">My Report Card</a>
+                          <a href="view_report/<?=$this->session->userdata('user_id')?>"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-ReportCard.png'?>" alt="" height="30px" />My Report Card</a>
                       </li>
                        <li >
-                           <a href="<?=base_url().'user/view_assign_quiz'?>"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchHolidays.png'?>" alt="" height="30px">My School Bag</a>
+                           <a href="<?=base_url().'user/view_assign_quiz'?>"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchBag.png'?>" alt="" height="30px" />My School Bag</a>
                       </li>
                       <li >
-                          <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MyStickers.png'?>" alt="" height="30px">My Stickers </a>
+                          <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MyStickers.png'?>" alt="" height="30px" />My Stickers </a>
                       </li>
                       <li >
-                          <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-ReportCard.png'?>" alt="" height="30px">My School Holidays</a>
+                          <a href="#"><img style="margin-right:10px;" src="<? echo base_url().'../assets/img/Icon-MySchHolidays.png'?>" alt="" height="30px" />My School Holidays</a>
                       </li>
                   </ul>
               </td>   
@@ -62,8 +62,8 @@ if(isset($_GET['error_exp']))
                 <br>
                 <p class="sec"><b>Full Name</b>:<?=$child->name; ?></p> 
                 <hr>
-                <p class="sec"><b>Member Since</b>: <?=$child->member_Since; ?></p> 
-                <hr><p class="sec"><b>Last Login</b>:  <?=$child->last_login; ?></p> 
+                <p class="sec"><b>Member Since</b>: <? echo date("jS F, Y", strtotime($child->member_Since)); ?></p> 
+                <hr><p class="sec"><b>Last Login</b>:  <? echo date("jS F, Y", strtotime($child->last_login)); ?></p> 
                 <hr><p class="sec"><b>Today's mood</b>:  <?=$child->mood; ?></p> 
                 <hr>
                 <div class="plast">

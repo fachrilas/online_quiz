@@ -18,7 +18,7 @@
                       <i>The beacon of light amidst to excellence</i>
                         </div>
         <div class="col-md-5"></div>
-        <div class="col-md-2"><p style="margin-top: 39px;">transaction No.<?=$user->txn_id?></p></div>
+        <div class="col-md-3"><p style="margin-top: 39px;">transaction No. <b><?=$user->txn_id?></b></p></div>
         
 
     </div>
@@ -39,11 +39,11 @@
             <table class="col-md-12">
                 <tr style="border-bottom: 1px solid black;border-top: 1px solid black;">
                     <td class="col-md-6">
-                        Description
+                        description
                     </td>
                     <td>unit price</td>
-                    <td>Qunatity</td>
-                    <td>Amount</td>
+                    <td>qunatity</td>
+                    <td>amount</td>
                 </tr>
                  <tr style="border-bottom: 1px solid black;border-top: 1px solid black;">
                     <td class="col-md-6">
@@ -64,7 +64,7 @@
                     }
                     ?></td>
                     <td>1</td>
-                    <td>SGD$<?php
+                    <td>SGD $<?php
                     if($user->item_name==GOLD_ITEM)
                     {
                         echo GOLD_PRICE;
@@ -83,7 +83,7 @@
                     <td class="col-md-6"></td>
                     <td></td>
                     <td>Subtotal</td>
-                    <td>SGD$
+                    <td>SGD $
                     <?php
                     if($user->item_name==GOLD_ITEM)
                     {
@@ -104,7 +104,7 @@
                     <td class="col-md-6"></td>
                     <td></td>
                     <td><b>Total</b></td>
-                    <td>SGD$
+                    <td>SGD $
                     <?php
                     if($user->item_name==GOLD_ITEM)
                     {
@@ -125,7 +125,7 @@
                     <td class="col-md-6"></td>
                     <td></td>
                     <td><b>Payment</b></td>
-                    <td>SGD$
+                    <td>SGD $
                     <?php
                     if($user->item_name==GOLD_ITEM)
                     {
@@ -147,10 +147,10 @@
             </table>
             <br>
             
-            <p class="pull-right" style="text-align: right;">Charge will appear on your credit card statment as "PAYPAL MOEX"<br>PAment sent to <a href="mailto:moex@ministryofexcellence.com.sg">moex@ministryofexcellence.com.sg</a></p>
+            <p class="pull-right" style="text-align: right;">Charge will appear on your credit card statment as "PAYPAL MOEX"<br>Payment sent to <a href="mailto:moex@ministryofexcellence.com.sg">moex@ministryofexcellence.com.sg</a></p>
             <br>
             <br>
-            <p><b>Isue with this transaction ?</b></p>
+            <p><b>Issue with this transaction ?</b></p>
             <p>Feel free to contact us at support@ministryofexcellence.com.sg within 7 days.</p>
             <p><center><button class="btn btn-primary" style="width: 52%;height: 50px;border-radius: 12px;" id="button">Get started Now</button></center>
         </p>

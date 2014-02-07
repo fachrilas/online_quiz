@@ -38,11 +38,11 @@ include_once 'template/sidebar_enduser.php';
                     ?>
                 <div class="report">
                     <table><tr><td>
-                                <b> <?=$child->name;?></b>
+                                <?=$child->name;?>
                             </td>
                             <td>
-                                <b> pri. 3 </b></td><td>
-                                <a href="<?php echo base_url();?>user/view_report/<?=$child->id;?>"> <img style="width:84%" src="<? echo base_url().'../assets/img/viewReport.png'?>" /></a> <p>last Assignment Taken :9 December, 2013</p>
+                                <?= $child->level?></td><td>
+                                <a href="<?php echo base_url();?>user/view_report/<?=$child->id;?>"> <img style="width:84%" src="<? echo base_url().'../assets/img/viewReport.png'?>" /></a> <p>last Assignment Taken :9 December 2013.</p>
                             </td>
                         </tr>
                     </table>

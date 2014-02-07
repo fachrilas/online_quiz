@@ -14,7 +14,7 @@ and open the template in the editor.
 }
 .package
 {
-    height: 450px;
+    height: 350px;
     background-size: 100% 450px;
     margin-top: 20px;
     border-top-left-radius: 15px;
@@ -26,25 +26,29 @@ and open the template in the editor.
 .package h2
 {
     
-    padding-top: 50px;
+    padding-top: 30px;
     text-decoration: underline;
-    font-size: 34px;
+    font-size: 27px;
     font-weight: bold;
     
 }
 .package p b
 {
-    font-size: 55px;
+    font-size: 40px;
 }
 .package p i
 {
-    font-size: 28px;
+    font-size: 24px;
 }
 .package span
 {
-    font-size: 27px;
+    font-size: 24px;
 }
 .button
 {
     width: 50%;
+}
+.col-md-4
+{
+    padding-left: 0px;
 }

@@ -28,29 +28,26 @@
   <body>
         
       <div class="container">
-          
-                  <?  if($this->session->userdata('is_logged_in'))
-                    {
-                    ?>
+        <?  if($this->session->userdata('is_logged_in'))
+        {
+        ?>
               
-              <div class="signout">
-                  <span class="glyphicon glyphicon-log-out"> <a href="<?=base_url().'user/logout'?>" >
-                          <font> Sign Out
-                          </font></a></span>
-              </div>
+          <div class="signout">
+              <span class="glyphicon glyphicon-log-out"> <a href="<?=base_url().'user/logout'?>" >
+                  <font> Sign Out
+                  </font></a></span>
+          </div>
                     
-              <? }?>
-              <a class="signoutimg1" href="<?=share_url('facebook',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_FB));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_fb.png" />    
-                </a>
-              <a class="signoutimg2" href="<?=share_url('twitter',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_TW));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_tw.png" />    
-                </a>
+    <? }?>
+        <a class="signoutimg1" href="<?=share_url('facebook',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_FB));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_fb.png" /></a>
+        <a class="signoutimg2" href="<?=share_url('twitter',	array('url'=>'http://www.ministryofexcellence.com.sg/', 'text'=>SOCIAL_TW));?>" target="_blank"><img src="<?=base_url()?>../assets/img/SharingIcons_tw.png" /></a>
 
           <div class="masthead">
-              <div class="row" style="margin-bottom: 21px;margin-top:6px;">
+              <div class="row" style="margin-bottom: 8px;margin-top:6px;">
                   <div class="col-md-3">
                     <a href="<?=base_url().'main/index'?>"><img src="<?php echo base_url().'../assets/img/MOExLogo.png' ?>" style="width: 100px;height: 100px;"/></a>
                   </div>
-                  <div class="col-md-3 col-md-offset-6" style="text-align: left;margin-top: 50px;">
+                  <div class="col-md-3 col-md-offset-6" style="text-align: left;margin-top: 60px;">
                       <i>The beacon of light amidst your journey through the sea of learning</i>
                   </div>
               </div>

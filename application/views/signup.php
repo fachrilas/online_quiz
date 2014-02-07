@@ -40,6 +40,7 @@
     </div>
 
 </div>
+</div>
 <script>
 $(function(){
     $('form').on('submit',function(e)
