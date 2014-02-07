@@ -17,7 +17,7 @@
                         </tr>
                         
                             <?php
-                        
+                        $i=0;
                     foreach($assign_quiz as $user)
                     {
                     ?>
@@ -27,8 +27,9 @@
                             {?>
                             <td>already taken</td>
                             <?php } else{ ?>
-                            <td><a href="<?php echo base_url(); ?>user/start_quiz/0">Start</a></td>
+                            <td><a href="<?php echo base_url(); ?>user/start_quiz/0/<?=$i?>">Start</a></td>
                                 </tr><?php 
+                                $i++;
                             }
                     }
                             ?>

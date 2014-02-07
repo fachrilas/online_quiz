@@ -8,14 +8,13 @@ label.css-label {
         -khtml-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
-                        }
+                 }
                         
  #counter{
-    font-size: 100%;
-margin-left: 58%;
-margin-top: 13%;
-position: absolute;
-color: brown;
+    
+    color: brown;
+    float: right;
+    margin-top: -30px;
  }
     </style>
    
@@ -25,12 +24,12 @@ color: brown;
     <?php if($count>0){ ?>
     <div class="preview" style="background-image: url('<? echo base_url().'../assets/img/quizboard-bg.png'?>');">
        
-          <p id="counter" style=""></p>
-        <form id="assign_quiz" method="post" action="<? echo base_url();?>user/start_quiz/<? echo $next; ?>" class="form-group" >
+         
+        <form id="assign_quiz" method="post" action="<? echo base_url();?>user/start_quiz/<?=$next?>/<?=$quiz?>" class="form-group" >
         <table class="PTable">
             
             <tr >
-                <td ><b>Question <?=$questionDetails['question']->question_number?>:</b></td></tr><tr>
+                <td ><b>Question <?=$questionDetails['question']->question_number?>:</b><p id="counter" style=""></p> </td></tr><tr>
             
                 <td><?php
                 $detail=$questionDetails['question']->question;
@@ -61,8 +60,6 @@ color: brown;
             <?php
             if ($questionDetails['question']->type==OPTIONS)
             {
-                
-            
             ?>
             <tr>
             
@@ -85,13 +82,27 @@ color: brown;
                     <input type="radio" name="answer" id="radio4" class="css-checkbox" value="d"/><label for="radio4" class="css-label"><?=$questionDetails['options'][3]->option; ?></label>
                 </td>
             </tr>
+             <tr>
+            
+                <td>
+                    
+                    Hint :<?=$questionDetails['question']->q_hint?>
+                </td>
+            </tr>
             <?php }else
             {
                 ?>
             <tr>
             
                 <td>
-                    <br><br>
+                    
+                    Hint :<?=$questionDetails['question']->q_hint?>
+                </td>
+            </tr>
+            <tr>
+            
+                <td>
+                    
                     Answer :
                 <input type="text" class="form-control" name="answer" />
                 </td>
@@ -99,10 +110,10 @@ color: brown;
             <?php }?>
             <tr>
                 <td>
-                    <?php if(($count-1)>0){ ?>
                     <a href="javascript:void(0);"><img src="<? echo base_url().'../assets/img/back.png'?>" id="back" onclick="mybackFunction()" class="" style="width: 14%;
 margin-top: -8px;
 margin-left: 47%;" /> </a>
+                    <?php if(($count-1)>0){ ?>
                     
                     <a href="javascript:void(0);"><img src="<? echo base_url().'../assets/img/next.png'?>" id="next" onclick="myFunction()" class="pull-right" style="width: 14%;
 margin-right: 14px;" /> </a>

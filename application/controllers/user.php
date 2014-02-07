@@ -488,16 +488,17 @@ class User extends CI_Controller{
         
     }
     
-    public function start_quiz($count)
+    public function start_quiz($count,$quiz)
     {   
         
         $userId = $this->session->userdata('username');
         $this->load->model('user_model');
         $opt=TAKEN_NOT;
+        $data['quiz']=$quiz;
         $data['assign_quiz']=$this->user_model->GetAssignQuiz($userId,$opt);
-        $level=$data['assign_quiz'][0]->level;
-        $this->session->set_userdata('quiz_id',$data['assign_quiz'][0]->id);
-        if($data['assign_quiz'][0]->operation==TAKEN_YES)
+        $level=$data['assign_quiz'][$quiz]->level;
+        $this->session->set_userdata('quiz_id',$data['assign_quiz'][$quiz]->id);
+        if($data['assign_quiz'][$quiz]->operation==TAKEN_YES)
         {
             echo "quiz already taken";
             die();
@@ -610,6 +611,19 @@ class User extends CI_Controller{
             $datas['band']=$band;
             $datas['total']=$score;
             $datas['obtained']=$obtained;
+            $user=  $this->user_model->getChild($userId);
+            $parent=  $this->user_model->getuserRecordbyid($user->parent_id);
+            //*******lets email to parent
+                $email=EMAIL;
+                $to = $parent->email;  
+                $subject = 'Child Report-Ministry of Excellence';
+                $message = 'Dear '.$parent->name.',<br>'.$user->name.' has just completed the paper assigned with a score of '.$obtained.' out of'.$score.'. Please log on to review the paper and assign new papers for their continuous learning.';
+                $message.='<br><br><a href="'.$_SERVER['SERVER_NAME'].'/index.php/user/login?page=sign_in"><i>Link</i></a><br><br><h2><i>Ministry of Excellence</i></h2>';
+                $headers  = 'MIME-Version: 1.0' . "\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\n";
+                $headers .= "From: " .$email. "\r\n" . "\r\n" ;
+                mail($to,$subject,$message,$headers);
+            //***end of email portion
             $datas[VIEW_NAME] = 'end_quiz';
             $this->load->view(MAIN_TEMPLATE,$datas);
         }

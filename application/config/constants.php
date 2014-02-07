@@ -142,6 +142,8 @@ define('TAKEN_NOT','not-taken');
 define('TAKEN_YES','taken');
 define('MESSAGE_SENT', 'Your message has been sent to our management team.Soonly we will respond you.');
 define('MEMBER_EXP', 'your membership has been expired');
+define('EMAIL', 'info@ministryofexcellence.com.sg');
+
 /**
  * Error Messages
  */

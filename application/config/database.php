@@ -49,9 +49,9 @@ $active_group = 'local';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'ministr6';
-$db['default']['password'] = '1828KdtjPp';
-$db['default']['database'] = 'ministr6_online_quiz';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'online_quiz';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
